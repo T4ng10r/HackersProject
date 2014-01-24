@@ -3,12 +3,12 @@ cmake_minimum_required(VERSION 2.6)
 project(UnitTest)
 
 #dodajemy dane dotyczace QT - sciezki, biblioteki
-set(CMAKE_AUTOMOC ON)
-find_package(Qt5Widgets)
-find_package(Qt5Core)
-find_package(Qt5Xml)
-find_package(Qt5Test)
-include_directories($ENV{QTDIR}/include)
+#set(CMAKE_AUTOMOC ON)
+#find_package(Qt5Widgets)
+#find_package(Qt5Core)
+#find_package(Qt5Xml)
+#find_package(Qt5Test)
+include_directories(${Qt5Core_INCLUDE_DIRS} ${Qt5Test_INCLUDE_DIRS})
 
 set(ENV{QTEST_COLORED} 1)
 
@@ -24,13 +24,11 @@ INCLUDE_DIRECTORIES(${Boost_INCLUDE_DIR})
 
 ####################
 FILE(GLOB SOURCES_TEST_DATA "TestCases/*")
+FILE(GLOB SOURCES_TEST_MOC "TestCases/*.h")
 
 SET ( SOURCES_MAIN
       main.cpp
       TestRunner.h
-    )
-
-SET ( SOURCES_TEST_MOC 
     )
 
 IF (WIN32)
@@ -39,11 +37,11 @@ IF (WIN32)
 	SOURCE_GROUP(TestCases\\Plugins FILES ${SOURCES_TEST_PLUGINS_DATA})
 	SET(CMAKE_EXE_LINKER_FLAGS /NODEFAULTLIB:\"LIBCMTD.lib\")
 endif(WIN32)
+
+qt5_wrap_cpp(SOURCES_MOC ${SOURCES_TEST_MOC} )
     
 add_executable(UnitTest ${SOURCES_MAIN} ${SOURCES_MOC} 
 					${SOURCES_TEST_DATA} ${SOURCES_TEST_PLUGINS_DATA}
 )
 target_link_libraries(UnitTest ${QT_LIBRARIES} HackersProject_lib )
 qt5_use_modules(UnitTest Widgets Core Xml Test)
-#add_test(UnitTest UnitTest)
-

@@ -1,6 +1,6 @@
 #include <Tools/loggers.h>
-#include <QtCore/QFile>
-#include <QtCore/QDir>
+#include <QFile>
+#include <QDir>
 #ifdef USE_LOG4QT
 
 #include <log4qt/logmanager.h>

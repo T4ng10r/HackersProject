@@ -46,7 +46,7 @@ ENDIF (WIN32)
     
 
 IF (WIN32)
-    add_executable(HackersProject ${SOURCES_DATA} ${SOURCES_MOC} 
+    add_executable(HackersProject WIN32 ${SOURCES_DATA} ${SOURCES_MOC} 
         ${SOURCES_GUI} ${SOURCES_OTHER} ${SOURCES_RCC} 
         ${SOURCES_GUI_SETTINGS} main.cpp  )
 ELSE (WIN32)
@@ -55,14 +55,17 @@ ELSE (WIN32)
         ${SOURCES_GUI_SETTINGS} main.cpp )
 ENDIF (WIN32)
 
-qt5_use_modules(HackersProject Widgets Xml)
+qt5_use_modules(HackersProject Widgets Xml Core)
 
 add_library(HackersProject_lib STATIC ${SOURCES_DATA} ${SOURCES_MOC} 
         ${SOURCES_GUI} ${SOURCES_OTHER} 
         ${SOURCES_GUI_SETTINGS} ${SOURCES_RCC})
         
-  SET(LIBRARIES_LIST ${QT_LIBRARIES} ${Boost_LIBRARIES} Tools_Lib )
   target_link_libraries(HackersProject ${LOG4CPP_LIBRARY_NAME} ${QT_LIBRARIES}
-      ${Boost_LIBRARIES} Tools_lib)
+      ${Boost_LIBRARIES} tools_lib Qt5::WinMain)
   target_link_libraries(HackersProject_lib ${LOG4CPP_LIBRARY_NAME} ${QT_LIBRARIES}
-      ${Boost_LIBRARIES} Tools_lib)
+      ${Boost_LIBRARIES} tools_lib Qt5::WinMain)
+
+	add_custom_command(TARGET HackersProject POST_BUILD 
+		COMMAND ${CMAKE_COMMAND} -E make_directory ${CMAKE_CURRENT_BINARY_DIR}/logs
+		COMMAND ${CMAKE_COMMAND} -E copy ${CMAKE_CURRENT_SOURCE_DIR}/log4cpp.properties ${CMAKE_CURRENT_BINARY_DIR}/logs/log4cpp.properties )

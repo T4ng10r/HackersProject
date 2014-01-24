@@ -1,10 +1,11 @@
 cmake_minimum_required(VERSION 2.8)
 
 project(Tools)
-include_directories($ENV{QTDIR})
+include_directories($ENV{QTDIR}/include)
 
 include_directories(${CMAKE_CURRENT_SOURCE_DIR})
 include_directories(${CMAKE_SOURCE_DIR}/include)
+include_directories(${Qt5Core_INCLUDE_DIRS})
 
 SET ( TOOLS_SRC
 	qtTools.cpp
@@ -16,6 +17,5 @@ IF (WIN32)
 	SOURCE_GROUP(tools FILES ${TOOLS_SRC})
 endif(WIN32)
 
-add_library(Tools_Lib STATIC ${TOOLS_SRC} )
-target_link_libraries(Tools_Lib ${LOGGER_LIBRARY} )
-
+add_library(tools_lib STATIC ${TOOLS_SRC} )
+target_link_libraries(tools_lib ${LOGGER_LIBRARY} )
