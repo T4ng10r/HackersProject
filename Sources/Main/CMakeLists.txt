@@ -1,8 +1,8 @@
-cmake_minimum_required(VERSION 2.8)
-
 project(HackersProject)
 
 #dodajemy dane dotyczace QT - sciezki, biblioteki
+cmake_policy(SET CMP0020 NEW)
+
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 find_package(Qt5Widgets)

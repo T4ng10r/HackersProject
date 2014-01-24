@@ -1,8 +1,7 @@
-cmake_minimum_required(VERSION 2.6)
-
 project(UnitTest)
 
 #dodajemy dane dotyczace QT - sciezki, biblioteki
+cmake_policy(SET CMP0020 NEW)
 #set(CMAKE_AUTOMOC ON)
 #find_package(Qt5Widgets)
 #find_package(Qt5Core)
