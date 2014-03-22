@@ -3,69 +3,44 @@ project(HackersProject)
 #dodajemy dane dotyczace QT - sciezki, biblioteki
 cmake_policy(SET CMP0020 NEW)
 
-set(CMAKE_AUTOMOC ON)
-set(CMAKE_INCLUDE_CURRENT_DIR ON)
-find_package(Qt5Widgets)
-find_package(Qt5Xml)
-include_directories($ENV{QTDIR} ${Qt5Widgets_INCLUDE_DIRS} ${Qt5Core_INCLUDE_DIRS})
+INCLUDE_DIRECTORIES(${Boost_INCLUDE_DIR})
+INCLUDE_DIRECTORIES(${Boost_LIBRARY_DIRS})
+ADD_DEFINITIONS( "-DHAS_BOOST" )
 
+include_directories(${CMAKE_SOURCE_DIR}/include)
+include_directories(${CMAKE_CURRENT_SOURCE_DIR})
 
-	INCLUDE_DIRECTORIES(${Boost_INCLUDE_DIR})
-	INCLUDE_DIRECTORIES(${Boost_LIBRARY_DIRS})
-	ADD_DEFINITIONS( "-DHAS_BOOST" )
-	#Boost_LIBRARY_DIRS
-	ADD_DEFINITIONS( "-DQT_NO_KEYWORDS" )
+set(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR})
 
-	include_directories(${CMAKE_SOURCE_DIR}/include)
-	include_directories(${CMAKE_CURRENT_SOURCE_DIR})
+file(GLOB_RECURSE TMP_FILES
+    ${DIRECTORY}/*.h
+    ${DIRECTORY}/*.cpp
+    ${DIRECTORY}/*.c
+)
 
-    SET ( SOURCES_TOOLS
-		${CMAKE_SOURCE_DIR}/include/Tools/loggers.h 	
-		${CMAKE_SOURCE_DIR}/include/Tools/qtTools.h 	 )
-		
-	SET ( SOURCES_OTHER
-		Requirements.txt 
-		TODO.txt
-		log4cpp.properties
-		${SOURCES_TOOLS}
-		)
-		  
-	FILE(GLOB SOURCES_DATA "Data/*")
+foreach(f ${TMP_FILES})
+    # Get the path of the file relative to ${DIRECTORY},
+    # then alter it (not compulsory)
+    file(RELATIVE_PATH SRC_GROUP ${DIRECTORY} ${f})
+	string(FIND ${SRC_GROUP} / IS_SUBFOLDER)
+	if (${IS_SUBFOLDER} GREATER -1)
+		set(SRC_GROUP "${SRC_GROUP}")
 
-    SET ( SOURCES_MOC_HEADERS
-        #${CMAKE_CURRENT_SOURCE_DIR}/GUI/Settings/DictionariesConfigurationDlg.h 
-        )
-        
-IF (WIN32)
-    SOURCE_GROUP(Data FILES ${SOURCES_DATA})
-    SOURCE_GROUP(GUI FILES ${SOURCES_GUI})
-    SOURCE_GROUP(GUI\\Settings FILES ${SOURCES_GUI_SETTINGS})
-    SOURCE_GROUP(moc FILES ${SOURCES_MOC})
-    SOURCE_GROUP(tools FILES ${SOURCES_TOOLS})
-ENDIF (WIN32)
-    
+		# Extract the folder, ie remove the filename part
+		string(REGEX REPLACE "(.*)(/[^/]*)$" "\\1" SRC_GROUP ${SRC_GROUP})
 
-IF (WIN32)
-    add_executable(HackersProject WIN32 ${SOURCES_DATA} ${SOURCES_MOC} 
-        ${SOURCES_GUI} ${SOURCES_OTHER} ${SOURCES_RCC} 
-        ${SOURCES_GUI_SETTINGS} main.cpp  )
-ELSE (WIN32)
-    add_executable(HackersProject ${SOURCES_DATA} ${SOURCES_MOC} 
-        ${SOURCES_GUI} ${SOURCES_OTHER} ${SOURCES_RCC} 
-        ${SOURCES_GUI_SETTINGS} main.cpp )
-ENDIF (WIN32)
+		# Source_group expects \\ (double antislash), not / (slash)
+		message(STATUS ${SRC_GROUP})
+		string(REPLACE / "\\" SRC_GROUP ${SRC_GROUP})
+		source_group(${SRC_GROUP} FILES ${f})
+	endif()
+	
+endforeach()
 
-qt5_use_modules(HackersProject Widgets Xml Core)
+add_executable(HackersProject WIN32 ${TMP_FILES} ${SOURCES_MOC} 
+    ${SOURCES_GUI} ${SOURCES_OTHER} ${SOURCES_RCC} 
+    ${SOURCES_GUI_SETTINGS} main.cpp  )
 
-add_library(HackersProject_lib STATIC ${SOURCES_DATA} ${SOURCES_MOC} 
-        ${SOURCES_GUI} ${SOURCES_OTHER} 
-        ${SOURCES_GUI_SETTINGS} ${SOURCES_RCC})
-        
-  target_link_libraries(HackersProject ${LOG4CPP_LIBRARY_NAME} ${QT_LIBRARIES}
-      ${Boost_LIBRARIES} tools_lib Qt5::WinMain)
-  target_link_libraries(HackersProject_lib ${LOG4CPP_LIBRARY_NAME} ${QT_LIBRARIES}
-      ${Boost_LIBRARIES} tools_lib Qt5::WinMain)
-
-	add_custom_command(TARGET HackersProject POST_BUILD 
-		COMMAND ${CMAKE_COMMAND} -E make_directory ${CMAKE_CURRENT_BINARY_DIR}/logs
-		COMMAND ${CMAKE_COMMAND} -E copy ${CMAKE_CURRENT_SOURCE_DIR}/log4cpp.properties ${CMAKE_CURRENT_BINARY_DIR}/logs/log4cpp.properties )
+add_custom_command(TARGET HackersProject POST_BUILD 
+	COMMAND ${CMAKE_COMMAND} -E make_directory ${CMAKE_CURRENT_BINARY_DIR}/logs
+	COMMAND ${CMAKE_COMMAND} -E copy ${CMAKE_CURRENT_SOURCE_DIR}/log4cpp.properties ${CMAKE_CURRENT_BINARY_DIR}/logs/log4cpp.properties )
