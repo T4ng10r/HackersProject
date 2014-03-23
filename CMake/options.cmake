@@ -1,8 +1,4 @@
 cmake_policy(SET CMP0020 NEW )
-find_package(Qt5Widgets)
-find_package(Qt5Core)
-find_package(Qt5Xml)
-find_package(Qt5Test)
 
 #boost build with bjam threading=multi runtime-link=static
 #bjam link=static,shared threading=single,multi

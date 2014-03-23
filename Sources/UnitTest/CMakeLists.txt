@@ -37,9 +37,7 @@ IF (WIN32)
 	SET(CMAKE_EXE_LINKER_FLAGS /NODEFAULTLIB:\"LIBCMTD.lib\")
 endif(WIN32)
 
-qt5_wrap_cpp(SOURCES_MOC ${SOURCES_TEST_MOC} )
-    
-add_executable(UnitTest ${SOURCES_MAIN} ${SOURCES_MOC} 
+add_executable(UnitTest ${SOURCES_MAIN}
 					${SOURCES_TEST_DATA} ${SOURCES_TEST_PLUGINS_DATA}
 )
 target_link_libraries(UnitTest ${QT_LIBRARIES} HackersProject_lib gtest gmock)
