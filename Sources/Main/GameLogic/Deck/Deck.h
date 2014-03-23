@@ -1,8 +1,6 @@
 #ifndef _DECK_INCLUDE_
 #define _DECK_INCLUDE_
 
-#include <boost/scoped_ptr.hpp>
-
 class DeckPrivate;
 
 class Deck  

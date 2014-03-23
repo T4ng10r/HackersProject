@@ -9,7 +9,7 @@ find_package(Qt5Test)
 SET(Boost_USE_MULTITHREADED ON)
 SET(Boost_USE_STATIC_LIBS ON)
 #SET(Boost_USE_STATIC_RUNTIME OFF)
-find_package(Boost REQUIRED COMPONENTS date_time) #thread system date_time chrono)
+find_package(Boost REQUIRED COMPONENTS date_time filesystem system) #thread system date_time chrono)
 
 set(Logger "log4cpp" CACHE STRING "Logger where to store logs from program executions")
 set(LoggersNames "None;log4cpp")

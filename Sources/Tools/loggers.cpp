@@ -1,6 +1,7 @@
 #include <Tools/loggers.h>
-#include <QFile>
-#include <QDir>
+#include <io.h>
+#include <boost/filesystem.hpp>
+#include <boost/format.hpp>
 #ifdef USE_LOG4QT
 
 #include <log4qt/logmanager.h>
@@ -24,31 +25,34 @@ using namespace log4cpp;
 #endif
 bool bLoggersCreated(false);
 
+#ifdef WIN32
+#define SEPARATOR "/"
+#else
+#define SEPARATOR "\"
+#endif
+
 #define DEBUG_LOGGER		"debug"
 #define SLOTS_LOGGER		"slots"
 #define GUI_LOGGER			"gui"
 #define LOG_DIR				"logs"
-#define LOG_FILE(X)		QString("%1%2%3.log").arg(LOG_DIR).arg(QDir::separator()).arg(X)
+#define LOG_FILE(X)		str(boost::format("%1%%2%%3%.log") % LOG_DIR % SEPARATOR % X)
 
-void deleteFileIfExist( const QString & filePath)
+void deleteFileIfExist(const std::string & filePath)
 {
-	QDir stDir;
-	QFile file(QDir::currentPath()+QDir::separator()+filePath);
-	if (file.exists())
-		stDir.remove(filePath);
+	struct stat   buffer;
+	if (stat(filePath.c_str(), &buffer) == 0)
+		remove(filePath.c_str());
 }
-
 void cleanupLogsDir()
 {
 	//be sure that DIR is created
-	QDir stDir;
-	stDir.mkdir(LOG_DIR);
+	boost::filesystem::create_directory(LOG_DIR);
 	//cleanup logs dir content
 	deleteFileIfExist(LOG_FILE(DEBUG_LOGGER));
 	deleteFileIfExist(LOG_FILE(GUI_LOGGER));
 	deleteFileIfExist(LOG_FILE(SLOTS_LOGGER));
 }
-void createLoggers(const QString &strPluginLogName /*= QString()*/)
+void createLoggers(const std::string &strPluginLogName)
 {
 	cleanupLogsDir();
 
@@ -104,7 +108,7 @@ void destroyLoggers()
 #endif
 }
 
-void printLog(eLogLevel debugLevel, eLoggerType loggerType, const QString &strMsg)
+void printLog(eLogLevel debugLevel, eLoggerType loggerType, const std::string &strMsg)
 {
 	if (false==bLoggersCreated)
 		createLoggers();
@@ -144,34 +148,27 @@ void printLog(eLogLevel debugLevel, eLoggerType loggerType, const QString &strMs
 #ifdef USE_LOG4QT
 			ptrLogger->info(stLogError); 	break;
 #elif defined(USE_LOG4CPP)
-			ptrCategory->info(strMsg.toStdString());	break;
+			ptrCategory->info(strMsg);	break;
 #endif
 		case eWarningLogLevel:	
 #ifdef USE_LOG4QT
 			ptrLogger->warn(stLogError);	break;
 #elif defined(USE_LOG4CPP)
-			ptrCategory->warn(strMsg.toStdString());	break;
+			ptrCategory->warn(strMsg);	break;
 #endif
 		case eDebugLogLevel:	
 #ifdef USE_LOG4QT
 			ptrLogger->debug(stLogError);	break;
 #elif defined(USE_LOG4CPP)
-			ptrCategory->debug(strMsg.toStdString());	break;
+			ptrCategory->debug(strMsg);	break;
 #endif
 		case eErrorLogLevel:
 #ifdef USE_LOG4QT
 			ptrLogger->error(stLogError);	break;
 #elif defined(USE_LOG4CPP)
-			ptrCategory->error(strMsg.toStdString());	break;
+			ptrCategory->error(strMsg);	break;
 #endif
 	}
 }
-
-
-//#else
-//void createLoggers(const QString &strPluginLogName){};
-//void destroyLoggers(){};
-//void printLog(eLogLevel, eLoggerType, const QString &strMsg){};
-//#endif
 
 //////////////////////////////////////////////////////////////////////////

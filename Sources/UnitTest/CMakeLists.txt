@@ -7,7 +7,9 @@ cmake_policy(SET CMP0020 NEW)
 #find_package(Qt5Core)
 #find_package(Qt5Xml)
 #find_package(Qt5Test)
-include_directories(${Qt5Core_INCLUDE_DIRS} ${Qt5Test_INCLUDE_DIRS})
+#include_directories(${Qt5Core_INCLUDE_DIRS} ${Qt5Test_INCLUDE_DIRS})
+include_directories(${gmock_SOURCE_DIR})
+include_directories(${gtest_SOURCE_DIR}/include)
 
 set(ENV{QTEST_COLORED} 1)
 
@@ -27,13 +29,11 @@ FILE(GLOB SOURCES_TEST_MOC "TestCases/*.h")
 
 SET ( SOURCES_MAIN
       main.cpp
-      TestRunner.h
     )
 
 IF (WIN32)
 	SOURCE_GROUP(moc FILES ${SOURCES_MOC})
 	SOURCE_GROUP(TestCases FILES ${SOURCES_TEST_DATA})
-	SOURCE_GROUP(TestCases\\Plugins FILES ${SOURCES_TEST_PLUGINS_DATA})
 	SET(CMAKE_EXE_LINKER_FLAGS /NODEFAULTLIB:\"LIBCMTD.lib\")
 endif(WIN32)
 
@@ -42,5 +42,5 @@ qt5_wrap_cpp(SOURCES_MOC ${SOURCES_TEST_MOC} )
 add_executable(UnitTest ${SOURCES_MAIN} ${SOURCES_MOC} 
 					${SOURCES_TEST_DATA} ${SOURCES_TEST_PLUGINS_DATA}
 )
-target_link_libraries(UnitTest ${QT_LIBRARIES} HackersProject_lib )
-qt5_use_modules(UnitTest Widgets Core Xml Test)
+target_link_libraries(UnitTest ${QT_LIBRARIES} HackersProject_lib gtest gmock)
+#qt5_use_modules(UnitTest Widgets Core Xml Test)
