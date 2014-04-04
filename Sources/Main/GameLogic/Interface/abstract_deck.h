@@ -15,9 +15,9 @@ public:
 	virtual unsigned int get_memory();
 	virtual abstract_program_cont get_program_list() const = 0;
 
-	virtual unsigned int get_attack_power() const = 0;
-	virtual unsigned int get_defence_power() const = 0;
-	virtual unsigned int get_value(param_value_type val) const = 0;
+	virtual param_value_t get_attack_power() const = 0;
+	virtual param_value_t get_defence_power() const = 0;
+	virtual param_value_t get_value(param_value_types val) const = 0;
 
 };
 

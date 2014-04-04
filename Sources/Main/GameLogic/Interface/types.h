@@ -1,11 +1,14 @@
 #ifndef _TYPES_INCLUDE_
 #define _TYPES_INCLUDE_
 
+typedef unsigned int param_value_t ;
+
 enum program_type
 {
 	program_attack_type,
 	program_scan_type,
 	program_analyze_type,
+	program_detect_type,
 	program_slow_type,
 	program_virus_type,
 	program_weaken_type,
@@ -19,10 +22,12 @@ enum program_type
 	program_decrypt_type
 };
 
-enum param_value_type
+enum param_value_types
 {
 	attack_value,
-	defence_value
+	defence_value,
+	range_value,
+	detection_strength_value
 };
 
 #endif
