@@ -1,6 +1,15 @@
 #ifndef _TYPES_INCLUDE_
 #define _TYPES_INCLUDE_
 
+template<typename Type>
+class type_handle
+{
+public:
+	typedef std::shared_ptr<Type> type;
+	typedef std::list<Type> cont;
+	typedef std::weak_ptr<Type> weak;
+};
+
 typedef unsigned int param_value_t ;
 
 enum program_type
@@ -19,7 +28,8 @@ enum program_type
 	program_relocate_type,
 	program_evaluate_type,
 	program_crypt_type,
-	program_decrypt_type
+	program_decrypt_type,
+	program_type_count
 };
 
 enum param_value_types

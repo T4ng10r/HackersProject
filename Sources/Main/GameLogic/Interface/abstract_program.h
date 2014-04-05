@@ -1,5 +1,6 @@
-#ifndef _ABSTRACT_PROGRAM_INCLUDE_
-#define _ABSTRACT_PROGRAM_INCLUDE_
+#pragma once
+//#ifndef _ABSTRACT_PROGRAM_INCLUDE_
+//#define _ABSTRACT_PROGRAM_INCLUDE_
 #include <memory>
 #include <string>
 #include <list>
@@ -14,6 +15,6 @@ public:
 	virtual unsigned int get_size() const = 0;
 };
 
-typedef std::shared_ptr<abstract_program> abstract_program_handler;
-typedef std::list<abstract_program> abstract_program_cont;
-#endif //_ABSTRACT_PROGRAM_INCLUDE_
+typedef type_handle<abstract_program>::type abstract_program_handler;
+typedef type_handle<abstract_program>::cont abstract_program_cont;
+//#endif //_ABSTRACT_PROGRAM_INCLUDE_
