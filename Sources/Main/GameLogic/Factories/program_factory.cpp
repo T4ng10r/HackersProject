@@ -15,6 +15,31 @@
 #include <GameLogic/Programs/slow_program.h>
 #include <GameLogic/Programs/virus_program.h>
 #include <GameLogic/Programs/weaken_program.h>
+#include <GameLogic/Interface/program_effects.h>
+#include <map>
+
+program_factory_handle program_factory::instance_(NULL);
+
+struct program_data
+{
+	std::map<program_effects, param_value_t>	effects;
+};
+
+class program_factory_private
+{
+public:
+	program_factory_private(program_factory *pub_);
+	void load();
+	program_factory * pub;
+};
+
+program_factory_private::program_factory_private(program_factory * pub_) :pub(pub_)
+{}
+
+//////////////////////////////////////////////////////////////////////////
+program_factory::program_factory() : pimpl(new program_factory_private(this))
+{
+}
 
 abstract_program_handler program_factory::create_program(program_type type)
 {

@@ -10,7 +10,7 @@ public:
 	typedef std::weak_ptr<Type> weak;
 };
 
-typedef unsigned int param_value_t ;
+typedef int param_value_t ;
 
 enum program_type
 {
