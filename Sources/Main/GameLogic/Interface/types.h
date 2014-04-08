@@ -1,5 +1,7 @@
 #ifndef _TYPES_INCLUDE_
 #define _TYPES_INCLUDE_
+#include <memory>
+#include <list>
 
 template<typename Type>
 class type_handle
@@ -10,7 +12,8 @@ public:
 	typedef std::weak_ptr<Type> weak;
 };
 
-typedef int param_value_t ;
+typedef std::string  program_id;
+typedef int param_value_t;
 
 enum program_type
 {

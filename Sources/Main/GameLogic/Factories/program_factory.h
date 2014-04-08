@@ -1,9 +1,10 @@
 #pragma once
+#include <GameLogic/Interface/types.h>
 #include <GameLogic/Interface/abstract_program.h>
 
 class program_factory;
 class program_factory_private;
-typedef std::shared_ptr<program_factory> program_factory_handle;
+typedef type_handle<program_factory>::type program_factory_handle;
 
 class program_factory
 {
@@ -23,8 +24,9 @@ public:
 		return instance_;
 	}
 	abstract_program_handler create_program(program_type type);
+	abstract_program_handler create_program(program_id id);
  	unsigned int get_programs_count();
-	int get_programs_list();
+	type_handle<program_id>::cont get_programs_list();
 private:
 	std::unique_ptr<program_factory_private>	pimpl;
 };

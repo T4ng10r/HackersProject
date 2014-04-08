@@ -20,10 +20,7 @@
 
 program_factory_handle program_factory::instance_(NULL);
 
-struct program_data
-{
-	std::map<program_effects, param_value_t>	effects;
-};
+typedef std::map<program_effects, param_value_t> program_data;
 
 class program_factory_private
 {
@@ -39,6 +36,11 @@ program_factory_private::program_factory_private(program_factory * pub_) :pub(pu
 //////////////////////////////////////////////////////////////////////////
 program_factory::program_factory() : pimpl(new program_factory_private(this))
 {
+}
+
+abstract_program_handler program_factory::create_program(program_id id)
+{
+	return abstract_program_handler();
 }
 
 abstract_program_handler program_factory::create_program(program_type type)
@@ -78,3 +80,10 @@ abstract_program_handler program_factory::create_program(program_type type)
 	}
 	return abstract_program_handler();
 };
+
+type_handle<program_id>::cont get_programs_list()
+{
+	type_handle<program_id>::cont cont;
+
+	return cont;
+}
