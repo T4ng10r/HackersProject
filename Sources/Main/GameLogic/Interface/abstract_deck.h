@@ -10,10 +10,21 @@ class abstract_deck
 {
 public:
 	virtual std::string get_name() const = 0;
-	virtual void get_cpu(abstract_cpu_handler cpu) = 0;
+	virtual void set_name(std::string deck_name) = 0;
+
 	virtual abstract_cpu_handler get_cpu() const = 0;
-	virtual unsigned int get_memory();
+	virtual void add_cpu(abstract_cpu_handler cpu) = 0;
+	virtual void remove_cpu(abstract_cpu_handler cpu) = 0;
+
+	virtual unsigned int get_memory() const = 0;
+	virtual void add_memory(unsigned int mu) = 0;
+	virtual void remove_memory(unsigned int mu) = 0;
+
+	virtual unsigned int get_program_count() const = 0;
 	virtual abstract_program_cont get_program_list() const = 0;
+	virtual void add_program(abstract_program_handler program) = 0;
+	virtual void remove_program(abstract_program_handler program) = 0;
+	virtual void remove_program(unsigned int index) = 0;
 
 	virtual param_value_t get_attack_power() const = 0;
 	virtual param_value_t get_defence_power() const = 0;

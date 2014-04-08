@@ -19,5 +19,5 @@ enum eLoggerType
 };
 void createLoggers(const std::string &strPluginLogName = std::string());
 void destroyLoggers();
-void printLog(eLogLevel, eLoggerType, const std::string &strMsg);
+void printLog(eLoggerType, eLogLevel, const std::string &strMsg);
 #endif //_LOGGERS_INCLUDE_

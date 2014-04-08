@@ -8,10 +8,12 @@ typedef type_handle<program_factory>::type program_factory_handle;
 
 class program_factory
 {
+	friend class program_factory_private;
 protected:
 	program_factory();
 	static program_factory_handle instance_;
 public:
+	~program_factory();
 	static program_factory_handle instance()
 	{
 		if (instance_.get() == NULL)
@@ -23,10 +25,10 @@ public:
 		}
 		return instance_;
 	}
-	abstract_program_handler create_program(program_type type);
-	abstract_program_handler create_program(program_id id);
- 	unsigned int get_programs_count();
-	type_handle<program_id>::cont get_programs_list();
-private:
+	abstract_program_handler create(program_type type);
+	abstract_program_handler create(program_id id);
+ 	unsigned int count();
+	type_handle<program_id>::cont get_list();
+protected:
 	std::unique_ptr<program_factory_private>	pimpl;
 };

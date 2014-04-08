@@ -1,5 +1,4 @@
-#ifndef _TYPES_INCLUDE_
-#define _TYPES_INCLUDE_
+#pragma once
 #include <memory>
 #include <list>
 
@@ -13,6 +12,7 @@ public:
 };
 
 typedef std::string  program_id;
+typedef std::string  deck_id;
 typedef int param_value_t;
 
 enum program_type
@@ -42,5 +42,3 @@ enum param_value_types
 	range_value,
 	detection_strength_value
 };
-
-#endif

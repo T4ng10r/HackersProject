@@ -108,7 +108,7 @@ void destroyLoggers()
 #endif
 }
 
-void printLog(eLogLevel debugLevel, eLoggerType loggerType, const std::string &strMsg)
+void printLog(eLoggerType loggerType, eLogLevel debugLevel, const std::string &strMsg)
 {
 	if (false==bLoggersCreated)
 		createLoggers();
