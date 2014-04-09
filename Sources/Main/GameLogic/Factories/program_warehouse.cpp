@@ -1,16 +1,21 @@
 #include <GameLogic/Factories/program_warehouse.h>
 #include <functional>
 #include <algorithm>
+#include <boost/property_tree/ptree.hpp>
 #include <boost/property_tree/xml_parser.hpp>
 #include <tools/loggers.h>
 #include <boost/format.hpp>
+
 
 const std::string root_name("PROGRAMS");
 const std::string program_keyword("PROGRAM");
 const std::string program_attr_keyword("<xmlattr>");
 const std::string program_name_keyword(program_attr_keyword+".name");
 
-program_data_handler prorgam_warehouse::parse_program(const boost::property_tree::ptree::value_type & node)
+program_data_handler parse_program(const boost::property_tree::ptree::value_type & node);
+boost::property_tree::ptree tree;
+
+program_data_handler parse_program(const boost::property_tree::ptree::value_type & node)
 {
 	program_data_handler data(new program_data);
 
