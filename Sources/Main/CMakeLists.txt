@@ -13,13 +13,13 @@ GatheringFiles(${CMAKE_CURRENT_SOURCE_DIR} "cpp;h;;c")
 
 SET(TMP_FILES ${TMP_FILES} log4cpp.properties)
 
-add_executable(HackersProject ${TMP_FILES} ${SOURCES_MOC} 
-    ${SOURCES_GUI} ${SOURCES_OTHER} ${SOURCES_RCC} 
-    ${SOURCES_GUI_SETTINGS} main.cpp  )
+add_executable(HackersProject ${TMP_FILES} main.cpp  )
 
-add_library(HackersProject_lib ${TMP_FILES} ${SOURCES_MOC} 
-    ${SOURCES_GUI} ${SOURCES_OTHER} ${SOURCES_RCC} 
-    ${SOURCES_GUI_SETTINGS} )
+add_library(HackersProject_lib ${TMP_FILES} )
+
+add_custom_command(TARGET HackersProject PRE_BUILD 
+	COMMAND protoc -I=${HackersProject_SOURCE_DIR}/proto 
+	--cpp_out=${HackersProject_SOURCE_DIR}/GameLogic ${HackersProject_SOURCE_DIR}/proto/program.proto  )
 
 add_custom_command(TARGET HackersProject POST_BUILD 
 	COMMAND ${CMAKE_COMMAND} -E make_directory ${CMAKE_CURRENT_BINARY_DIR}/logs

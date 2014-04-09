@@ -1,7 +1,8 @@
 cmake_minimum_required(VERSION 2.8)
-project(PhoneticNumberSystem_Sources)
+project(HackersProject_Sources)
 
 add_subdirectory(gmock)
+add_subdirectory(protobuf)
 add_subdirectory(tools)
 add_subdirectory(Main)
 add_subdirectory(UnitTest)
