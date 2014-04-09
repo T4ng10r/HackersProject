@@ -16,16 +16,10 @@
 #include <GameLogic/Programs/virus_program.h>
 #include <GameLogic/Programs/weaken_program.h>
 #include <GameLogic/Interface/program_effects.h>
+#include <GameLogic/Factories/program_warehouse.h>
 #include <map>
 
 program_factory_handle program_factory::instance_(NULL);
-
-typedef std::map<program_effects, param_value_t> program_stats;
-struct program_data
-{
-	program_id id;
-	program_stats  stats;
-};
 
 class program_factory_private
 {

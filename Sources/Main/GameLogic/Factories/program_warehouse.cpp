@@ -1,49 +1,51 @@
-#pragma once
+#include <GameLogic/Factories/program_warehouse.h>
 #include <functional>
 #include <algorithm>
-#include <string>
-#include <boost/property_tree/ptree.hpp>
 #include <boost/property_tree/xml_parser.hpp>
 #include <tools/loggers.h>
 #include <boost/format.hpp>
 
 const std::string root_name("PROGRAMS");
 const std::string program_keyword("PROGRAM");
+const std::string program_attr_keyword("<xmlattr>");
+const std::string program_name_keyword(program_attr_keyword+".name");
 
-class prorgam_warehouse
+program_data_handler prorgam_warehouse::parse_program(const boost::property_tree::ptree::value_type & node)
 {
-public:
-	boost::property_tree::ptree tree;
+	program_data_handler data(new program_data);
 
-	unsigned int count()
+	if (node.first != program_keyword)
 	{
-		return 0;
+		printLog(eDebug, eDebugLogLevel, "parse_program: first keyword is not PROGRAM");
+		return data;
 	}
-	void parse_program(const boost::property_tree::ptree::value_type & node)
-	{
-		if (node.first != program_keyword)
-		{
-			printLog(eDebug, eDebugLogLevel, "parse_program: first keyword is not PROGRAM");
-			return;
-		}
-		printLog(eDebug, eDebugLogLevel, str(boost::format("Loading program '%1%'") % node.first));
+	data->id = node.second.get<std::string>(program_name_keyword);
+	printLog(eDebug, eDebugLogLevel, str(boost::format("Loading program '%1%'") % data->id));
 
-	}
-	void load(std::string path)
+	for (const boost::property_tree::ptree::value_type & val : node.second)
 	{
-		printLog(eDebug, eDebugLogLevel, "Loading programs stats");
-		tree.clear();
-		read_xml(path,tree);
-		boost::property_tree::ptree & programs = tree.get_child(root_name);
-		for(boost::property_tree::ptree::value_type & node : programs)
-		{
-			parse_program(node);
-		}
-		//std::for_each(programs.begin(),programs.end(),
-		//	//[](boost::property_tree::ptree::value_type & kv) {
-		//	//printLog(eDebug, eDebugLogLevel, str(boost::format("Loading program '%1%'") % kv.first)); }
-		//	std::bind(&prorgam_warehouse::parse_program, this, _1)
-		//	//std::bind(&prorgam_warehouse::parse_program, this, _1)
-		//	);
+		std::string attr_name = val.first;
+		if (attr_name == program_attr_keyword)
+			continue;
+		int attr_val = val.second.get_value<int>();
+		//data->stats[attr_name] = attr_val;
 	}
-};
+	return data;
+}
+void prorgam_warehouse::load(std::string path)
+{
+	printLog(eDebug, eDebugLogLevel, "Loading programs stats");
+	tree.clear();
+	read_xml(path,tree);
+	boost::property_tree::ptree & programs = tree.get_child(root_name);
+	for(boost::property_tree::ptree::value_type & node : programs)
+	{
+		parse_program(node);
+	}
+	//std::for_each(programs.begin(),programs.end(),
+	//	//[](boost::property_tree::ptree::value_type & kv) {
+	//	//printLog(eDebug, eDebugLogLevel, str(boost::format("Loading program '%1%'") % kv.first)); }
+	//	std::bind(&prorgam_warehouse::parse_program, this, _1)
+	//	//std::bind(&prorgam_warehouse::parse_program, this, _1)
+	//	);
+}

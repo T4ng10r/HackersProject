@@ -24,9 +24,13 @@ GatheringFiles(${CMAKE_CURRENT_SOURCE_DIR} "cpp;h;;c")
 #	SET(CMAKE_EXE_LINKER_FLAGS /NODEFAULTLIB:\"LIBCMTD.lib\")
 
 add_executable(UnitTest ${SOURCES_MAIN} ${TMP_FILES} )
-target_link_libraries(UnitTest ${QT_LIBRARIES} HackersProject_lib gtest gmock)
+target_link_libraries(UnitTest ${QT_LIBRARIES} HackersProject_lib gtest gmock tools_lib)
 
 add_custom_command(TARGET UnitTest POST_BUILD 
 	COMMAND ${CMAKE_COMMAND} -E copy "${HackersProject_SOURCE_DIR}/Data/programs.xml"
-	"${UnitTest_BINARY_DIR}/Data/programs.xml")
+	"${UnitTest_BINARY_DIR}/Data/programs.xml"
+	COMMAND ${CMAKE_COMMAND} -E make_directory ${UnitTest_BINARY_DIR}/logs
+	COMMAND ${CMAKE_COMMAND} -E copy "${HackersProject_SOURCE_DIR}/log4cpp.properties"
+	"${UnitTest_BINARY_DIR}/logs/log4cpp.properties"
+	)
 

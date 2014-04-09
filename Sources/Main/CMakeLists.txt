@@ -11,6 +11,8 @@ include_directories(${CMAKE_CURRENT_SOURCE_DIR})
 
 GatheringFiles(${CMAKE_CURRENT_SOURCE_DIR} "cpp;h;;c")
 
+SET(TMP_FILES ${TMP_FILES} log4cpp.properties)
+
 add_executable(HackersProject ${TMP_FILES} ${SOURCES_MOC} 
     ${SOURCES_GUI} ${SOURCES_OTHER} ${SOURCES_RCC} 
     ${SOURCES_GUI_SETTINGS} main.cpp  )
