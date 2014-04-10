@@ -1,4 +1,4 @@
-package HackersProject;
+package game_data;
 
 message program_data {
   required string name = 1;
