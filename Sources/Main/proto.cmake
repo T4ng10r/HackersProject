@@ -1,4 +1,4 @@
-SET(PROTO_SRC_DIR ${HackersProject_SOURCE_DIR}/proto)
+#SET(PROTO_SRC_DIR ${GameData_SOURCE_DIR}/proto)
 SET(PROTO_OUT_DIR ${HackersProject_SOURCE_DIR}/GameLogic/proto)
 
 function(PROTOBUF_GENERATE_CPP SRCS HDRS)

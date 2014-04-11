@@ -1,8 +1,5 @@
 project(HackersProject)
 
-#dodajemy dane dotyczace QT - sciezki, biblioteki
-cmake_policy(SET CMP0020 NEW)
-
 INCLUDE_DIRECTORIES(${Boost_INCLUDE_DIR})
 ADD_DEFINITIONS( "-DHAS_BOOST" )
 
@@ -11,7 +8,7 @@ include_directories(${CMAKE_SOURCE_DIR}/include)
 include_directories(${CMAKE_CURRENT_SOURCE_DIR})
 include_directories(${Protobuf_SOURCE_DIR}/src)
 
-file(GLOB PROTO_SRC_FILES ${HackersProject_SOURCE_DIR}/proto/*.proto)
+file(GLOB PROTO_SRC_FILES ${PROTO_SRC_DIR}/*.proto)
 PROTOBUF_GENERATE_CPP(PROTOBUF_SRCS PROTOBUF_HDRS ${PROTO_SRC_FILES} )
 
 GatheringFiles(${CMAKE_CURRENT_SOURCE_DIR} "cpp;h;;c;cc;proto")

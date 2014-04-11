@@ -1,9 +1,10 @@
 cmake_minimum_required(VERSION 2.8)
-project(HackersProject_Sources)
+project(Sources)
 
 add_subdirectory(gmock)
 add_subdirectory(protobuf)
 add_subdirectory(tools)
+add_subdirectory(DataGenerator)
 add_subdirectory(Main)
 add_subdirectory(UnitTest)
 if (Logger STREQUAL "log4cpp")
