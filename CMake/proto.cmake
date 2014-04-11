@@ -1,7 +1,4 @@
-#SET(PROTO_SRC_DIR ${GameData_SOURCE_DIR}/proto)
-SET(PROTO_OUT_DIR ${HackersProject_SOURCE_DIR}/GameLogic/proto)
-
-function(PROTOBUF_GENERATE_CPP SRCS HDRS)
+function(PROTOBUF_GENERATE_CPP SRCS HDRS PROTO_OUT_DIR)
   if(NOT ARGN)
     message(SEND_ERROR "Error: PROTOBUF_GENERATE_CPP() called without any proto files")
     return()
@@ -48,6 +45,7 @@ function(PROTOBUF_GENERATE_CPP SRCS HDRS)
       DEPENDS ${ABS_FIL}
       COMMENT "Running C++ protocol buffer compiler on ${FIL}"
       VERBATIM )
+  message(STATUS "Adding custom command for ${FIL}")
   endforeach()
 
   set_source_files_properties(${${SRCS}} ${${HDRS}} PROPERTIES GENERATED TRUE)

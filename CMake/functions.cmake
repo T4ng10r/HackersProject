@@ -1,7 +1,7 @@
 macro(GatheringFiles DirectoryToScan FileExts )
 
 foreach(e ${FileExts})
-SET(PathsToScan ${PathsToScan} ${DirectoryToScan}/*.${e})
+    SET(PathsToScan ${PathsToScan} ${DirectoryToScan}/*.${e})
 endforeach()
 
 file(GLOB_RECURSE TMP_FILES

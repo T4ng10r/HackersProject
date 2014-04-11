@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <PROGRAMS>
     <PROGRAM name="Brute">
+        <attack>1</attack>
+        <size>1</size>
     </PROGRAM>
 </PROGRAMS>

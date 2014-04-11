@@ -3,17 +3,15 @@ project(HackersProject)
 INCLUDE_DIRECTORIES(${Boost_INCLUDE_DIR})
 ADD_DEFINITIONS( "-DHAS_BOOST" )
 
-include(${HackersProject_SOURCE_DIR}/proto.cmake)
 include_directories(${CMAKE_SOURCE_DIR}/include)
 include_directories(${CMAKE_CURRENT_SOURCE_DIR})
 include_directories(${Protobuf_SOURCE_DIR}/src)
 
 file(GLOB PROTO_SRC_FILES ${PROTO_SRC_DIR}/*.proto)
-PROTOBUF_GENERATE_CPP(PROTOBUF_SRCS PROTOBUF_HDRS ${PROTO_SRC_FILES} )
+PROTOBUF_GENERATE_CPP(PROTOBUF_SRCS PROTOBUF_HDRS ${HackersProject_SOURCE_DIR}/GameLogic/proto ${PROTO_SRC_FILES} )
 
 GatheringFiles(${CMAKE_CURRENT_SOURCE_DIR} "cpp;h;;c;cc;proto")
 SET(TMP_FILES ${TMP_FILES} log4cpp.properties
-   proto.cmake
    ${PROTOBUF_HDRS}
    ${PROTOBUF_SRCS}
 )
