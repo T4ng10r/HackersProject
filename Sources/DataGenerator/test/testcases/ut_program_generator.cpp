@@ -11,6 +11,5 @@ public:
 
 TEST_F(ut_program_generator_test, programs_count)
 {
-	EXPECT_NE(program_factory::instance()->count(), 0);
 }
 
