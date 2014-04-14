@@ -12,4 +12,4 @@ GatheringFiles(${CMAKE_CURRENT_SOURCE_DIR} "cpp;h;;c;cc;properties")
 CreateProjectStructure(${GameData_SOURCE_DIR} ${GAMEDATA_SRC})
 
 add_executable(UT_GameDataGenerator ${TMP_FILES} ${PROTO_SRC_FILES} ${GAMEDATA_SRC})
-target_link_libraries(UT_GameDataGenerator tools_lib libprotobuf ${Boost_LIBRARIES})
+target_link_libraries(UT_GameDataGenerator tools_lib libprotobuf ${Boost_LIBRARIES} gtest)
