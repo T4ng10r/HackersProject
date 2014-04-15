@@ -13,3 +13,8 @@ CreateProjectStructure(${GameData_SOURCE_DIR} ${GAMEDATA_SRC})
 
 add_executable(UT_GameDataGenerator ${TMP_FILES} ${PROTO_SRC_FILES} ${GAMEDATA_SRC})
 target_link_libraries(UT_GameDataGenerator tools_lib libprotobuf ${Boost_LIBRARIES} gtest)
+add_custom_command(TARGET UT_GameDataGenerator POST_BUILD 
+#	COMMAND ${CMAKE_COMMAND} -E make_directory ${UnitTest_BINARY_DIR}/logs
+	COMMAND ${CMAKE_COMMAND} -E copy "${HackersProject_PROJECT_SOURCE_DIR}/Data/xml/programs.xml"
+	"${UT_GameData_BINARY_DIR}/Data/programs.xml"
+	)

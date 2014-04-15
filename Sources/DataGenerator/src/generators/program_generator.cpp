@@ -9,6 +9,13 @@ namespace constants
 	const std::string program_name_keyword(xmlattr_keyword+".name");
 };
 
+std::vector<Hackers_Project::data::program_data> program_data_cont;
+
+program_generator::program_generator()
+{
+	program_data_cont.clear();
+}
+
 Hackers_Project::data::program_data program_generator::load_data(const boost::property_tree::ptree::value_type & val )
 {
 	using boost::property_tree::ptree;
@@ -37,20 +44,27 @@ Hackers_Project::data::program_data program_generator::load_data(const boost::pr
 
 bool program_generator::load(const std::string & filename)
 {
+	program_data_cont.clear();
 	using boost::property_tree::ptree;
 	try{
 		read_xml(filename, tree);
 	}
-	catch (boost::property_tree::xml_parser::xml_parser_error const&  /*ex*/)
+	catch (boost::property_tree::xml_parser::xml_parser_error const&  ex)
 	{
+		std::string reason = ex.what();
 		return false;
 	}
 	ptree program_tree = tree.get_child(constants::root_keyword);
 	for(const ptree::value_type & v : program_tree)
 	{
 		Hackers_Project::data::program_data program_data_ = load_data(v);
+		program_data_cont.push_back(program_data_);
 	}
-	return false;
+	return true;
+}
+unsigned int program_generator::count()
+{
+	return program_data_cont.size();
 }
 
 void program_generator::save()
