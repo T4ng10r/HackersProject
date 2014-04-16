@@ -3,9 +3,9 @@ project(HackersProject)
 INCLUDE_DIRECTORIES(${Boost_INCLUDE_DIR})
 ADD_DEFINITIONS( "-DHAS_BOOST" )
 
-include_directories(${CMAKE_SOURCE_DIR}/include)
-include_directories(${CMAKE_CURRENT_SOURCE_DIR})
-include_directories(${Protobuf_SOURCE_DIR}/src)
+include_directories(${CMAKE_SOURCE_DIR}/include
+	${CMAKE_CURRENT_SOURCE_DIR}
+	${Protobuf_SOURCE_DIR}/src)
 
 file(GLOB PROTO_SRC_FILES ${PROTO_SRC_DIR}/*.proto)
 PROTOBUF_GENERATE_CPP(PROTOBUF_SRCS PROTOBUF_HDRS ${HackersProject_SOURCE_DIR}/GameLogic/proto ${PROTO_SRC_FILES} )

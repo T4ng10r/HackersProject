@@ -1,8 +1,8 @@
 project(Tools)
 
-INCLUDE_DIRECTORIES(${Boost_INCLUDE_DIR})
-include_directories(${CMAKE_CURRENT_SOURCE_DIR})
-include_directories(${CMAKE_SOURCE_DIR}/include)
+INCLUDE_DIRECTORIES(${Boost_INCLUDE_DIR}
+  ${CMAKE_CURRENT_SOURCE_DIR}
+  ${CMAKE_SOURCE_DIR}/include)
 
 SET ( TOOLS_SRC
 	qtTools.cpp

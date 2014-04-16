@@ -1,6 +1,8 @@
 #include <generators/program_generator.h>
 #include <boost/property_tree/xml_parser.hpp>
 #include <fstream>
+#include <Tools/loggers.h>
+#include <boost/format.hpp>
 
 namespace constants
 {
@@ -52,12 +54,14 @@ bool program_generator::load(const std::string & dir_path)
 	using boost::property_tree::ptree;
 	try{
 		read_xml(filename, tree);
+		printLog(eDebug, eErrorLogLevel, str(boost::format("Loading '%1%' failed") % filename));
 	}
 	catch (boost::property_tree::xml_parser::xml_parser_error const&  ex)
 	{
 		std::string reason = ex.what();
 		return false;
 	}
+	printLog(eDebug, eDebugLogLevel, str(boost::format("Loading '%1%' succeed") % filename));
 	ptree program_tree = tree.get_child(constants::root_keyword);
 	for(const ptree::value_type & v : program_tree)
 	{
@@ -75,9 +79,11 @@ void program_generator::save(const std::string & dir_path)
 {
 	std::string filename(dir_path+"/"+constants::out_filename);
 	std::ofstream strm(filename.c_str(), std::ofstream::out | std::ofstream::binary);
+	printLog(eDebug, eErrorLogLevel, str(boost::format("Saving to '%1%' started") % filename));
 	for(const Hackers_Project::data::program_data & item  : program_data_cont)
 	{
 		item.SerializeToOstream(&strm);
 	}
+	printLog(eDebug, eErrorLogLevel, str(boost::format("Saving to '%1%' finished") % filename));
 	strm.close();
 }

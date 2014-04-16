@@ -1,7 +1,7 @@
 project(GameData)
 
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}
-  ${CMAKE_CURRENT_SOURCE_DIR}
+  ${CMAKE_SOURCE_DIR}/include
   ${Boost_INCLUDE_DIR}
   ${gmock_SOURCE_DIR}
   ${gtest_SOURCE_DIR}/include)
@@ -17,4 +17,3 @@ add_executable(GameDataGenerator ${TMP_FILES} )
 target_link_libraries(GameDataGenerator tools_lib libprotobuf ${Boost_LIBRARIES})
 LIST(REMOVE_ITEM TMP_FILES ${CMAKE_CURRENT_SOURCE_DIR}/main.cpp)
 SET(GAMEDATA_SRC ${TMP_FILES} PARENT_SCOPE)
-

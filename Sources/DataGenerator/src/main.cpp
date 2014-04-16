@@ -1,7 +1,9 @@
 #include <boost/program_options.hpp>
 #include <generators/program_generator.h>
 #include <list>
+#include <Tools/loggers.h>
 #include <boost/assign.hpp>
+#include <boost/format.hpp>
 
 std::string in_dir_path;
 std::string out_dir_path;
@@ -31,10 +33,12 @@ void process_options(int argc, char * argv[])
 	if (vm.count("in_dir"))
 	{
 		in_dir_path = vm["in_dir"].as<std::string>();
+		printLog(eDebug, eDebugLogLevel, str(boost::format("Options: set in_dir='%1%'") % in_dir_path));
 	}
 	if (vm.count("out_dir"))
 	{
 		out_dir_path = vm["out_dir"].as<std::string>();
+		printLog(eDebug, eDebugLogLevel, str(boost::format("Options: set out_dir='%1%'") % out_dir_path));
 	}
 }
 
@@ -43,10 +47,12 @@ int main(int argc, char * argv[])
 	process_options(argc, argv);
 	if (in_dir_path.empty() || out_dir_path.empty())
 		return -1;
+	printLog(eDebug, eInfoLogLevel, "Generators processing started");
 	for(abstract_generator * generator : generator_cont)
 	{
 		generator->load(in_dir_path);
 		generator->save(out_dir_path);
 	}
+	printLog(eDebug, eInfoLogLevel, "Generators processing finished");
 	return 0;
 }
