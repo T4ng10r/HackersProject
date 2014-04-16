@@ -1,8 +1,11 @@
 #include <generators/program_generator.h>
 #include <boost/property_tree/xml_parser.hpp>
+#include <fstream>
 
 namespace constants
 {
+	const std::string in_filename("programs.xml");
+	const std::string out_filename("programs.pb");
 	const std::string root_keyword("PROGRAMS");
 	const std::string program_keyword("PROGRAM");
 	const std::string xmlattr_keyword("<xmlattr>");
@@ -42,8 +45,9 @@ Hackers_Project::data::program_data program_generator::load_data(const boost::pr
 	return program_data_;
 }
 
-bool program_generator::load(const std::string & filename)
+bool program_generator::load(const std::string & dir_path)
 {
+	std::string filename(dir_path+"/"+constants::in_filename);
 	program_data_cont.clear();
 	using boost::property_tree::ptree;
 	try{
@@ -67,7 +71,13 @@ unsigned int program_generator::count()
 	return program_data_cont.size();
 }
 
-void program_generator::save()
+void program_generator::save(const std::string & dir_path)
 {
-
+	std::string filename(dir_path+"/"+constants::out_filename);
+	std::ofstream strm(filename.c_str(), std::ofstream::out | std::ofstream::binary);
+	for(const Hackers_Project::data::program_data & item  : program_data_cont)
+	{
+		item.SerializeToOstream(&strm);
+	}
+	strm.close();
 }

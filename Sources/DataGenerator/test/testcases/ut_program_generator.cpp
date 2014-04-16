@@ -4,7 +4,7 @@
 
 
 namespace constants {
-const std::string filename("Data/programs.xml");
+const std::string dir_path("Data/xml");
 const std::string program_keyword("PROGRAM");
 const std::string program_name_keyword(program_keyword + ".<xmlattr>.name");
 const std::string attack_keyword(program_keyword + ".attack");
@@ -60,6 +60,6 @@ TEST_F(ut_program_generator_test, wrong_filename)
 
 TEST_F(ut_program_generator_test, programs_load)
 {
-	EXPECT_TRUE(uut->load(constants::filename));
+	EXPECT_TRUE(uut->load(constants::dir_path));
 	EXPECT_EQ(1, uut->count());
 }

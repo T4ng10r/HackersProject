@@ -16,5 +16,5 @@ target_link_libraries(UT_GameDataGenerator tools_lib libprotobuf ${Boost_LIBRARI
 add_custom_command(TARGET UT_GameDataGenerator POST_BUILD 
 #	COMMAND ${CMAKE_COMMAND} -E make_directory ${UnitTest_BINARY_DIR}/logs
 	COMMAND ${CMAKE_COMMAND} -E copy "${HackersProject_PROJECT_SOURCE_DIR}/Data/xml/programs.xml"
-	"${UT_GameData_BINARY_DIR}/Data/programs.xml"
+	"${UT_GameData_BINARY_DIR}/Data/xml/programs.xml"
 	)
