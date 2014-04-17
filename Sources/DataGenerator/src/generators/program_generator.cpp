@@ -54,10 +54,10 @@ bool program_generator::load(const std::string & dir_path)
 	using boost::property_tree::ptree;
 	try{
 		read_xml(filename, tree);
-		printLog(eDebug, eErrorLogLevel, str(boost::format("Loading '%1%' failed") % filename));
 	}
 	catch (boost::property_tree::xml_parser::xml_parser_error const&  ex)
 	{
+		printLog(eDebug, eErrorLogLevel, str(boost::format("Loading '%1%' failed") % filename));
 		std::string reason = ex.what();
 		return false;
 	}

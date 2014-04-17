@@ -52,25 +52,3 @@ function(PROTOBUF_GENERATE_CPP SRCS HDRS PROTO_OUT_DIR)
   set(${SRCS} ${${SRCS}} PARENT_SCOPE)
   set(${HDRS} ${${HDRS}} PARENT_SCOPE)
 endfunction()
-
-
-#foreach(FIL ${PROTO_SRC_FILES})
-#    get_filename_component(ABS_FIL ${FIL} ABSOLUTE)
-#    get_filename_component(FIL_WE ${FIL} NAME_WE)
-#    message(STATUS "Processing ${PROTO_OUT_DIR}/${FIL_WE}.pb.cc")
-#
-#    list(APPEND ${PROTOBUF_SRCS} "${PROTO_OUT_DIR}/${FIL_WE}.pb.cc")
-#    list(APPEND ${PROTOBUF_HDRS} "${PROTO_OUT_DIR}/${FIL_WE}.pb.h")
-#    add_custom_command(
-#      OUTPUT ${PROTO_OUT_DIR}/${FIL_WE}.pb.cc ${PROTO_OUT_DIR}/${FIL_WE}.pb.h
-#      COMMAND  protoc 
-#      ARGS --cpp_out=${PROTO_OUT_DIR} -I${PROTO_SRC_DIR} ${ABS_FIL}
-#      DEPENDS ${ABS_FIL}
-#      VERBATIM )
-#
-#endforeach()
-#
-#message(STATUS "File generiting finished")
-#
-#set(PROTOBUF_SRCS ${PROTOBUF_SRCS} PARENT_SCOPE)
-#set(PROTOBUF_HDRS ${PROTOBUF_HDRS} PARENT_SCOPE)
