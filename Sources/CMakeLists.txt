@@ -4,6 +4,12 @@ project(Sources)
 add_subdirectory(gmock)
 add_subdirectory(protobuf)
 add_subdirectory(tools)
+
+include_directories(${CMAKE_SOURCE_DIR}/include
+  ${Boost_INCLUDE_DIR}
+  ${gmock_SOURCE_DIR}
+  ${gtest_SOURCE_DIR}/include)
+
 add_subdirectory(DataGenerator)
 add_subdirectory(Main)
 add_subdirectory(UnitTest)

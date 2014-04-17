@@ -9,12 +9,12 @@ include_directories(${CMAKE_SOURCE_DIR}/include
 
 file(GLOB PROTO_SRC_FILES ${PROTO_SRC_DIR}/*.proto)
 PROTOBUF_GENERATE_CPP(PROTOBUF_SRCS PROTOBUF_HDRS ${HackersProject_SOURCE_DIR}/GameLogic/proto ${PROTO_SRC_FILES} )
+file(GLOB PROTO_OBJ_FILES ${HackersProject_PROJECT_SOURCE_DIR}/Data/pb/*.pb)
 
 GatheringFiles(${CMAKE_CURRENT_SOURCE_DIR} "cpp;h;;c;cc;proto")
 SET(TMP_FILES ${TMP_FILES} log4cpp.properties
    ${PROTOBUF_HDRS}
-   ${PROTOBUF_SRCS}
-)
+   ${PROTOBUF_SRCS} )
 
 add_executable(HackersProject ${TMP_FILES} main.cpp)
 add_library(HackersProject_lib ${TMP_FILES} )
@@ -26,5 +26,3 @@ add_custom_command(TARGET HackersProject POST_BUILD
 
 target_link_libraries(HackersProject tools_lib libprotobuf ${Boost_LIBRARIES})
 target_link_libraries(HackersProject_lib tools_lib libprotobuf ${Boost_LIBRARIES})
-#add_dependencies(HackersProject protobuf_autogeneration_target)
-#add_dependencies(HackersProject_lib protobuf_autogeneration_target)
