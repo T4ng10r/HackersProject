@@ -27,6 +27,7 @@ ENDIF (Logger STREQUAL "log4Qt")
 
 if (MSVC)
     set ( CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} /MP")
+    add_definitions( "/wd4996" )
     #SET(CMAKE_CXX_FLAGS "/WL /MP /GR /EHsc" )
     message(STATUS "Added parallel build arguments to CMAKE_CXX_FLAGS: ${CMAKE_CXX_FLAGS}")
 endif(MSVC)

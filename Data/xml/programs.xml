@@ -4,4 +4,56 @@
         <attack>1</attack>
         <size>1</size>
     </PROGRAM>
+  <PROGRAM name="Hammer">
+    <attack>5</attack>
+    <size>1</size>
+  </PROGRAM>
+  <PROGRAM name="Worm">
+    <attack>1</attack>
+    <size>1</size>
+  </PROGRAM>
+  <PROGRAM name="Watchdog">
+    <attack>1</attack>
+    <size>1</size>
+  </PROGRAM>
+  <PROGRAM name="Codecracker">
+    <decrypt>1</decrypt>
+    <size>1</size>
+  </PROGRAM>
+  <PROGRAM name="Raffles">
+    <decrypt>3</decrypt>
+    <size>2</size>
+  </PROGRAM>
+  <PROGRAM name="Watchdog">
+    <scan>2</scan>
+    <size>1</size>
+  </PROGRAM>
+  <PROGRAM name="Seeya">
+    <scan>3</scan>
+    <size>1</size>
+  </PROGRAM>
+  <PROGRAM name="Hidden Virtue">
+    <scan>4</scan>
+    <size>2</size>
+  </PROGRAM>
+  <PROGRAM name="Invisibility">
+    <deceive>1</deceive>
+    <size>1</size>
+  </PROGRAM>
+  <PROGRAM name="Stealth">
+    <deceive>2</deceive>
+    <size>1</size>
+  </PROGRAM>
+  <PROGRAM name="Replikator">
+    <deceive>3</deceive>
+    <size>2</size>
+  </PROGRAM>
+  <PROGRAM name="Shield">
+    <shield>1</shield>
+    <size>1</size>
+  </PROGRAM>
+  <PROGRAM name="Force field">
+    <shield>2</shield>
+    <size>1</size>
+  </PROGRAM>
 </PROGRAMS>
