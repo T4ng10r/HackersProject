@@ -17,5 +17,5 @@ typedef type_handle<program_data>::type program_data_handler;
 class prorgam_warehouse
 {
 public:
-	void load(std::string path);
+	void load(std::string dir_path);
 };

@@ -1,10 +1,9 @@
 #pragma once
-//#ifndef _ABSTRACT_PROGRAM_INCLUDE_
-//#define _ABSTRACT_PROGRAM_INCLUDE_
 #include <memory>
 #include <string>
 #include <list>
 #include <GameLogic/Interface/types.h>
+#include <GameLogic/proto/program.pb.h>
 
 class abstract_program
 {
