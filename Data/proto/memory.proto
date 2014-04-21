@@ -1,0 +1,7 @@
+package Hackers_Project;
+
+message memory_data {
+  required string name = 1;
+  required uint32 size = 2;
+}
+

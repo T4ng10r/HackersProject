@@ -1,0 +1,9 @@
+package Hackers_Project;
+
+message entity_data {
+}
+
+message cybermatrix_data {
+  required string name = 1;
+  required uint32 energy_consumption = 2;
+}

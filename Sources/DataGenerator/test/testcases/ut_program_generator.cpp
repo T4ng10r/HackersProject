@@ -36,19 +36,19 @@ TEST_F(ut_program_generator_test, load_data)
 {
 	//Given
 	//When 
-	Hackers_Project::data::program_data program_data_ = uut->load_data(prepare_ptree_program());
+	Hackers_Project::program_data program_data_ = uut->load_data(prepare_ptree_program());
 	// THEN
 	EXPECT_EQ("Brute", program_data_.name());
-	const ::google::protobuf::RepeatedPtrField< ::Hackers_Project::data::program_data_effect > & effects = program_data_.effects();
+	const ::google::protobuf::RepeatedPtrField< ::Hackers_Project::program_data_effect > & effects = program_data_.effects();
 	EXPECT_EQ(3, effects.size());
-	::Hackers_Project::data::program_data_effect effect_ = effects.Get(0);
-	EXPECT_EQ(::Hackers_Project::data::program_data::attack, effect_.effect());
+	::Hackers_Project::program_data_effect effect_ = effects.Get(0);
+	EXPECT_EQ(::Hackers_Project::program_data::attack, effect_.effect());
 	EXPECT_EQ(1, effect_.val());
 	effect_ = effects.Get(1);
-	EXPECT_EQ(::Hackers_Project::data::program_data::decrypt, effect_.effect());
+	EXPECT_EQ(::Hackers_Project::program_data::decrypt, effect_.effect());
 	EXPECT_EQ(3, effect_.val());
 	effect_ = effects.Get(2);
-	EXPECT_EQ(::Hackers_Project::data::program_data::weaken, effect_.effect());
+	EXPECT_EQ(::Hackers_Project::program_data::weaken, effect_.effect());
 	EXPECT_EQ(5, effect_.val());
 }
 

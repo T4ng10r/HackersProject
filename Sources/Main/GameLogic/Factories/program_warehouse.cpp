@@ -4,7 +4,7 @@
 #include <tools/loggers.h>
 #include <boost/format.hpp>
 #include <fstream>
-//#include <programs.pb.h>
+#include <GameLogic/proto/program.pb.h>
 
 const std::string filename("programs.pb");
 
@@ -15,6 +15,5 @@ void prorgam_warehouse::load(std::string dir_path)
 	std::ifstream strm(filepath.c_str(), std::ifstream::in | std::ifstream::binary);
 	while (!strm.bad())
 	{
-		
 	}
 }

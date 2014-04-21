@@ -17,7 +17,6 @@
 // @@protoc_insertion_point(includes)
 
 namespace Hackers_Project {
-namespace data {
 
 namespace {
 
@@ -127,19 +126,18 @@ void protobuf_AddDesc_program_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-    "\n\rprogram.proto\022\024Hackers_Project.data\"\375\002"
-    "\n\014program_data\022\014\n\004name\030\001 \002(\t\022:\n\007effects\030"
-    "\003 \003(\0132).Hackers_Project.data.program_dat"
-    "a.effect\032U\n\006effect\022>\n\006effect\030\001 \002(\0162..Hac"
-    "kers_Project.data.program_data.effect_ty"
-    "pe\022\013\n\003val\030\002 \002(\005\"\313\001\n\013effect_type\022\n\n\006attac"
-    "k\020\001\022\013\n\007analyze\020\002\022\t\n\005armor\020\003\022\t\n\005crypt\020\004\022\n"
-    "\n\006detect\020\005\022\013\n\007deceive\020\006\022\t\n\005decoy\020\007\022\013\n\007de"
-    "crypt\020\010\022\014\n\010evaluate\020\t\022\t\n\005medic\020\n\022\014\n\010relo"
-    "cate\020\013\022\010\n\004scan\020\014\022\n\n\006shield\020\r\022\010\n\004slow\020\016\022\t"
-    "\n\005virus\020\017\022\n\n\006weaken\020\020\"F\n\016programs_stats\022"
-    "4\n\010programs\030\001 \003(\0132\".Hackers_Project.data"
-    ".program_data", 493);
+    "\n\rprogram.proto\022\017Hackers_Project\"\363\002\n\014pro"
+    "gram_data\022\014\n\004name\030\001 \002(\t\0225\n\007effects\030\003 \003(\013"
+    "2$.Hackers_Project.program_data.effect\032P"
+    "\n\006effect\0229\n\006effect\030\001 \002(\0162).Hackers_Proje"
+    "ct.program_data.effect_type\022\013\n\003val\030\002 \002(\005"
+    "\"\313\001\n\013effect_type\022\n\n\006attack\020\001\022\013\n\007analyze\020"
+    "\002\022\t\n\005armor\020\003\022\t\n\005crypt\020\004\022\n\n\006detect\020\005\022\013\n\007d"
+    "eceive\020\006\022\t\n\005decoy\020\007\022\013\n\007decrypt\020\010\022\014\n\010eval"
+    "uate\020\t\022\t\n\005medic\020\n\022\014\n\010relocate\020\013\022\010\n\004scan\020"
+    "\014\022\n\n\006shield\020\r\022\010\n\004slow\020\016\022\t\n\005virus\020\017\022\n\n\006we"
+    "aken\020\020\"A\n\016programs_stats\022/\n\010programs\030\001 \003"
+    "(\0132\035.Hackers_Project.program_data", 473);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "program.proto", &protobuf_RegisterTypes);
   program_data::default_instance_ = new program_data();
@@ -280,7 +278,7 @@ bool program_data_effect::MergePartialFromCodedStream(
   ::google::protobuf::uint32 tag;
   while ((tag = input->ReadTag()) != 0) {
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // required .Hackers_Project.data.program_data.effect_type effect = 1;
+      // required .Hackers_Project.program_data.effect_type effect = 1;
       case 1: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
@@ -288,8 +286,8 @@ bool program_data_effect::MergePartialFromCodedStream(
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    int, ::google::protobuf::internal::WireFormatLite::TYPE_ENUM>(
                  input, &value)));
-          if (::Hackers_Project::data::program_data_effect_type_IsValid(value)) {
-            set_effect(static_cast< ::Hackers_Project::data::program_data_effect_type >(value));
+          if (::Hackers_Project::program_data_effect_type_IsValid(value)) {
+            set_effect(static_cast< ::Hackers_Project::program_data_effect_type >(value));
           } else {
             mutable_unknown_fields()->AddVarint(1, value);
           }
@@ -334,7 +332,7 @@ bool program_data_effect::MergePartialFromCodedStream(
 
 void program_data_effect::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // required .Hackers_Project.data.program_data.effect_type effect = 1;
+  // required .Hackers_Project.program_data.effect_type effect = 1;
   if (has_effect()) {
     ::google::protobuf::internal::WireFormatLite::WriteEnum(
       1, this->effect(), output);
@@ -353,7 +351,7 @@ void program_data_effect::SerializeWithCachedSizes(
 
 ::google::protobuf::uint8* program_data_effect::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
-  // required .Hackers_Project.data.program_data.effect_type effect = 1;
+  // required .Hackers_Project.program_data.effect_type effect = 1;
   if (has_effect()) {
     target = ::google::protobuf::internal::WireFormatLite::WriteEnumToArray(
       1, this->effect(), target);
@@ -375,7 +373,7 @@ int program_data_effect::ByteSize() const {
   int total_size = 0;
 
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    // required .Hackers_Project.data.program_data.effect_type effect = 1;
+    // required .Hackers_Project.program_data.effect_type effect = 1;
     if (has_effect()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::EnumSize(this->effect());
@@ -557,7 +555,7 @@ bool program_data::MergePartialFromCodedStream(
         break;
       }
 
-      // repeated .Hackers_Project.data.program_data.effect effects = 3;
+      // repeated .Hackers_Project.program_data.effect effects = 3;
       case 3: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
@@ -599,7 +597,7 @@ void program_data::SerializeWithCachedSizes(
       1, this->name(), output);
   }
 
-  // repeated .Hackers_Project.data.program_data.effect effects = 3;
+  // repeated .Hackers_Project.program_data.effect effects = 3;
   for (int i = 0; i < this->effects_size(); i++) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
       3, this->effects(i), output);
@@ -623,7 +621,7 @@ void program_data::SerializeWithCachedSizes(
         1, this->name(), target);
   }
 
-  // repeated .Hackers_Project.data.program_data.effect effects = 3;
+  // repeated .Hackers_Project.program_data.effect effects = 3;
   for (int i = 0; i < this->effects_size(); i++) {
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
@@ -649,7 +647,7 @@ int program_data::ByteSize() const {
     }
 
   }
-  // repeated .Hackers_Project.data.program_data.effect effects = 3;
+  // repeated .Hackers_Project.program_data.effect effects = 3;
   total_size += 1 * this->effects_size();
   for (int i = 0; i < this->effects_size(); i++) {
     total_size +=
@@ -798,7 +796,7 @@ bool programs_stats::MergePartialFromCodedStream(
   ::google::protobuf::uint32 tag;
   while ((tag = input->ReadTag()) != 0) {
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // repeated .Hackers_Project.data.program_data programs = 1;
+      // repeated .Hackers_Project.program_data programs = 1;
       case 1: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
@@ -831,7 +829,7 @@ bool programs_stats::MergePartialFromCodedStream(
 
 void programs_stats::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // repeated .Hackers_Project.data.program_data programs = 1;
+  // repeated .Hackers_Project.program_data programs = 1;
   for (int i = 0; i < this->programs_size(); i++) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
       1, this->programs(i), output);
@@ -845,7 +843,7 @@ void programs_stats::SerializeWithCachedSizes(
 
 ::google::protobuf::uint8* programs_stats::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
-  // repeated .Hackers_Project.data.program_data programs = 1;
+  // repeated .Hackers_Project.program_data programs = 1;
   for (int i = 0; i < this->programs_size(); i++) {
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
@@ -862,7 +860,7 @@ void programs_stats::SerializeWithCachedSizes(
 int programs_stats::ByteSize() const {
   int total_size = 0;
 
-  // repeated .Hackers_Project.data.program_data programs = 1;
+  // repeated .Hackers_Project.program_data programs = 1;
   total_size += 1 * this->programs_size();
   for (int i = 0; i < this->programs_size(); i++) {
     total_size +=
@@ -939,7 +937,6 @@ void programs_stats::Swap(programs_stats* other) {
 
 // @@protoc_insertion_point(namespace_scope)
 
-}  // namespace data
 }  // namespace Hackers_Project
 
 // @@protoc_insertion_point(global_scope)

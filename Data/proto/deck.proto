@@ -1,0 +1,6 @@
+package Hackers_Project;
+
+message deck_data {
+  required string name = 1;
+  repeated string program_names = 2;
+}

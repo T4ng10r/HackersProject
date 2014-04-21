@@ -45,7 +45,6 @@ function(PROTOBUF_GENERATE_CPP SRCS HDRS PROTO_OUT_DIR)
       DEPENDS ${ABS_FIL}
       COMMENT "Running C++ protocol buffer compiler on ${FIL}"
       VERBATIM )
-  message(STATUS "Adding custom command for ${FIL}")
   endforeach()
 
   set_source_files_properties(${${SRCS}} ${${HDRS}} PROPERTIES GENERATED TRUE)
