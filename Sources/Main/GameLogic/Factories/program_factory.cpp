@@ -26,20 +26,18 @@ program_factory::program_factory() : pimpl(new program_factory_private(this))
 }
 program_factory::~program_factory(){}
 
-abstract_program_handler program_factory::create(program_id id)
+program::abstract_program_handler program_factory::create(program_id id)
 {
-	return abstract_program_handler();
+	program_factory_private::programs_list::iterator it = pimpl->programs.find(id);
+	if (it == pimpl->programs.end())
+		return program::abstract_program_handler();
+	return program::abstract_program_handler();
 }
 
 unsigned int program_factory::count()
 {
 	return pimpl->programs.size();
 }
-
-abstract_program_handler program_factory::create(program_type type)
-{
-	return abstract_program_handler();
-};
 
 type_handle<program_id>::cont program_factory::get_list()
 {

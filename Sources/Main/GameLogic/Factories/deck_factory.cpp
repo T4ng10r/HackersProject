@@ -7,7 +7,7 @@ deck_factory_handle deck_factory::instance_(NULL);
 struct deck_data
 {
 	std::string name;
-	std::list<abstract_program_handler>	programs;
+	std::list<program::abstract_program_handler>	programs;
 	abstract_cpu_handler cpu;
 	unsigned int memory;
 };

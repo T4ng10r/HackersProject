@@ -14,11 +14,11 @@ public:
 	abstract_cpu_handler get_cpu() const {};
 	virtual abstract_cpu_handler get_cpu() const {};
 	virtual unsigned int get_memory() {};
-	virtual abstract_program_cont get_program_list() const {};
+	virtual program::abstract_program_cont get_program_list() const {};
 
 	virtual param_value_t get_attack_power() const {};
 	virtual param_value_t get_defence_power() const {};
-	virtual param_value_t get_value(param_value_types val) const {};
+	virtual param_value_t get_value(program::param_value_types val) const {};
 
 protected:
 	std::unique_ptr<deck_private> priv_;

@@ -1,9 +1,17 @@
-package Hackers_Project;
+package Hackers_Project.matrix;
+
+message pos_data {
+	required int32 x = 1;
+	required int32 y = 2;
+}
 
 message entity_data {
+  required string name = 1;
+  required pos_data pos = 2;
+  required pos_data size = 3;
 }
 
 message cybermatrix_data {
   required string name = 1;
-  required uint32 energy_consumption = 2;
+  required pos_data size = 2;
 }
