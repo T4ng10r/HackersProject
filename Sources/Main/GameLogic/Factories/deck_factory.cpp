@@ -16,9 +16,11 @@ class deck_factory_private
 {
 public:
 	typedef std::map<deck_id, deck_data>	decks_list;
+
 	deck_factory_private(deck_factory *pub_);
 	~deck_factory_private(){};
 	void load();
+public:
 	deck_factory * pub;
 	decks_list	programs;
 };
@@ -28,8 +30,8 @@ deck_factory_private::deck_factory_private(deck_factory * pub_) :pub(pub_)
 
 //////////////////////////////////////////////////////////////////////////
 deck_factory::deck_factory() : pimpl(new deck_factory_private(this))
-{
-}
+{}
+
 deck_factory::~deck_factory(){}
 
 abstract_deck_handler deck_factory::create(deck_id id)

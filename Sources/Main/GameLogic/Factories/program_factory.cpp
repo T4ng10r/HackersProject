@@ -3,6 +3,7 @@
 #include <GameLogic/Interface/program_effects.h>
 #include <GameLogic/Factories/program_warehouse.h>
 #include <map>
+#include <Tools/loggers.h>
 
 program_factory_handle program_factory::instance_(NULL);
 
@@ -28,6 +29,12 @@ program_factory::~program_factory(){}
 
 abstract_program_handler program_factory::create(program_id id)
 {
+	program_factory_private::programs_list::const_iterator it = pimpl->programs.find(id);
+	if (it==pimpl->programs.end())
+	{
+		printLog(eDebug, eWarningLogLevel, "");
+		return abstract_program_handler();
+	}
 	return abstract_program_handler();
 }
 
@@ -35,11 +42,6 @@ unsigned int program_factory::count()
 {
 	return pimpl->programs.size();
 }
-
-abstract_program_handler program_factory::create(program_type type)
-{
-	return abstract_program_handler();
-};
 
 type_handle<program_id>::cont program_factory::get_list()
 {

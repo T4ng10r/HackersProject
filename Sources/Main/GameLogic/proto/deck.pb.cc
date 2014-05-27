@@ -34,9 +34,12 @@ void protobuf_AssignDesc_deck_2eproto() {
       "deck.proto");
   GOOGLE_CHECK(file != NULL);
   deck_data_descriptor_ = file->message_type(0);
-  static const int deck_data_offsets_[2] = {
+  static const int deck_data_offsets_[5] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(deck_data, name_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(deck_data, program_names_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(deck_data, cpu_names_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(deck_data, memory_names_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(deck_data, psu_name_),
   };
   deck_data_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
@@ -79,8 +82,10 @@ void protobuf_AddDesc_deck_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-    "\n\ndeck.proto\022\017Hackers_Project\"0\n\tdeck_da"
-    "ta\022\014\n\004name\030\001 \002(\t\022\025\n\rprogram_names\030\002 \003(\t", 79);
+    "\n\ndeck.proto\022\017Hackers_Project\"k\n\tdeck_da"
+    "ta\022\014\n\004name\030\001 \002(\t\022\025\n\rprogram_names\030\002 \003(\t\022"
+    "\021\n\tcpu_names\030\003 \003(\t\022\024\n\014memory_names\030\004 \003(\t"
+    "\022\020\n\010psu_name\030\005 \002(\t", 138);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "deck.proto", &protobuf_RegisterTypes);
   deck_data::default_instance_ = new deck_data();
@@ -100,6 +105,9 @@ struct StaticDescriptorInitializer_deck_2eproto {
 #ifndef _MSC_VER
 const int deck_data::kNameFieldNumber;
 const int deck_data::kProgramNamesFieldNumber;
+const int deck_data::kCpuNamesFieldNumber;
+const int deck_data::kMemoryNamesFieldNumber;
+const int deck_data::kPsuNameFieldNumber;
 #endif  // !_MSC_VER
 
 deck_data::deck_data()
@@ -119,6 +127,7 @@ deck_data::deck_data(const deck_data& from)
 void deck_data::SharedCtor() {
   _cached_size_ = 0;
   name_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+  psu_name_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -129,6 +138,9 @@ deck_data::~deck_data() {
 void deck_data::SharedDtor() {
   if (name_ != &::google::protobuf::internal::kEmptyString) {
     delete name_;
+  }
+  if (psu_name_ != &::google::protobuf::internal::kEmptyString) {
+    delete psu_name_;
   }
   if (this != default_instance_) {
   }
@@ -162,8 +174,15 @@ void deck_data::Clear() {
         name_->clear();
       }
     }
+    if (has_psu_name()) {
+      if (psu_name_ != &::google::protobuf::internal::kEmptyString) {
+        psu_name_->clear();
+      }
+    }
   }
   program_names_.Clear();
+  cpu_names_.Clear();
+  memory_names_.Clear();
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
   mutable_unknown_fields()->Clear();
 }
@@ -205,6 +224,61 @@ bool deck_data::MergePartialFromCodedStream(
           goto handle_uninterpreted;
         }
         if (input->ExpectTag(18)) goto parse_program_names;
+        if (input->ExpectTag(26)) goto parse_cpu_names;
+        break;
+      }
+
+      // repeated string cpu_names = 3;
+      case 3: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
+         parse_cpu_names:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->add_cpu_names()));
+          ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+            this->cpu_names(this->cpu_names_size() - 1).data(),
+            this->cpu_names(this->cpu_names_size() - 1).length(),
+            ::google::protobuf::internal::WireFormat::PARSE);
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(26)) goto parse_cpu_names;
+        if (input->ExpectTag(34)) goto parse_memory_names;
+        break;
+      }
+
+      // repeated string memory_names = 4;
+      case 4: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
+         parse_memory_names:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->add_memory_names()));
+          ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+            this->memory_names(this->memory_names_size() - 1).data(),
+            this->memory_names(this->memory_names_size() - 1).length(),
+            ::google::protobuf::internal::WireFormat::PARSE);
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(34)) goto parse_memory_names;
+        if (input->ExpectTag(42)) goto parse_psu_name;
+        break;
+      }
+
+      // required string psu_name = 5;
+      case 5: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
+         parse_psu_name:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_psu_name()));
+          ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+            this->psu_name().data(), this->psu_name().length(),
+            ::google::protobuf::internal::WireFormat::PARSE);
+        } else {
+          goto handle_uninterpreted;
+        }
         if (input->ExpectAtEnd()) return true;
         break;
       }
@@ -245,6 +319,33 @@ void deck_data::SerializeWithCachedSizes(
       2, this->program_names(i), output);
   }
 
+  // repeated string cpu_names = 3;
+  for (int i = 0; i < this->cpu_names_size(); i++) {
+  ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+    this->cpu_names(i).data(), this->cpu_names(i).length(),
+    ::google::protobuf::internal::WireFormat::SERIALIZE);
+    ::google::protobuf::internal::WireFormatLite::WriteString(
+      3, this->cpu_names(i), output);
+  }
+
+  // repeated string memory_names = 4;
+  for (int i = 0; i < this->memory_names_size(); i++) {
+  ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+    this->memory_names(i).data(), this->memory_names(i).length(),
+    ::google::protobuf::internal::WireFormat::SERIALIZE);
+    ::google::protobuf::internal::WireFormatLite::WriteString(
+      4, this->memory_names(i), output);
+  }
+
+  // required string psu_name = 5;
+  if (has_psu_name()) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+      this->psu_name().data(), this->psu_name().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE);
+    ::google::protobuf::internal::WireFormatLite::WriteString(
+      5, this->psu_name(), output);
+  }
+
   if (!unknown_fields().empty()) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         unknown_fields(), output);
@@ -272,6 +373,34 @@ void deck_data::SerializeWithCachedSizes(
       WriteStringToArray(2, this->program_names(i), target);
   }
 
+  // repeated string cpu_names = 3;
+  for (int i = 0; i < this->cpu_names_size(); i++) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+      this->cpu_names(i).data(), this->cpu_names(i).length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE);
+    target = ::google::protobuf::internal::WireFormatLite::
+      WriteStringToArray(3, this->cpu_names(i), target);
+  }
+
+  // repeated string memory_names = 4;
+  for (int i = 0; i < this->memory_names_size(); i++) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+      this->memory_names(i).data(), this->memory_names(i).length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE);
+    target = ::google::protobuf::internal::WireFormatLite::
+      WriteStringToArray(4, this->memory_names(i), target);
+  }
+
+  // required string psu_name = 5;
+  if (has_psu_name()) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+      this->psu_name().data(), this->psu_name().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE);
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        5, this->psu_name(), target);
+  }
+
   if (!unknown_fields().empty()) {
     target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
         unknown_fields(), target);
@@ -290,12 +419,33 @@ int deck_data::ByteSize() const {
           this->name());
     }
 
+    // required string psu_name = 5;
+    if (has_psu_name()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::StringSize(
+          this->psu_name());
+    }
+
   }
   // repeated string program_names = 2;
   total_size += 1 * this->program_names_size();
   for (int i = 0; i < this->program_names_size(); i++) {
     total_size += ::google::protobuf::internal::WireFormatLite::StringSize(
       this->program_names(i));
+  }
+
+  // repeated string cpu_names = 3;
+  total_size += 1 * this->cpu_names_size();
+  for (int i = 0; i < this->cpu_names_size(); i++) {
+    total_size += ::google::protobuf::internal::WireFormatLite::StringSize(
+      this->cpu_names(i));
+  }
+
+  // repeated string memory_names = 4;
+  total_size += 1 * this->memory_names_size();
+  for (int i = 0; i < this->memory_names_size(); i++) {
+    total_size += ::google::protobuf::internal::WireFormatLite::StringSize(
+      this->memory_names(i));
   }
 
   if (!unknown_fields().empty()) {
@@ -324,9 +474,14 @@ void deck_data::MergeFrom(const ::google::protobuf::Message& from) {
 void deck_data::MergeFrom(const deck_data& from) {
   GOOGLE_CHECK_NE(&from, this);
   program_names_.MergeFrom(from.program_names_);
+  cpu_names_.MergeFrom(from.cpu_names_);
+  memory_names_.MergeFrom(from.memory_names_);
   if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
     if (from.has_name()) {
       set_name(from.name());
+    }
+    if (from.has_psu_name()) {
+      set_psu_name(from.psu_name());
     }
   }
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
@@ -345,7 +500,7 @@ void deck_data::CopyFrom(const deck_data& from) {
 }
 
 bool deck_data::IsInitialized() const {
-  if ((_has_bits_[0] & 0x00000001) != 0x00000001) return false;
+  if ((_has_bits_[0] & 0x00000011) != 0x00000011) return false;
 
   return true;
 }
@@ -354,6 +509,9 @@ void deck_data::Swap(deck_data* other) {
   if (other != this) {
     std::swap(name_, other->name_);
     program_names_.Swap(&other->program_names_);
+    cpu_names_.Swap(&other->cpu_names_);
+    memory_names_.Swap(&other->memory_names_);
+    std::swap(psu_name_, other->psu_name_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);
     std::swap(_cached_size_, other->_cached_size_);

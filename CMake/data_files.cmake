@@ -5,6 +5,7 @@ SET(PROTO_SRC_FILES
     ${PROTO_SRC_DIR}/program.proto
     ${PROTO_SRC_DIR}/memory.proto 
     ${PROTO_SRC_DIR}/cpu.proto 
+    ${PROTO_SRC_DIR}/psu.proto
     ${PROTO_SRC_DIR}/deck.proto 
     ${PROTO_SRC_DIR}/cyberentities.proto 
     ${PROTO_SRC_DIR}/technology.proto 

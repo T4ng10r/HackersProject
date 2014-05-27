@@ -1,58 +1,58 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <PROGRAMS>
-    <PROGRAM name="Brute">
+    <PROGRAM name="Brute" id="1">
         <attack>1</attack>
         <size>1</size>
     </PROGRAM>
-  <PROGRAM name="Hammer">
+  <PROGRAM name="Hammer" id="2">
     <attack>5</attack>
     <size>1</size>
   </PROGRAM>
-  <PROGRAM name="Worm">
+  <PROGRAM name="Worm" id="3">
     <attack>1</attack>
     <size>1</size>
   </PROGRAM>
-  <PROGRAM name="Watchdog">
+  <PROGRAM name="Watchdog" id="4">
     <attack>1</attack>
     <size>1</size>
   </PROGRAM>
-  <PROGRAM name="Codecracker">
+  <PROGRAM name="Codecracker" id="5">
     <decrypt>1</decrypt>
     <size>1</size>
   </PROGRAM>
-  <PROGRAM name="Raffles">
+  <PROGRAM name="Raffles" id="6">
     <decrypt>3</decrypt>
     <size>2</size>
   </PROGRAM>
-  <PROGRAM name="Watchdog">
+  <PROGRAM name="Watchdog" id="7">
     <scan>2</scan>
     <size>1</size>
   </PROGRAM>
-  <PROGRAM name="Seeya">
+  <PROGRAM name="Seeya" id="8">
     <scan>3</scan>
     <size>1</size>
   </PROGRAM>
-  <PROGRAM name="Hidden Virtue">
+  <PROGRAM name="Hidden Virtue" id="9">
     <scan>4</scan>
     <size>2</size>
   </PROGRAM>
-  <PROGRAM name="Invisibility">
+  <PROGRAM name="Invisibility" id="10">
     <deceive>1</deceive>
     <size>1</size>
   </PROGRAM>
-  <PROGRAM name="Stealth">
+  <PROGRAM name="Stealth" id="11">
     <deceive>2</deceive>
     <size>1</size>
   </PROGRAM>
-  <PROGRAM name="Replikator">
+  <PROGRAM name="Replikator" id="12">
     <deceive>3</deceive>
     <size>2</size>
   </PROGRAM>
-  <PROGRAM name="Shield">
+  <PROGRAM name="Shield" id="13">
     <shield>1</shield>
     <size>1</size>
   </PROGRAM>
-  <PROGRAM name="Force field">
+  <PROGRAM name="Force field" id="14">
     <shield>2</shield>
     <size>1</size>
   </PROGRAM>

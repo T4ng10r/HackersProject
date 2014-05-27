@@ -119,18 +119,67 @@ class deck_data : public ::google::protobuf::Message {
   inline const ::google::protobuf::RepeatedPtrField< ::std::string>& program_names() const;
   inline ::google::protobuf::RepeatedPtrField< ::std::string>* mutable_program_names();
 
+  // repeated string cpu_names = 3;
+  inline int cpu_names_size() const;
+  inline void clear_cpu_names();
+  static const int kCpuNamesFieldNumber = 3;
+  inline const ::std::string& cpu_names(int index) const;
+  inline ::std::string* mutable_cpu_names(int index);
+  inline void set_cpu_names(int index, const ::std::string& value);
+  inline void set_cpu_names(int index, const char* value);
+  inline void set_cpu_names(int index, const char* value, size_t size);
+  inline ::std::string* add_cpu_names();
+  inline void add_cpu_names(const ::std::string& value);
+  inline void add_cpu_names(const char* value);
+  inline void add_cpu_names(const char* value, size_t size);
+  inline const ::google::protobuf::RepeatedPtrField< ::std::string>& cpu_names() const;
+  inline ::google::protobuf::RepeatedPtrField< ::std::string>* mutable_cpu_names();
+
+  // repeated string memory_names = 4;
+  inline int memory_names_size() const;
+  inline void clear_memory_names();
+  static const int kMemoryNamesFieldNumber = 4;
+  inline const ::std::string& memory_names(int index) const;
+  inline ::std::string* mutable_memory_names(int index);
+  inline void set_memory_names(int index, const ::std::string& value);
+  inline void set_memory_names(int index, const char* value);
+  inline void set_memory_names(int index, const char* value, size_t size);
+  inline ::std::string* add_memory_names();
+  inline void add_memory_names(const ::std::string& value);
+  inline void add_memory_names(const char* value);
+  inline void add_memory_names(const char* value, size_t size);
+  inline const ::google::protobuf::RepeatedPtrField< ::std::string>& memory_names() const;
+  inline ::google::protobuf::RepeatedPtrField< ::std::string>* mutable_memory_names();
+
+  // required string psu_name = 5;
+  inline bool has_psu_name() const;
+  inline void clear_psu_name();
+  static const int kPsuNameFieldNumber = 5;
+  inline const ::std::string& psu_name() const;
+  inline void set_psu_name(const ::std::string& value);
+  inline void set_psu_name(const char* value);
+  inline void set_psu_name(const char* value, size_t size);
+  inline ::std::string* mutable_psu_name();
+  inline ::std::string* release_psu_name();
+  inline void set_allocated_psu_name(::std::string* psu_name);
+
   // @@protoc_insertion_point(class_scope:Hackers_Project.deck_data)
  private:
   inline void set_has_name();
   inline void clear_has_name();
+  inline void set_has_psu_name();
+  inline void clear_has_psu_name();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
   ::std::string* name_;
   ::google::protobuf::RepeatedPtrField< ::std::string> program_names_;
+  ::google::protobuf::RepeatedPtrField< ::std::string> cpu_names_;
+  ::google::protobuf::RepeatedPtrField< ::std::string> memory_names_;
+  ::std::string* psu_name_;
 
   mutable int _cached_size_;
-  ::google::protobuf::uint32 _has_bits_[(2 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(5 + 31) / 32];
 
   friend void  protobuf_AddDesc_deck_2eproto();
   friend void protobuf_AssignDesc_deck_2eproto();
@@ -258,6 +307,164 @@ deck_data::program_names() const {
 inline ::google::protobuf::RepeatedPtrField< ::std::string>*
 deck_data::mutable_program_names() {
   return &program_names_;
+}
+
+// repeated string cpu_names = 3;
+inline int deck_data::cpu_names_size() const {
+  return cpu_names_.size();
+}
+inline void deck_data::clear_cpu_names() {
+  cpu_names_.Clear();
+}
+inline const ::std::string& deck_data::cpu_names(int index) const {
+  return cpu_names_.Get(index);
+}
+inline ::std::string* deck_data::mutable_cpu_names(int index) {
+  return cpu_names_.Mutable(index);
+}
+inline void deck_data::set_cpu_names(int index, const ::std::string& value) {
+  cpu_names_.Mutable(index)->assign(value);
+}
+inline void deck_data::set_cpu_names(int index, const char* value) {
+  cpu_names_.Mutable(index)->assign(value);
+}
+inline void deck_data::set_cpu_names(int index, const char* value, size_t size) {
+  cpu_names_.Mutable(index)->assign(
+    reinterpret_cast<const char*>(value), size);
+}
+inline ::std::string* deck_data::add_cpu_names() {
+  return cpu_names_.Add();
+}
+inline void deck_data::add_cpu_names(const ::std::string& value) {
+  cpu_names_.Add()->assign(value);
+}
+inline void deck_data::add_cpu_names(const char* value) {
+  cpu_names_.Add()->assign(value);
+}
+inline void deck_data::add_cpu_names(const char* value, size_t size) {
+  cpu_names_.Add()->assign(reinterpret_cast<const char*>(value), size);
+}
+inline const ::google::protobuf::RepeatedPtrField< ::std::string>&
+deck_data::cpu_names() const {
+  return cpu_names_;
+}
+inline ::google::protobuf::RepeatedPtrField< ::std::string>*
+deck_data::mutable_cpu_names() {
+  return &cpu_names_;
+}
+
+// repeated string memory_names = 4;
+inline int deck_data::memory_names_size() const {
+  return memory_names_.size();
+}
+inline void deck_data::clear_memory_names() {
+  memory_names_.Clear();
+}
+inline const ::std::string& deck_data::memory_names(int index) const {
+  return memory_names_.Get(index);
+}
+inline ::std::string* deck_data::mutable_memory_names(int index) {
+  return memory_names_.Mutable(index);
+}
+inline void deck_data::set_memory_names(int index, const ::std::string& value) {
+  memory_names_.Mutable(index)->assign(value);
+}
+inline void deck_data::set_memory_names(int index, const char* value) {
+  memory_names_.Mutable(index)->assign(value);
+}
+inline void deck_data::set_memory_names(int index, const char* value, size_t size) {
+  memory_names_.Mutable(index)->assign(
+    reinterpret_cast<const char*>(value), size);
+}
+inline ::std::string* deck_data::add_memory_names() {
+  return memory_names_.Add();
+}
+inline void deck_data::add_memory_names(const ::std::string& value) {
+  memory_names_.Add()->assign(value);
+}
+inline void deck_data::add_memory_names(const char* value) {
+  memory_names_.Add()->assign(value);
+}
+inline void deck_data::add_memory_names(const char* value, size_t size) {
+  memory_names_.Add()->assign(reinterpret_cast<const char*>(value), size);
+}
+inline const ::google::protobuf::RepeatedPtrField< ::std::string>&
+deck_data::memory_names() const {
+  return memory_names_;
+}
+inline ::google::protobuf::RepeatedPtrField< ::std::string>*
+deck_data::mutable_memory_names() {
+  return &memory_names_;
+}
+
+// required string psu_name = 5;
+inline bool deck_data::has_psu_name() const {
+  return (_has_bits_[0] & 0x00000010u) != 0;
+}
+inline void deck_data::set_has_psu_name() {
+  _has_bits_[0] |= 0x00000010u;
+}
+inline void deck_data::clear_has_psu_name() {
+  _has_bits_[0] &= ~0x00000010u;
+}
+inline void deck_data::clear_psu_name() {
+  if (psu_name_ != &::google::protobuf::internal::kEmptyString) {
+    psu_name_->clear();
+  }
+  clear_has_psu_name();
+}
+inline const ::std::string& deck_data::psu_name() const {
+  return *psu_name_;
+}
+inline void deck_data::set_psu_name(const ::std::string& value) {
+  set_has_psu_name();
+  if (psu_name_ == &::google::protobuf::internal::kEmptyString) {
+    psu_name_ = new ::std::string;
+  }
+  psu_name_->assign(value);
+}
+inline void deck_data::set_psu_name(const char* value) {
+  set_has_psu_name();
+  if (psu_name_ == &::google::protobuf::internal::kEmptyString) {
+    psu_name_ = new ::std::string;
+  }
+  psu_name_->assign(value);
+}
+inline void deck_data::set_psu_name(const char* value, size_t size) {
+  set_has_psu_name();
+  if (psu_name_ == &::google::protobuf::internal::kEmptyString) {
+    psu_name_ = new ::std::string;
+  }
+  psu_name_->assign(reinterpret_cast<const char*>(value), size);
+}
+inline ::std::string* deck_data::mutable_psu_name() {
+  set_has_psu_name();
+  if (psu_name_ == &::google::protobuf::internal::kEmptyString) {
+    psu_name_ = new ::std::string;
+  }
+  return psu_name_;
+}
+inline ::std::string* deck_data::release_psu_name() {
+  clear_has_psu_name();
+  if (psu_name_ == &::google::protobuf::internal::kEmptyString) {
+    return NULL;
+  } else {
+    ::std::string* temp = psu_name_;
+    psu_name_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+    return temp;
+  }
+}
+inline void deck_data::set_allocated_psu_name(::std::string* psu_name) {
+  if (psu_name_ != &::google::protobuf::internal::kEmptyString) {
+    delete psu_name_;
+  }
+  if (psu_name) {
+    set_has_psu_name();
+    psu_name_ = psu_name;
+  } else {
+    clear_has_psu_name();
+    psu_name_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+  }
 }
 
 
