@@ -1,6 +1,6 @@
 #pragma once
 
-extern const std::string attack_effect_keyword;
+extern const std::string effect_attack_keyword;
 extern const std::string effect_analyze_keyword;
 extern const std::string effect_armor_keyword;
 extern const std::string effect_crypt_keyword;
@@ -16,6 +16,7 @@ extern const std::string effect_shield_keyword;
 extern const std::string effect_slow_keyword;
 extern const std::string effect_virus_keyword;
 extern const std::string effect_weaken_keyword;
+
 
 enum program_effects
 {
@@ -34,6 +35,5 @@ enum program_effects
 	program_effect_shield,
 	program_effect_slow,
 	program_effect_virus,
-	program_effect_weaken,
-	program_effect_count
+	program_effect_weaken
 };
