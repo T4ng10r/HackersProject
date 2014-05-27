@@ -25,7 +25,7 @@ public:
 		}
 		return instance_;
 	}
-	abstract_program_handler create(program_id id);
+	program::abstract_program_handler create(program_id id);
  	unsigned int count();
 	type_handle<program_id>::cont get_list();
 protected:

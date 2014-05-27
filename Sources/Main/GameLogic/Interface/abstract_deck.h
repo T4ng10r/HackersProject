@@ -21,14 +21,14 @@ public:
 	virtual void remove_memory(unsigned int mu) = 0;
 
 	virtual unsigned int get_program_count() const = 0;
-	virtual abstract_program_cont get_program_list() const = 0;
-	virtual void add_program(abstract_program_handler program) = 0;
-	virtual void remove_program(abstract_program_handler program) = 0;
+	virtual program::abstract_program_cont get_program_list() const = 0;
+	virtual void add_program(program::abstract_program_handler program) = 0;
+	virtual void remove_program(program::abstract_program_handler program) = 0;
 	virtual void remove_program(unsigned int index) = 0;
 
 	virtual param_value_t get_attack_power() const = 0;
 	virtual param_value_t get_defence_power() const = 0;
-	virtual param_value_t get_value(param_value_types val) const = 0;
+	virtual param_value_t get_value(program::param_value_types val) const = 0;
 
 };
 

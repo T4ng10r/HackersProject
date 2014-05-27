@@ -1,22 +1,5 @@
 #pragma once
 
-extern const std::string effect_attack_keyword;
-extern const std::string effect_analyze_keyword;
-extern const std::string effect_armor_keyword;
-extern const std::string effect_crypt_keyword;
-extern const std::string effect_detect_keyword;
-extern const std::string effect_deceive_keyword;
-extern const std::string effect_decoy_keyword;
-extern const std::string effect_decrypt_keyword;
-extern const std::string effect_evaluate_keyword;
-extern const std::string effect_medic_keyword;
-extern const std::string effect_relocate_keyword;
-extern const std::string effect_scan_keyword;
-extern const std::string effect_shield_keyword;
-extern const std::string effect_slow_keyword;
-extern const std::string effect_virus_keyword;
-extern const std::string effect_weaken_keyword;
-
 
 enum program_effects
 {

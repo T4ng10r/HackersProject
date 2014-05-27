@@ -16,12 +16,12 @@ TEST_F(ut_program_factory_test, programs_count)
 
 TEST_F(ut_program_factory_test, empty_return)
 {
-	EXPECT_EQ(program_factory::instance()->create(""), abstract_program_handler());
+	EXPECT_EQ(program_factory::instance()->create(""), program::abstract_program_handler());
 }
 
 TEST_F(ut_program_factory_test, attack_program_return)
 {
-	abstract_program_handler program;
+	program::abstract_program_handler program;
 	ASSERT_TRUE(program.get() == NULL);
 	program = program_factory::instance()->create("");
 	ASSERT_TRUE(program.get() != NULL);

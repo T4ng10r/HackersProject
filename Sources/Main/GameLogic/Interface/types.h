@@ -15,24 +15,27 @@ typedef std::string  program_id;
 typedef std::string  deck_id;
 typedef int param_value_t;
 
-enum program_type
+namespace program
 {
-	program_attack_type,
-	program_scan_type,
-	program_analyze_type,
-	program_detect_type,
-	program_slow_type,
-	program_virus_type,
-	program_weaken_type,
-	program_shield_type,
-	program_deceive_type,
-	program_decoy_type,
-	program_medic_type,
-	program_relocate_type,
-	program_evaluate_type,
-	program_crypt_type,
-	program_decrypt_type,
-	program_type_count
+
+enum effect_type
+{
+	program_attack_effect,
+	program_scan_effect,
+	program_analyze_effect,
+	program_detect_effect,
+	program_slow_effect,
+	program_virus_effect,
+	program_weaken_effect,
+	program_shield_effect,
+	program_deceive_effect,
+	program_decoy_effect,
+	program_medic_effect,
+	program_relocate_effect,
+	program_evaluate_effect,
+	program_crypt_effect,
+	program_decrypt_effect,
+	program_effect_count
 };
 
 enum param_value_types
@@ -41,4 +44,6 @@ enum param_value_types
 	defence_value,
 	range_value,
 	detection_strength_value
+};
+
 };

@@ -17,9 +17,13 @@
 // @@protoc_insertion_point(includes)
 
 namespace Hackers_Project {
+namespace matrix {
 
 namespace {
 
+const ::google::protobuf::Descriptor* pos_data_descriptor_ = NULL;
+const ::google::protobuf::internal::GeneratedMessageReflection*
+  pos_data_reflection_ = NULL;
 const ::google::protobuf::Descriptor* entity_data_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
   entity_data_reflection_ = NULL;
@@ -36,8 +40,27 @@ void protobuf_AssignDesc_cybermatrix_2eproto() {
     ::google::protobuf::DescriptorPool::generated_pool()->FindFileByName(
       "cybermatrix.proto");
   GOOGLE_CHECK(file != NULL);
-  entity_data_descriptor_ = file->message_type(0);
-  static const int entity_data_offsets_[1] = {
+  pos_data_descriptor_ = file->message_type(0);
+  static const int pos_data_offsets_[2] = {
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(pos_data, x_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(pos_data, y_),
+  };
+  pos_data_reflection_ =
+    new ::google::protobuf::internal::GeneratedMessageReflection(
+      pos_data_descriptor_,
+      pos_data::default_instance_,
+      pos_data_offsets_,
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(pos_data, _has_bits_[0]),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(pos_data, _unknown_fields_),
+      -1,
+      ::google::protobuf::DescriptorPool::generated_pool(),
+      ::google::protobuf::MessageFactory::generated_factory(),
+      sizeof(pos_data));
+  entity_data_descriptor_ = file->message_type(1);
+  static const int entity_data_offsets_[3] = {
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(entity_data, name_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(entity_data, pos_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(entity_data, size_),
   };
   entity_data_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
@@ -50,10 +73,10 @@ void protobuf_AssignDesc_cybermatrix_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(entity_data));
-  cybermatrix_data_descriptor_ = file->message_type(1);
+  cybermatrix_data_descriptor_ = file->message_type(2);
   static const int cybermatrix_data_offsets_[2] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(cybermatrix_data, name_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(cybermatrix_data, energy_consumption_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(cybermatrix_data, size_),
   };
   cybermatrix_data_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
@@ -79,6 +102,8 @@ inline void protobuf_AssignDescriptorsOnce() {
 void protobuf_RegisterTypes(const ::std::string&) {
   protobuf_AssignDescriptorsOnce();
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
+    pos_data_descriptor_, &pos_data::default_instance());
+  ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
     entity_data_descriptor_, &entity_data::default_instance());
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
     cybermatrix_data_descriptor_, &cybermatrix_data::default_instance());
@@ -87,6 +112,8 @@ void protobuf_RegisterTypes(const ::std::string&) {
 }  // namespace
 
 void protobuf_ShutdownFile_cybermatrix_2eproto() {
+  delete pos_data::default_instance_;
+  delete pos_data_reflection_;
   delete entity_data::default_instance_;
   delete entity_data_reflection_;
   delete cybermatrix_data::default_instance_;
@@ -100,13 +127,20 @@ void protobuf_AddDesc_cybermatrix_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-    "\n\021cybermatrix.proto\022\017Hackers_Project\"\r\n\013"
-    "entity_data\"<\n\020cybermatrix_data\022\014\n\004name\030"
-    "\001 \002(\t\022\032\n\022energy_consumption\030\002 \002(\r", 113);
+    "\n\021cybermatrix.proto\022\026Hackers_Project.mat"
+    "rix\" \n\010pos_data\022\t\n\001x\030\001 \002(\005\022\t\n\001y\030\002 \002(\005\"z\n"
+    "\013entity_data\022\014\n\004name\030\001 \002(\t\022-\n\003pos\030\002 \002(\0132"
+    " .Hackers_Project.matrix.pos_data\022.\n\004siz"
+    "e\030\003 \002(\0132 .Hackers_Project.matrix.pos_dat"
+    "a\"P\n\020cybermatrix_data\022\014\n\004name\030\001 \002(\t\022.\n\004s"
+    "ize\030\002 \002(\0132 .Hackers_Project.matrix.pos_d"
+    "ata", 283);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "cybermatrix.proto", &protobuf_RegisterTypes);
+  pos_data::default_instance_ = new pos_data();
   entity_data::default_instance_ = new entity_data();
   cybermatrix_data::default_instance_ = new cybermatrix_data();
+  pos_data::default_instance_->InitAsDefaultInstance();
   entity_data::default_instance_->InitAsDefaultInstance();
   cybermatrix_data::default_instance_->InitAsDefaultInstance();
   ::google::protobuf::internal::OnShutdown(&protobuf_ShutdownFile_cybermatrix_2eproto);
@@ -122,6 +156,258 @@ struct StaticDescriptorInitializer_cybermatrix_2eproto {
 // ===================================================================
 
 #ifndef _MSC_VER
+const int pos_data::kXFieldNumber;
+const int pos_data::kYFieldNumber;
+#endif  // !_MSC_VER
+
+pos_data::pos_data()
+  : ::google::protobuf::Message() {
+  SharedCtor();
+}
+
+void pos_data::InitAsDefaultInstance() {
+}
+
+pos_data::pos_data(const pos_data& from)
+  : ::google::protobuf::Message() {
+  SharedCtor();
+  MergeFrom(from);
+}
+
+void pos_data::SharedCtor() {
+  _cached_size_ = 0;
+  x_ = 0;
+  y_ = 0;
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+}
+
+pos_data::~pos_data() {
+  SharedDtor();
+}
+
+void pos_data::SharedDtor() {
+  if (this != default_instance_) {
+  }
+}
+
+void pos_data::SetCachedSize(int size) const {
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+}
+const ::google::protobuf::Descriptor* pos_data::descriptor() {
+  protobuf_AssignDescriptorsOnce();
+  return pos_data_descriptor_;
+}
+
+const pos_data& pos_data::default_instance() {
+  if (default_instance_ == NULL) protobuf_AddDesc_cybermatrix_2eproto();
+  return *default_instance_;
+}
+
+pos_data* pos_data::default_instance_ = NULL;
+
+pos_data* pos_data::New() const {
+  return new pos_data;
+}
+
+void pos_data::Clear() {
+  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    x_ = 0;
+    y_ = 0;
+  }
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+  mutable_unknown_fields()->Clear();
+}
+
+bool pos_data::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!(EXPRESSION)) return false
+  ::google::protobuf::uint32 tag;
+  while ((tag = input->ReadTag()) != 0) {
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // required int32 x = 1;
+      case 1: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
+                 input, &x_)));
+          set_has_x();
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(16)) goto parse_y;
+        break;
+      }
+
+      // required int32 y = 2;
+      case 2: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+         parse_y:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
+                 input, &y_)));
+          set_has_y();
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectAtEnd()) return true;
+        break;
+      }
+
+      default: {
+      handle_uninterpreted:
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
+          return true;
+        }
+        DO_(::google::protobuf::internal::WireFormat::SkipField(
+              input, tag, mutable_unknown_fields()));
+        break;
+      }
+    }
+  }
+  return true;
+#undef DO_
+}
+
+void pos_data::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // required int32 x = 1;
+  if (has_x()) {
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(1, this->x(), output);
+  }
+
+  // required int32 y = 2;
+  if (has_y()) {
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(2, this->y(), output);
+  }
+
+  if (!unknown_fields().empty()) {
+    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
+        unknown_fields(), output);
+  }
+}
+
+::google::protobuf::uint8* pos_data::SerializeWithCachedSizesToArray(
+    ::google::protobuf::uint8* target) const {
+  // required int32 x = 1;
+  if (has_x()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(1, this->x(), target);
+  }
+
+  // required int32 y = 2;
+  if (has_y()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(2, this->y(), target);
+  }
+
+  if (!unknown_fields().empty()) {
+    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
+        unknown_fields(), target);
+  }
+  return target;
+}
+
+int pos_data::ByteSize() const {
+  int total_size = 0;
+
+  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    // required int32 x = 1;
+    if (has_x()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::Int32Size(
+          this->x());
+    }
+
+    // required int32 y = 2;
+    if (has_y()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::Int32Size(
+          this->y());
+    }
+
+  }
+  if (!unknown_fields().empty()) {
+    total_size +=
+      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
+        unknown_fields());
+  }
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = total_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  return total_size;
+}
+
+void pos_data::MergeFrom(const ::google::protobuf::Message& from) {
+  GOOGLE_CHECK_NE(&from, this);
+  const pos_data* source =
+    ::google::protobuf::internal::dynamic_cast_if_available<const pos_data*>(
+      &from);
+  if (source == NULL) {
+    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+  } else {
+    MergeFrom(*source);
+  }
+}
+
+void pos_data::MergeFrom(const pos_data& from) {
+  GOOGLE_CHECK_NE(&from, this);
+  if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    if (from.has_x()) {
+      set_x(from.x());
+    }
+    if (from.has_y()) {
+      set_y(from.y());
+    }
+  }
+  mutable_unknown_fields()->MergeFrom(from.unknown_fields());
+}
+
+void pos_data::CopyFrom(const ::google::protobuf::Message& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void pos_data::CopyFrom(const pos_data& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool pos_data::IsInitialized() const {
+  if ((_has_bits_[0] & 0x00000003) != 0x00000003) return false;
+
+  return true;
+}
+
+void pos_data::Swap(pos_data* other) {
+  if (other != this) {
+    std::swap(x_, other->x_);
+    std::swap(y_, other->y_);
+    std::swap(_has_bits_[0], other->_has_bits_[0]);
+    _unknown_fields_.Swap(&other->_unknown_fields_);
+    std::swap(_cached_size_, other->_cached_size_);
+  }
+}
+
+::google::protobuf::Metadata pos_data::GetMetadata() const {
+  protobuf_AssignDescriptorsOnce();
+  ::google::protobuf::Metadata metadata;
+  metadata.descriptor = pos_data_descriptor_;
+  metadata.reflection = pos_data_reflection_;
+  return metadata;
+}
+
+
+// ===================================================================
+
+#ifndef _MSC_VER
+const int entity_data::kNameFieldNumber;
+const int entity_data::kPosFieldNumber;
+const int entity_data::kSizeFieldNumber;
 #endif  // !_MSC_VER
 
 entity_data::entity_data()
@@ -130,6 +416,8 @@ entity_data::entity_data()
 }
 
 void entity_data::InitAsDefaultInstance() {
+  pos_ = const_cast< ::Hackers_Project::matrix::pos_data*>(&::Hackers_Project::matrix::pos_data::default_instance());
+  size_ = const_cast< ::Hackers_Project::matrix::pos_data*>(&::Hackers_Project::matrix::pos_data::default_instance());
 }
 
 entity_data::entity_data(const entity_data& from)
@@ -140,6 +428,9 @@ entity_data::entity_data(const entity_data& from)
 
 void entity_data::SharedCtor() {
   _cached_size_ = 0;
+  name_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+  pos_ = NULL;
+  size_ = NULL;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -148,7 +439,12 @@ entity_data::~entity_data() {
 }
 
 void entity_data::SharedDtor() {
+  if (name_ != &::google::protobuf::internal::kEmptyString) {
+    delete name_;
+  }
   if (this != default_instance_) {
+    delete pos_;
+    delete size_;
   }
 }
 
@@ -174,6 +470,19 @@ entity_data* entity_data::New() const {
 }
 
 void entity_data::Clear() {
+  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    if (has_name()) {
+      if (name_ != &::google::protobuf::internal::kEmptyString) {
+        name_->clear();
+      }
+    }
+    if (has_pos()) {
+      if (pos_ != NULL) pos_->::Hackers_Project::matrix::pos_data::Clear();
+    }
+    if (has_size()) {
+      if (size_ != NULL) size_->::Hackers_Project::matrix::pos_data::Clear();
+    }
+  }
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
   mutable_unknown_fields()->Clear();
 }
@@ -183,12 +492,62 @@ bool entity_data::MergePartialFromCodedStream(
 #define DO_(EXPRESSION) if (!(EXPRESSION)) return false
   ::google::protobuf::uint32 tag;
   while ((tag = input->ReadTag()) != 0) {
-    if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-        ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
-      return true;
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // required string name = 1;
+      case 1: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_name()));
+          ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+            this->name().data(), this->name().length(),
+            ::google::protobuf::internal::WireFormat::PARSE);
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(18)) goto parse_pos;
+        break;
+      }
+
+      // required .Hackers_Project.matrix.pos_data pos = 2;
+      case 2: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
+         parse_pos:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+               input, mutable_pos()));
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(26)) goto parse_size;
+        break;
+      }
+
+      // required .Hackers_Project.matrix.pos_data size = 3;
+      case 3: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
+         parse_size:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+               input, mutable_size()));
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectAtEnd()) return true;
+        break;
+      }
+
+      default: {
+      handle_uninterpreted:
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
+          return true;
+        }
+        DO_(::google::protobuf::internal::WireFormat::SkipField(
+              input, tag, mutable_unknown_fields()));
+        break;
+      }
     }
-    DO_(::google::protobuf::internal::WireFormat::SkipField(
-          input, tag, mutable_unknown_fields()));
   }
   return true;
 #undef DO_
@@ -196,6 +555,27 @@ bool entity_data::MergePartialFromCodedStream(
 
 void entity_data::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
+  // required string name = 1;
+  if (has_name()) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+      this->name().data(), this->name().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE);
+    ::google::protobuf::internal::WireFormatLite::WriteString(
+      1, this->name(), output);
+  }
+
+  // required .Hackers_Project.matrix.pos_data pos = 2;
+  if (has_pos()) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      2, this->pos(), output);
+  }
+
+  // required .Hackers_Project.matrix.pos_data size = 3;
+  if (has_size()) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      3, this->size(), output);
+  }
+
   if (!unknown_fields().empty()) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         unknown_fields(), output);
@@ -204,6 +584,30 @@ void entity_data::SerializeWithCachedSizes(
 
 ::google::protobuf::uint8* entity_data::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
+  // required string name = 1;
+  if (has_name()) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+      this->name().data(), this->name().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE);
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        1, this->name(), target);
+  }
+
+  // required .Hackers_Project.matrix.pos_data pos = 2;
+  if (has_pos()) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      WriteMessageNoVirtualToArray(
+        2, this->pos(), target);
+  }
+
+  // required .Hackers_Project.matrix.pos_data size = 3;
+  if (has_size()) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      WriteMessageNoVirtualToArray(
+        3, this->size(), target);
+  }
+
   if (!unknown_fields().empty()) {
     target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
         unknown_fields(), target);
@@ -214,6 +618,29 @@ void entity_data::SerializeWithCachedSizes(
 int entity_data::ByteSize() const {
   int total_size = 0;
 
+  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    // required string name = 1;
+    if (has_name()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::StringSize(
+          this->name());
+    }
+
+    // required .Hackers_Project.matrix.pos_data pos = 2;
+    if (has_pos()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+          this->pos());
+    }
+
+    // required .Hackers_Project.matrix.pos_data size = 3;
+    if (has_size()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+          this->size());
+    }
+
+  }
   if (!unknown_fields().empty()) {
     total_size +=
       ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
@@ -239,6 +666,17 @@ void entity_data::MergeFrom(const ::google::protobuf::Message& from) {
 
 void entity_data::MergeFrom(const entity_data& from) {
   GOOGLE_CHECK_NE(&from, this);
+  if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    if (from.has_name()) {
+      set_name(from.name());
+    }
+    if (from.has_pos()) {
+      mutable_pos()->::Hackers_Project::matrix::pos_data::MergeFrom(from.pos());
+    }
+    if (from.has_size()) {
+      mutable_size()->::Hackers_Project::matrix::pos_data::MergeFrom(from.size());
+    }
+  }
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
 }
 
@@ -255,12 +693,23 @@ void entity_data::CopyFrom(const entity_data& from) {
 }
 
 bool entity_data::IsInitialized() const {
+  if ((_has_bits_[0] & 0x00000007) != 0x00000007) return false;
 
+  if (has_pos()) {
+    if (!this->pos().IsInitialized()) return false;
+  }
+  if (has_size()) {
+    if (!this->size().IsInitialized()) return false;
+  }
   return true;
 }
 
 void entity_data::Swap(entity_data* other) {
   if (other != this) {
+    std::swap(name_, other->name_);
+    std::swap(pos_, other->pos_);
+    std::swap(size_, other->size_);
+    std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);
     std::swap(_cached_size_, other->_cached_size_);
   }
@@ -279,7 +728,7 @@ void entity_data::Swap(entity_data* other) {
 
 #ifndef _MSC_VER
 const int cybermatrix_data::kNameFieldNumber;
-const int cybermatrix_data::kEnergyConsumptionFieldNumber;
+const int cybermatrix_data::kSizeFieldNumber;
 #endif  // !_MSC_VER
 
 cybermatrix_data::cybermatrix_data()
@@ -288,6 +737,7 @@ cybermatrix_data::cybermatrix_data()
 }
 
 void cybermatrix_data::InitAsDefaultInstance() {
+  size_ = const_cast< ::Hackers_Project::matrix::pos_data*>(&::Hackers_Project::matrix::pos_data::default_instance());
 }
 
 cybermatrix_data::cybermatrix_data(const cybermatrix_data& from)
@@ -299,7 +749,7 @@ cybermatrix_data::cybermatrix_data(const cybermatrix_data& from)
 void cybermatrix_data::SharedCtor() {
   _cached_size_ = 0;
   name_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
-  energy_consumption_ = 0u;
+  size_ = NULL;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -312,6 +762,7 @@ void cybermatrix_data::SharedDtor() {
     delete name_;
   }
   if (this != default_instance_) {
+    delete size_;
   }
 }
 
@@ -343,7 +794,9 @@ void cybermatrix_data::Clear() {
         name_->clear();
       }
     }
-    energy_consumption_ = 0u;
+    if (has_size()) {
+      if (size_ != NULL) size_->::Hackers_Project::matrix::pos_data::Clear();
+    }
   }
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
   mutable_unknown_fields()->Clear();
@@ -367,19 +820,17 @@ bool cybermatrix_data::MergePartialFromCodedStream(
         } else {
           goto handle_uninterpreted;
         }
-        if (input->ExpectTag(16)) goto parse_energy_consumption;
+        if (input->ExpectTag(18)) goto parse_size;
         break;
       }
 
-      // required uint32 energy_consumption = 2;
+      // required .Hackers_Project.matrix.pos_data size = 2;
       case 2: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
-         parse_energy_consumption:
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
-                 input, &energy_consumption_)));
-          set_has_energy_consumption();
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
+         parse_size:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+               input, mutable_size()));
         } else {
           goto handle_uninterpreted;
         }
@@ -414,9 +865,10 @@ void cybermatrix_data::SerializeWithCachedSizes(
       1, this->name(), output);
   }
 
-  // required uint32 energy_consumption = 2;
-  if (has_energy_consumption()) {
-    ::google::protobuf::internal::WireFormatLite::WriteUInt32(2, this->energy_consumption(), output);
+  // required .Hackers_Project.matrix.pos_data size = 2;
+  if (has_size()) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      2, this->size(), output);
   }
 
   if (!unknown_fields().empty()) {
@@ -437,9 +889,11 @@ void cybermatrix_data::SerializeWithCachedSizes(
         1, this->name(), target);
   }
 
-  // required uint32 energy_consumption = 2;
-  if (has_energy_consumption()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(2, this->energy_consumption(), target);
+  // required .Hackers_Project.matrix.pos_data size = 2;
+  if (has_size()) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      WriteMessageNoVirtualToArray(
+        2, this->size(), target);
   }
 
   if (!unknown_fields().empty()) {
@@ -460,11 +914,11 @@ int cybermatrix_data::ByteSize() const {
           this->name());
     }
 
-    // required uint32 energy_consumption = 2;
-    if (has_energy_consumption()) {
+    // required .Hackers_Project.matrix.pos_data size = 2;
+    if (has_size()) {
       total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::UInt32Size(
-          this->energy_consumption());
+        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+          this->size());
     }
 
   }
@@ -497,8 +951,8 @@ void cybermatrix_data::MergeFrom(const cybermatrix_data& from) {
     if (from.has_name()) {
       set_name(from.name());
     }
-    if (from.has_energy_consumption()) {
-      set_energy_consumption(from.energy_consumption());
+    if (from.has_size()) {
+      mutable_size()->::Hackers_Project::matrix::pos_data::MergeFrom(from.size());
     }
   }
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
@@ -519,13 +973,16 @@ void cybermatrix_data::CopyFrom(const cybermatrix_data& from) {
 bool cybermatrix_data::IsInitialized() const {
   if ((_has_bits_[0] & 0x00000003) != 0x00000003) return false;
 
+  if (has_size()) {
+    if (!this->size().IsInitialized()) return false;
+  }
   return true;
 }
 
 void cybermatrix_data::Swap(cybermatrix_data* other) {
   if (other != this) {
     std::swap(name_, other->name_);
-    std::swap(energy_consumption_, other->energy_consumption_);
+    std::swap(size_, other->size_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);
     std::swap(_cached_size_, other->_cached_size_);
@@ -543,6 +1000,7 @@ void cybermatrix_data::Swap(cybermatrix_data* other) {
 
 // @@protoc_insertion_point(namespace_scope)
 
+}  // namespace matrix
 }  // namespace Hackers_Project
 
 // @@protoc_insertion_point(global_scope)

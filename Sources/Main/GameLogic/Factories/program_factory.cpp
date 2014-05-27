@@ -27,15 +27,15 @@ program_factory::program_factory() : pimpl(new program_factory_private(this))
 }
 program_factory::~program_factory(){}
 
-abstract_program_handler program_factory::create(program_id id)
+program::abstract_program_handler program_factory::create(program_id id)
 {
-	program_factory_private::programs_list::const_iterator it = pimpl->programs.find(id);
-	if (it==pimpl->programs.end())
+	program_factory_private::programs_list::iterator it = pimpl->programs.find(id);
+	if (it == pimpl->programs.end())
 	{
 		printLog(eDebug, eWarningLogLevel, "");
-		return abstract_program_handler();
+		return program::abstract_program_handler();
 	}
-	return abstract_program_handler();
+	return program::abstract_program_handler();
 }
 
 unsigned int program_factory::count()
