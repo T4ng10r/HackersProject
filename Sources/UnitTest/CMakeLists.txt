@@ -14,7 +14,6 @@ include_directories(${gmock_SOURCE_DIR}
 ####################
 GatheringFiles(${CMAKE_CURRENT_SOURCE_DIR} "cpp;h;;c")
 
-
 SET (GAME_DATA_DIR ${HackersProject_PROJECT_SOURCE_DIR}/Data)
 FILE(GLOB GAME_DATA_FILES ${GAME_DATA_DIR}/xml/*.xml)
 
@@ -28,7 +27,7 @@ ENDFOREACH()
 
 ADD_CUSTOM_COMMAND(
 	OUTPUT  ${GAME_DATA_OUT_FILES}
-	DEPENDS ${GAME_DATA_FILES} ${CMAKE_CURRENT_BINARY_DIR}/logs/log4cpp.properties
+	DEPENDS ${GAME_DATA_FILES} ${CMAKE_CURRENT_BINARY_DIR}/logs/log4cpp.properties GameDataGenerator
 	COMMAND GameDataGenerator --in_dir ${GAME_DATA_DIR}/xml --out_dir ${GAME_DATA_DIR}/pb
     COMMAND ${CMAKE_COMMAND} -E make_directory ${CMAKE_CURRENT_BINARY_DIR}/data
     COMMAND ${CMAKE_COMMAND} -E copy ${GAME_DATA_OUT_FILES} ${GAME_DATA_BIN_OUT_FILES} 

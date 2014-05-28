@@ -12,6 +12,7 @@ namespace constants
 	const std::string program_keyword("PROGRAM");
 	const std::string xmlattr_keyword("<xmlattr>");
 	const std::string program_name_keyword(xmlattr_keyword+".name");
+	static const int eof_mark(-1);
 };
 
 std::vector<Hackers_Project::program_data> program_data_cont;
@@ -82,8 +83,12 @@ void program_generator::save(const std::string & dir_path)
 	printLog(eDebug, eErrorLogLevel, str(boost::format("Saving to '%1%' started") % filename));
 	for(const Hackers_Project::program_data & item  : program_data_cont)
 	{
+		std::string msg_content;
+		item.SerializeToString(&msg_content);
+		strm<<msg_content.size();
 		item.SerializeToOstream(&strm);
 	}
+	strm<<eof_mark;
 	printLog(eDebug, eErrorLogLevel, str(boost::format("Saving to '%1%' finished") % filename));
 	strm.close();
 }

@@ -1,6 +1,8 @@
 #pragma once
 #include <memory>
 #include <list>
+#include <map>
+#include <string>
 
 template<typename Type>
 class type_handle
@@ -38,6 +40,8 @@ enum effect_type
 	program_effect_count
 };
 
+typedef std::map<effect_type, param_value_t> program_stats;
+
 enum param_value_types
 {
 	attack_value,
@@ -46,4 +50,4 @@ enum param_value_types
 	detection_strength_value
 };
 
-};
+}; //namespace program

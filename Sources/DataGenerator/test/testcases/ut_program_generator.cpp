@@ -61,5 +61,5 @@ TEST_F(ut_program_generator_test, wrong_filename)
 TEST_F(ut_program_generator_test, programs_load)
 {
 	EXPECT_TRUE(uut->load(constants::dir_path));
-	EXPECT_EQ(1, uut->count());
+	EXPECT_EQ(14, uut->count());
 }

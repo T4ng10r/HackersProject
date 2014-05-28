@@ -2,6 +2,9 @@
 #include <GameLogic/Interface/types.h>
 #include <GameLogic/Interface/abstract_program.h>
 
+namespace program
+{
+
 class program_factory;
 class program_factory_private;
 typedef type_handle<program_factory>::type program_factory_handle;
@@ -31,3 +34,5 @@ public:
 protected:
 	std::unique_ptr<program_factory_private>	pimpl;
 };
+
+}; //namespace program
