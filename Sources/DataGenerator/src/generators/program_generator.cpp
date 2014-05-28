@@ -88,7 +88,7 @@ void program_generator::save(const std::string & dir_path)
 		strm<<msg_content.size();
 		item.SerializeToOstream(&strm);
 	}
-	strm<<eof_mark;
+	strm<<constants::eof_mark;
 	printLog(eDebug, eErrorLogLevel, str(boost::format("Saving to '%1%' finished") % filename));
 	strm.close();
 }
