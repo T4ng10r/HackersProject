@@ -13,8 +13,12 @@ class program_warehouse
 	programs stored_programs;
 public:
 	bool load(std::string dir_path);
+
 	::Hackers_Project::program_data get(program_id id);
+	std::list<program_id> available_programs();
 	unsigned int size();
+protected:
+	void load_program(std::ifstream &strm);
 };
 
 }; //namespace program

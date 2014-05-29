@@ -9,7 +9,11 @@ class program_generator : public abstract_generator
 public:
 	program_generator();
 	bool load(const std::string & dir_path);
-	Hackers_Project::program_data load_data(const boost::property_tree::ptree::value_type & v );
+	Hackers_Project::program_data load_data(const boost::property_tree::ptree & v );
+
+	void parse_effects_tree(const boost::property_tree::ptree &effects_,
+							Hackers_Project::program_data &program_data_);
+
 	unsigned int count();
 	void save(const std::string & dir_path);
 public:

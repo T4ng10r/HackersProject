@@ -36,7 +36,6 @@ void protobuf_ShutdownFile_program_2eproto();
 
 class program_data;
 class program_data_effect;
-class programs_stats;
 
 enum program_data_effect_type {
   program_data_effect_type_attack = 1,
@@ -271,10 +270,10 @@ class program_data : public ::google::protobuf::Message {
   inline ::std::string* release_name();
   inline void set_allocated_name(::std::string* name);
 
-  // repeated .Hackers_Project.program_data.effect effects = 3;
+  // repeated .Hackers_Project.program_data.effect effects = 2;
   inline int effects_size() const;
   inline void clear_effects();
-  static const int kEffectsFieldNumber = 3;
+  static const int kEffectsFieldNumber = 2;
   inline const ::Hackers_Project::program_data_effect& effects(int index) const;
   inline ::Hackers_Project::program_data_effect* mutable_effects(int index);
   inline ::Hackers_Project::program_data_effect* add_effects();
@@ -302,91 +301,6 @@ class program_data : public ::google::protobuf::Message {
 
   void InitAsDefaultInstance();
   static program_data* default_instance_;
-};
-// -------------------------------------------------------------------
-
-class programs_stats : public ::google::protobuf::Message {
- public:
-  programs_stats();
-  virtual ~programs_stats();
-
-  programs_stats(const programs_stats& from);
-
-  inline programs_stats& operator=(const programs_stats& from) {
-    CopyFrom(from);
-    return *this;
-  }
-
-  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
-    return _unknown_fields_;
-  }
-
-  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
-    return &_unknown_fields_;
-  }
-
-  static const ::google::protobuf::Descriptor* descriptor();
-  static const programs_stats& default_instance();
-
-  void Swap(programs_stats* other);
-
-  // implements Message ----------------------------------------------
-
-  programs_stats* New() const;
-  void CopyFrom(const ::google::protobuf::Message& from);
-  void MergeFrom(const ::google::protobuf::Message& from);
-  void CopyFrom(const programs_stats& from);
-  void MergeFrom(const programs_stats& from);
-  void Clear();
-  bool IsInitialized() const;
-
-  int ByteSize() const;
-  bool MergePartialFromCodedStream(
-      ::google::protobuf::io::CodedInputStream* input);
-  void SerializeWithCachedSizes(
-      ::google::protobuf::io::CodedOutputStream* output) const;
-  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
-  int GetCachedSize() const { return _cached_size_; }
-  private:
-  void SharedCtor();
-  void SharedDtor();
-  void SetCachedSize(int size) const;
-  public:
-
-  ::google::protobuf::Metadata GetMetadata() const;
-
-  // nested types ----------------------------------------------------
-
-  // accessors -------------------------------------------------------
-
-  // repeated .Hackers_Project.program_data programs = 1;
-  inline int programs_size() const;
-  inline void clear_programs();
-  static const int kProgramsFieldNumber = 1;
-  inline const ::Hackers_Project::program_data& programs(int index) const;
-  inline ::Hackers_Project::program_data* mutable_programs(int index);
-  inline ::Hackers_Project::program_data* add_programs();
-  inline const ::google::protobuf::RepeatedPtrField< ::Hackers_Project::program_data >&
-      programs() const;
-  inline ::google::protobuf::RepeatedPtrField< ::Hackers_Project::program_data >*
-      mutable_programs();
-
-  // @@protoc_insertion_point(class_scope:Hackers_Project.programs_stats)
- private:
-
-  ::google::protobuf::UnknownFieldSet _unknown_fields_;
-
-  ::google::protobuf::RepeatedPtrField< ::Hackers_Project::program_data > programs_;
-
-  mutable int _cached_size_;
-  ::google::protobuf::uint32 _has_bits_[(1 + 31) / 32];
-
-  friend void  protobuf_AddDesc_program_2eproto();
-  friend void protobuf_AssignDesc_program_2eproto();
-  friend void protobuf_ShutdownFile_program_2eproto();
-
-  void InitAsDefaultInstance();
-  static programs_stats* default_instance_;
 };
 // ===================================================================
 
@@ -514,7 +428,7 @@ inline void program_data::set_allocated_name(::std::string* name) {
   }
 }
 
-// repeated .Hackers_Project.program_data.effect effects = 3;
+// repeated .Hackers_Project.program_data.effect effects = 2;
 inline int program_data::effects_size() const {
   return effects_.size();
 }
@@ -537,35 +451,6 @@ program_data::effects() const {
 inline ::google::protobuf::RepeatedPtrField< ::Hackers_Project::program_data_effect >*
 program_data::mutable_effects() {
   return &effects_;
-}
-
-// -------------------------------------------------------------------
-
-// programs_stats
-
-// repeated .Hackers_Project.program_data programs = 1;
-inline int programs_stats::programs_size() const {
-  return programs_.size();
-}
-inline void programs_stats::clear_programs() {
-  programs_.Clear();
-}
-inline const ::Hackers_Project::program_data& programs_stats::programs(int index) const {
-  return programs_.Get(index);
-}
-inline ::Hackers_Project::program_data* programs_stats::mutable_programs(int index) {
-  return programs_.Mutable(index);
-}
-inline ::Hackers_Project::program_data* programs_stats::add_programs() {
-  return programs_.Add();
-}
-inline const ::google::protobuf::RepeatedPtrField< ::Hackers_Project::program_data >&
-programs_stats::programs() const {
-  return programs_;
-}
-inline ::google::protobuf::RepeatedPtrField< ::Hackers_Project::program_data >*
-programs_stats::mutable_programs() {
-  return &programs_;
 }
 
 

@@ -24,9 +24,5 @@ message program_data {
       required effect_type effect = 1;
       required int32 val = 2;
   }
-  repeated effect effects =3;
+  repeated effect effects = 2;
 }
-message programs_stats {
-    repeated program_data programs= 1;
-}
-

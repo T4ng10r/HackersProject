@@ -27,9 +27,6 @@ const ::google::protobuf::Descriptor* program_data_effect_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
   program_data_effect_reflection_ = NULL;
 const ::google::protobuf::EnumDescriptor* program_data_effect_type_descriptor_ = NULL;
-const ::google::protobuf::Descriptor* programs_stats_descriptor_ = NULL;
-const ::google::protobuf::internal::GeneratedMessageReflection*
-  programs_stats_reflection_ = NULL;
 
 }  // namespace
 
@@ -73,21 +70,6 @@ void protobuf_AssignDesc_program_2eproto() {
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(program_data_effect));
   program_data_effect_type_descriptor_ = program_data_descriptor_->enum_type(0);
-  programs_stats_descriptor_ = file->message_type(1);
-  static const int programs_stats_offsets_[1] = {
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(programs_stats, programs_),
-  };
-  programs_stats_reflection_ =
-    new ::google::protobuf::internal::GeneratedMessageReflection(
-      programs_stats_descriptor_,
-      programs_stats::default_instance_,
-      programs_stats_offsets_,
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(programs_stats, _has_bits_[0]),
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(programs_stats, _unknown_fields_),
-      -1,
-      ::google::protobuf::DescriptorPool::generated_pool(),
-      ::google::protobuf::MessageFactory::generated_factory(),
-      sizeof(programs_stats));
 }
 
 namespace {
@@ -104,8 +86,6 @@ void protobuf_RegisterTypes(const ::std::string&) {
     program_data_descriptor_, &program_data::default_instance());
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
     program_data_effect_descriptor_, &program_data_effect::default_instance());
-  ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
-    programs_stats_descriptor_, &programs_stats::default_instance());
 }
 
 }  // namespace
@@ -115,8 +95,6 @@ void protobuf_ShutdownFile_program_2eproto() {
   delete program_data_reflection_;
   delete program_data_effect::default_instance_;
   delete program_data_effect_reflection_;
-  delete programs_stats::default_instance_;
-  delete programs_stats_reflection_;
 }
 
 void protobuf_AddDesc_program_2eproto() {
@@ -127,7 +105,7 @@ void protobuf_AddDesc_program_2eproto() {
 
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
     "\n\rprogram.proto\022\017Hackers_Project\"\363\002\n\014pro"
-    "gram_data\022\014\n\004name\030\001 \002(\t\0225\n\007effects\030\003 \003(\013"
+    "gram_data\022\014\n\004name\030\001 \002(\t\0225\n\007effects\030\002 \003(\013"
     "2$.Hackers_Project.program_data.effect\032P"
     "\n\006effect\0229\n\006effect\030\001 \002(\0162).Hackers_Proje"
     "ct.program_data.effect_type\022\013\n\003val\030\002 \002(\005"
@@ -136,16 +114,13 @@ void protobuf_AddDesc_program_2eproto() {
     "eceive\020\006\022\t\n\005decoy\020\007\022\013\n\007decrypt\020\010\022\014\n\010eval"
     "uate\020\t\022\t\n\005medic\020\n\022\014\n\010relocate\020\013\022\010\n\004scan\020"
     "\014\022\n\n\006shield\020\r\022\010\n\004slow\020\016\022\t\n\005virus\020\017\022\n\n\006we"
-    "aken\020\020\"A\n\016programs_stats\022/\n\010programs\030\001 \003"
-    "(\0132\035.Hackers_Project.program_data", 473);
+    "aken\020\020", 406);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "program.proto", &protobuf_RegisterTypes);
   program_data::default_instance_ = new program_data();
   program_data_effect::default_instance_ = new program_data_effect();
-  programs_stats::default_instance_ = new programs_stats();
   program_data::default_instance_->InitAsDefaultInstance();
   program_data_effect::default_instance_->InitAsDefaultInstance();
-  programs_stats::default_instance_->InitAsDefaultInstance();
   ::google::protobuf::internal::OnShutdown(&protobuf_ShutdownFile_program_2eproto);
 }
 
@@ -551,12 +526,12 @@ bool program_data::MergePartialFromCodedStream(
         } else {
           goto handle_uninterpreted;
         }
-        if (input->ExpectTag(26)) goto parse_effects;
+        if (input->ExpectTag(18)) goto parse_effects;
         break;
       }
 
-      // repeated .Hackers_Project.program_data.effect effects = 3;
-      case 3: {
+      // repeated .Hackers_Project.program_data.effect effects = 2;
+      case 2: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
          parse_effects:
@@ -565,7 +540,7 @@ bool program_data::MergePartialFromCodedStream(
         } else {
           goto handle_uninterpreted;
         }
-        if (input->ExpectTag(26)) goto parse_effects;
+        if (input->ExpectTag(18)) goto parse_effects;
         if (input->ExpectAtEnd()) return true;
         break;
       }
@@ -597,10 +572,10 @@ void program_data::SerializeWithCachedSizes(
       1, this->name(), output);
   }
 
-  // repeated .Hackers_Project.program_data.effect effects = 3;
+  // repeated .Hackers_Project.program_data.effect effects = 2;
   for (int i = 0; i < this->effects_size(); i++) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      3, this->effects(i), output);
+      2, this->effects(i), output);
   }
 
   if (!unknown_fields().empty()) {
@@ -621,11 +596,11 @@ void program_data::SerializeWithCachedSizes(
         1, this->name(), target);
   }
 
-  // repeated .Hackers_Project.program_data.effect effects = 3;
+  // repeated .Hackers_Project.program_data.effect effects = 2;
   for (int i = 0; i < this->effects_size(); i++) {
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
-        3, this->effects(i), target);
+        2, this->effects(i), target);
   }
 
   if (!unknown_fields().empty()) {
@@ -647,7 +622,7 @@ int program_data::ByteSize() const {
     }
 
   }
-  // repeated .Hackers_Project.program_data.effect effects = 3;
+  // repeated .Hackers_Project.program_data.effect effects = 2;
   total_size += 1 * this->effects_size();
   for (int i = 0; i < this->effects_size(); i++) {
     total_size +=
@@ -725,212 +700,6 @@ void program_data::Swap(program_data* other) {
   ::google::protobuf::Metadata metadata;
   metadata.descriptor = program_data_descriptor_;
   metadata.reflection = program_data_reflection_;
-  return metadata;
-}
-
-
-// ===================================================================
-
-#ifndef _MSC_VER
-const int programs_stats::kProgramsFieldNumber;
-#endif  // !_MSC_VER
-
-programs_stats::programs_stats()
-  : ::google::protobuf::Message() {
-  SharedCtor();
-}
-
-void programs_stats::InitAsDefaultInstance() {
-}
-
-programs_stats::programs_stats(const programs_stats& from)
-  : ::google::protobuf::Message() {
-  SharedCtor();
-  MergeFrom(from);
-}
-
-void programs_stats::SharedCtor() {
-  _cached_size_ = 0;
-  ::memset(_has_bits_, 0, sizeof(_has_bits_));
-}
-
-programs_stats::~programs_stats() {
-  SharedDtor();
-}
-
-void programs_stats::SharedDtor() {
-  if (this != default_instance_) {
-  }
-}
-
-void programs_stats::SetCachedSize(int size) const {
-  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
-  _cached_size_ = size;
-  GOOGLE_SAFE_CONCURRENT_WRITES_END();
-}
-const ::google::protobuf::Descriptor* programs_stats::descriptor() {
-  protobuf_AssignDescriptorsOnce();
-  return programs_stats_descriptor_;
-}
-
-const programs_stats& programs_stats::default_instance() {
-  if (default_instance_ == NULL) protobuf_AddDesc_program_2eproto();
-  return *default_instance_;
-}
-
-programs_stats* programs_stats::default_instance_ = NULL;
-
-programs_stats* programs_stats::New() const {
-  return new programs_stats;
-}
-
-void programs_stats::Clear() {
-  programs_.Clear();
-  ::memset(_has_bits_, 0, sizeof(_has_bits_));
-  mutable_unknown_fields()->Clear();
-}
-
-bool programs_stats::MergePartialFromCodedStream(
-    ::google::protobuf::io::CodedInputStream* input) {
-#define DO_(EXPRESSION) if (!(EXPRESSION)) return false
-  ::google::protobuf::uint32 tag;
-  while ((tag = input->ReadTag()) != 0) {
-    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // repeated .Hackers_Project.program_data programs = 1;
-      case 1: {
-        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
-         parse_programs:
-          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
-                input, add_programs()));
-        } else {
-          goto handle_uninterpreted;
-        }
-        if (input->ExpectTag(10)) goto parse_programs;
-        if (input->ExpectAtEnd()) return true;
-        break;
-      }
-
-      default: {
-      handle_uninterpreted:
-        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
-          return true;
-        }
-        DO_(::google::protobuf::internal::WireFormat::SkipField(
-              input, tag, mutable_unknown_fields()));
-        break;
-      }
-    }
-  }
-  return true;
-#undef DO_
-}
-
-void programs_stats::SerializeWithCachedSizes(
-    ::google::protobuf::io::CodedOutputStream* output) const {
-  // repeated .Hackers_Project.program_data programs = 1;
-  for (int i = 0; i < this->programs_size(); i++) {
-    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      1, this->programs(i), output);
-  }
-
-  if (!unknown_fields().empty()) {
-    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
-        unknown_fields(), output);
-  }
-}
-
-::google::protobuf::uint8* programs_stats::SerializeWithCachedSizesToArray(
-    ::google::protobuf::uint8* target) const {
-  // repeated .Hackers_Project.program_data programs = 1;
-  for (int i = 0; i < this->programs_size(); i++) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      WriteMessageNoVirtualToArray(
-        1, this->programs(i), target);
-  }
-
-  if (!unknown_fields().empty()) {
-    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
-        unknown_fields(), target);
-  }
-  return target;
-}
-
-int programs_stats::ByteSize() const {
-  int total_size = 0;
-
-  // repeated .Hackers_Project.program_data programs = 1;
-  total_size += 1 * this->programs_size();
-  for (int i = 0; i < this->programs_size(); i++) {
-    total_size +=
-      ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
-        this->programs(i));
-  }
-
-  if (!unknown_fields().empty()) {
-    total_size +=
-      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
-        unknown_fields());
-  }
-  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
-  _cached_size_ = total_size;
-  GOOGLE_SAFE_CONCURRENT_WRITES_END();
-  return total_size;
-}
-
-void programs_stats::MergeFrom(const ::google::protobuf::Message& from) {
-  GOOGLE_CHECK_NE(&from, this);
-  const programs_stats* source =
-    ::google::protobuf::internal::dynamic_cast_if_available<const programs_stats*>(
-      &from);
-  if (source == NULL) {
-    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
-  } else {
-    MergeFrom(*source);
-  }
-}
-
-void programs_stats::MergeFrom(const programs_stats& from) {
-  GOOGLE_CHECK_NE(&from, this);
-  programs_.MergeFrom(from.programs_);
-  mutable_unknown_fields()->MergeFrom(from.unknown_fields());
-}
-
-void programs_stats::CopyFrom(const ::google::protobuf::Message& from) {
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
-}
-
-void programs_stats::CopyFrom(const programs_stats& from) {
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
-}
-
-bool programs_stats::IsInitialized() const {
-
-  for (int i = 0; i < programs_size(); i++) {
-    if (!this->programs(i).IsInitialized()) return false;
-  }
-  return true;
-}
-
-void programs_stats::Swap(programs_stats* other) {
-  if (other != this) {
-    programs_.Swap(&other->programs_);
-    std::swap(_has_bits_[0], other->_has_bits_[0]);
-    _unknown_fields_.Swap(&other->_unknown_fields_);
-    std::swap(_cached_size_, other->_cached_size_);
-  }
-}
-
-::google::protobuf::Metadata programs_stats::GetMetadata() const {
-  protobuf_AssignDescriptorsOnce();
-  ::google::protobuf::Metadata metadata;
-  metadata.descriptor = programs_stats_descriptor_;
-  metadata.reflection = programs_stats_reflection_;
   return metadata;
 }
 

@@ -1,59 +1,87 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <PROGRAMS>
-    <PROGRAM name="Brute" id="1">
-        <attack>1</attack>
-        <size>1</size>
-    </PROGRAM>
-  <PROGRAM name="Hammer" id="2">
-    <attack>5</attack>
+  <PROGRAM name="Brute">
+    <effects>
+      <attack>1</attack>
+    </effects>
     <size>1</size>
   </PROGRAM>
-  <PROGRAM name="Worm" id="3">
+  <PROGRAM name="Hammer">
+    <effects>
+      <attack>5</attack>
+    </effects>
+    <size>1</size>
+  </PROGRAM>
+  <PROGRAM name="Worm">
+    <effects>
+      <attack>1</attack>
+    </effects>
+    <size>1</size>
+  </PROGRAM>
+  <PROGRAM name="Watchdog">
+    <effects>
     <attack>1</attack>
+    </effects>
     <size>1</size>
   </PROGRAM>
-  <PROGRAM name="Watchdog" id="4">
-    <attack>1</attack>
-    <size>1</size>
-  </PROGRAM>
-  <PROGRAM name="Codecracker" id="5">
+  <PROGRAM name="Codecracker">
+    <effects>
     <decrypt>1</decrypt>
+    </effects>
     <size>1</size>
   </PROGRAM>
-  <PROGRAM name="Raffles" id="6">
+  <PROGRAM name="Raffles">
+    <effects>
     <decrypt>3</decrypt>
+    </effects>
     <size>2</size>
   </PROGRAM>
-  <PROGRAM name="Watchdog" id="7">
+  <PROGRAM name="Watchdog v2">
+    <effects>
     <scan>2</scan>
+    </effects>
     <size>1</size>
   </PROGRAM>
-  <PROGRAM name="Seeya" id="8">
+  <PROGRAM name="Seeya">
+    <effects>
     <scan>3</scan>
+    </effects>
     <size>1</size>
   </PROGRAM>
-  <PROGRAM name="Hidden Virtue" id="9">
+  <PROGRAM name="Hidden Virtue">
+    <effects>
     <scan>4</scan>
+    </effects>
     <size>2</size>
   </PROGRAM>
-  <PROGRAM name="Invisibility" id="10">
+  <PROGRAM name="Invisibility">
+    <effects>
     <deceive>1</deceive>
     <size>1</size>
+    </effects>
   </PROGRAM>
-  <PROGRAM name="Stealth" id="11">
+  <PROGRAM name="Stealth">
+    <effects>
     <deceive>2</deceive>
+    </effects>
     <size>1</size>
   </PROGRAM>
-  <PROGRAM name="Replikator" id="12">
+  <PROGRAM name="Replikator">
+    <effects>
     <deceive>3</deceive>
+    </effects>
     <size>2</size>
   </PROGRAM>
-  <PROGRAM name="Shield" id="13">
+  <PROGRAM name="Shield">
+    <effects>
     <shield>1</shield>
+    </effects>
     <size>1</size>
   </PROGRAM>
-  <PROGRAM name="Force field" id="14">
+  <PROGRAM name="Force field">
+    <effects>
     <shield>2</shield>
+    </effects>
     <size>1</size>
   </PROGRAM>
 </PROGRAMS>
