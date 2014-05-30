@@ -27,9 +27,8 @@ public:
 
 TEST_F(ut_program_warehouse_test, programs_get_empty)
 {
-	::Hackers_Project::program_data data = sut.get("");
-	
-	ASSERT_FALSE(data.has_name());
+	boost::optional<::Hackers_Project::program_data> data = sut.get("");
+	ASSERT_FALSE(data);
 }
 
 TEST_F(ut_program_warehouse_test, programs_load_wrong_dir)

@@ -51,9 +51,13 @@ bool program_warehouse::load(std::string dir_path)
 	printLog(eDebug, eDebugLogLevel, "Loading programs stats finished");
 	return true;
 }
-::Hackers_Project::program_data program_warehouse::get(program_id id)
+boost::optional<::Hackers_Project::program_data> program_warehouse::get(program_id id)
 {
-	::Hackers_Project::program_data data;
+	boost::optional<::Hackers_Project::program_data> data;
+	if (stored_programs.find(id)!=stored_programs.end())
+	{
+		data = stored_programs[id];
+	}
 	return data;
 }
 unsigned int program_warehouse::size()

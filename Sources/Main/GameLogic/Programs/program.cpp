@@ -10,6 +10,7 @@ public:
 public:
 	std::map<effect_type, param_value_t>	effects_map;
 	std::string name;
+	int size;
 	program * pub;
 };
 
@@ -19,6 +20,7 @@ program::program_private::program_private(program * pub_) :pub(pub_)
 program::program(const ::Hackers_Project::program_data & data_) : pimpl(new program_private(this))
 {
 	pimpl->name = data_.name();
+	pimpl->size = data_.size();
 	for (::Hackers_Project::program_data_effect eff : data_.effects())
 	{
 		pimpl->effects_map[static_cast<effect_type>(eff.effect())] = eff.val();
@@ -44,6 +46,10 @@ param_value_t program::get_effects_value(effect_type type) const
 
 unsigned int program::get_size() const
 {
-	return 1;
+	return pimpl->size;
 }
-};
+param_value_t program::get_value(param_value_types type) const
+{
+	return 0;
+}
+} //namespace program

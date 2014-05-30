@@ -33,9 +33,13 @@ program_factory::~program_factory(){}
 
 abstract_program_handler program_factory::create(program_id id)
 {
-	::Hackers_Project::program_data data = pimpl->programs.get(id);
+	boost::optional<::Hackers_Project::program_data> data = pimpl->programs.get(id);
 
-	std::shared_ptr<program> program_(new program(data));
+	if (!data)
+	{
+		return abstract_program_handler();
+	}
+	std::shared_ptr<program> program_(new program(data.get()));
 	
 	return std::dynamic_pointer_cast<abstract_program>(program_);
 }

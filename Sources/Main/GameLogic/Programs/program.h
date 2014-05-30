@@ -15,6 +15,7 @@ public:
 	std::list<effect> get_effects_list() const;
 	unsigned int get_size() const;
 	param_value_t get_effects_value(effect_type type) const;
+	param_value_t get_value(param_value_types type) const;
 protected:
 	class program_private;
 	std::unique_ptr<program_private> pimpl;

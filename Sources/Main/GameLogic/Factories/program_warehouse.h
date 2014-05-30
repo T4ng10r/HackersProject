@@ -3,6 +3,7 @@
 #include <string>
 #include <GameLogic/proto/program.pb.h>
 #include <GameLogic/Interface/types.h>
+#include <boost/optional.hpp>
 
 namespace program 
 {
@@ -14,7 +15,7 @@ class program_warehouse
 public:
 	bool load(std::string dir_path);
 
-	::Hackers_Project::program_data get(program_id id);
+	boost::optional<::Hackers_Project::program_data> get(program_id id);
 	std::list<program_id> available_programs();
 	unsigned int size();
 protected:

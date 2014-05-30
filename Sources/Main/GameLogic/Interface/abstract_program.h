@@ -22,6 +22,7 @@ public:
 	virtual unsigned int get_size() const = 0;
 	virtual std::list<effect> get_effects_list() const = 0;
 	virtual param_value_t get_effects_value(effect_type type) const = 0;
+	virtual param_value_t get_value(param_value_types type) const = 0;
 };
 
 typedef type_handle<abstract_program>::type abstract_program_handler;
