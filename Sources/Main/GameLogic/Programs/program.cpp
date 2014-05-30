@@ -3,7 +3,7 @@
 
 namespace program
 {
-class program_private
+class program::program_private
 {
 public:
 	program_private(program * pub_);
@@ -13,7 +13,7 @@ public:
 	program * pub;
 };
 
-program_private::program_private(program * pub_) :pub(pub_)
+program::program_private::program_private(program * pub_) :pub(pub_)
 {}
 //////////////////////////////////////////////////////////////////////////
 program::program(const ::Hackers_Project::program_data & data_) : pimpl(new program_private(this))
@@ -24,6 +24,7 @@ program::program(const ::Hackers_Project::program_data & data_) : pimpl(new prog
 		pimpl->effects_map[static_cast<effect_type>(eff.effect())] = eff.val();
 	}
 }
+program::~program(){}
 
 std::string program::get_name() const
 {

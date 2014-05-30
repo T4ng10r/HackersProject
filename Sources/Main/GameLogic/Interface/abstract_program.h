@@ -5,7 +5,6 @@
 #include <GameLogic/Interface/types.h>
 #include <GameLogic/proto/program.pb.h>
 
-
 namespace program
 {
 
@@ -15,10 +14,10 @@ struct effect
 	param_value_t  value;
 };
 
-
 class abstract_program
 {
 public:
+	virtual ~abstract_program(){}
 	virtual std::string get_name() const = 0;
 	virtual unsigned int get_size() const = 0;
 	virtual std::list<effect> get_effects_list() const = 0;

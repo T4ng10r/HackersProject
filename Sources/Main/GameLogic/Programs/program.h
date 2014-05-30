@@ -5,18 +5,18 @@
 
 namespace program
 {
-class program_private;
 
 class program : public abstract_program
 { 
-	friend class program_private;
 public:
 	program(const ::Hackers_Project::program_data & data_);
+	virtual ~program();
 	std::string get_name() const;
 	std::list<effect> get_effects_list() const;
 	unsigned int get_size() const;
 	param_value_t get_effects_value(effect_type type) const;
 protected:
+	class program_private;
 	std::unique_ptr<program_private> pimpl;
 };
 }; //program

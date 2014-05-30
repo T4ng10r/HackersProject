@@ -282,18 +282,28 @@ class program_data : public ::google::protobuf::Message {
   inline ::google::protobuf::RepeatedPtrField< ::Hackers_Project::program_data_effect >*
       mutable_effects();
 
+  // required int32 size = 3;
+  inline bool has_size() const;
+  inline void clear_size();
+  static const int kSizeFieldNumber = 3;
+  inline ::google::protobuf::int32 size() const;
+  inline void set_size(::google::protobuf::int32 value);
+
   // @@protoc_insertion_point(class_scope:Hackers_Project.program_data)
  private:
   inline void set_has_name();
   inline void clear_has_name();
+  inline void set_has_size();
+  inline void clear_has_size();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
   ::std::string* name_;
   ::google::protobuf::RepeatedPtrField< ::Hackers_Project::program_data_effect > effects_;
+  ::google::protobuf::int32 size_;
 
   mutable int _cached_size_;
-  ::google::protobuf::uint32 _has_bits_[(2 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(3 + 31) / 32];
 
   friend void  protobuf_AddDesc_program_2eproto();
   friend void protobuf_AssignDesc_program_2eproto();
@@ -451,6 +461,28 @@ program_data::effects() const {
 inline ::google::protobuf::RepeatedPtrField< ::Hackers_Project::program_data_effect >*
 program_data::mutable_effects() {
   return &effects_;
+}
+
+// required int32 size = 3;
+inline bool program_data::has_size() const {
+  return (_has_bits_[0] & 0x00000004u) != 0;
+}
+inline void program_data::set_has_size() {
+  _has_bits_[0] |= 0x00000004u;
+}
+inline void program_data::clear_has_size() {
+  _has_bits_[0] &= ~0x00000004u;
+}
+inline void program_data::clear_size() {
+  size_ = 0;
+  clear_has_size();
+}
+inline ::google::protobuf::int32 program_data::size() const {
+  return size_;
+}
+inline void program_data::set_size(::google::protobuf::int32 value) {
+  set_has_size();
+  size_ = value;
 }
 
 

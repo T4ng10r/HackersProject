@@ -1,6 +1,7 @@
 #pragma once
 #include <GameLogic/Factories/program_factory.h>
 #include <GameLogic/Factories/program_warehouse.h>
+#include <GameLogic/Programs/program.h>
 #include <map>
 #include <Tools/loggers.h>
 
@@ -20,7 +21,9 @@ public:
 };
 
 program_factory_private::program_factory_private(program_factory * pub_) :pub(pub_)
-{}
+{
+	programs.load("Data");
+}
 
 //////////////////////////////////////////////////////////////////////////
 program_factory::program_factory() : pimpl(new program_factory_private(this))
@@ -28,10 +31,13 @@ program_factory::program_factory() : pimpl(new program_factory_private(this))
 }
 program_factory::~program_factory(){}
 
-program::abstract_program_handler program_factory::create(program_id id)
+abstract_program_handler program_factory::create(program_id id)
 {
 	::Hackers_Project::program_data data = pimpl->programs.get(id);
-	return program::abstract_program_handler();
+
+	std::shared_ptr<program> program_(new program(data));
+	
+	return std::dynamic_pointer_cast<abstract_program>(program_);
 }
 
 unsigned int program_factory::count()
@@ -41,9 +47,7 @@ unsigned int program_factory::count()
 
 type_handle<program_id>::cont program_factory::get_list()
 {
-	type_handle<program_id>::cont cont;
-
-	return cont;
+	return pimpl->programs.available_programs();
 }
 
 }; //namespace program

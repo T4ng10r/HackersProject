@@ -1,16 +1,16 @@
-13
-Brute14
-Hammer12
-Worm16
-Watchdog19
-Codecracker15
-Raffles19
-Watchdog v213
-Seeya21
-Hidden Virtue26
-Invisibility15
-Stealth18
+15
+Brute16
+Hammer14
+Worm18
+Watchdog21
+Codecracker17
+Raffles21
+Watchdog v215
+Seeya23
+Hidden Virtue22
+Invisibility17
+Stealth20
 
-Replikator14
-Shield19
-Force field-1
+Replikator16
+Shield21
+Force field-1

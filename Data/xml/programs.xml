@@ -20,25 +20,25 @@
   </PROGRAM>
   <PROGRAM name="Watchdog">
     <effects>
-    <attack>1</attack>
+      <attack>1</attack>
     </effects>
     <size>1</size>
   </PROGRAM>
   <PROGRAM name="Codecracker">
     <effects>
-    <decrypt>1</decrypt>
+      <decrypt>1</decrypt>
     </effects>
     <size>1</size>
   </PROGRAM>
   <PROGRAM name="Raffles">
     <effects>
-    <decrypt>3</decrypt>
+      <decrypt>3</decrypt>
     </effects>
     <size>2</size>
   </PROGRAM>
   <PROGRAM name="Watchdog v2">
     <effects>
-    <scan>2</scan>
+      <scan>2</scan>
     </effects>
     <size>1</size>
   </PROGRAM>
@@ -50,37 +50,37 @@
   </PROGRAM>
   <PROGRAM name="Hidden Virtue">
     <effects>
-    <scan>4</scan>
+      <scan>4</scan>
     </effects>
     <size>2</size>
   </PROGRAM>
   <PROGRAM name="Invisibility">
     <effects>
-    <deceive>1</deceive>
-    <size>1</size>
+      <deceive>1</deceive>
     </effects>
+    <size>1</size>
   </PROGRAM>
   <PROGRAM name="Stealth">
     <effects>
-    <deceive>2</deceive>
+      <deceive>2</deceive>
     </effects>
     <size>1</size>
   </PROGRAM>
   <PROGRAM name="Replikator">
     <effects>
-    <deceive>3</deceive>
+      <deceive>3</deceive>
     </effects>
     <size>2</size>
   </PROGRAM>
   <PROGRAM name="Shield">
     <effects>
-    <shield>1</shield>
+      <shield>1</shield>
     </effects>
     <size>1</size>
   </PROGRAM>
   <PROGRAM name="Force field">
     <effects>
-    <shield>2</shield>
+      <shield>2</shield>
     </effects>
     <size>1</size>
   </PROGRAM>

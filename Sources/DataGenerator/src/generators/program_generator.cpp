@@ -14,6 +14,7 @@ namespace constants
 	const std::string xmlattr_keyword("<xmlattr>");
 	const std::string program_name_tree_path(xmlattr_keyword + ".name");
 	const std::string effects_tree_path("effects");
+	const std::string size_tree_path("size");
 	const int eof_mark(-1);
 };
 
@@ -47,6 +48,7 @@ Hackers_Project::program_data program_generator::load_data(const boost::property
 	try
 	{
 		program_data_.set_name(program_.get<std::string>(constants::program_name_tree_path));
+		program_data_.set_size(program_.get<int>("size"));
 		parse_effects_tree(program_.get_child(constants::effects_tree_path), program_data_);
 	}
 	catch (boost::property_tree::ptree_bad_path & ex)

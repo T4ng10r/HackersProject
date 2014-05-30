@@ -25,4 +25,5 @@ message program_data {
       required int32 val = 2;
   }
   repeated effect effects = 2;
+  required int32 size = 3;
 }

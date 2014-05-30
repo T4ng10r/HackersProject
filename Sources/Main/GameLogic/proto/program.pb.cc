@@ -38,9 +38,10 @@ void protobuf_AssignDesc_program_2eproto() {
       "program.proto");
   GOOGLE_CHECK(file != NULL);
   program_data_descriptor_ = file->message_type(0);
-  static const int program_data_offsets_[2] = {
+  static const int program_data_offsets_[3] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(program_data, name_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(program_data, effects_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(program_data, size_),
   };
   program_data_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
@@ -104,17 +105,17 @@ void protobuf_AddDesc_program_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-    "\n\rprogram.proto\022\017Hackers_Project\"\363\002\n\014pro"
+    "\n\rprogram.proto\022\017Hackers_Project\"\201\003\n\014pro"
     "gram_data\022\014\n\004name\030\001 \002(\t\0225\n\007effects\030\002 \003(\013"
-    "2$.Hackers_Project.program_data.effect\032P"
-    "\n\006effect\0229\n\006effect\030\001 \002(\0162).Hackers_Proje"
-    "ct.program_data.effect_type\022\013\n\003val\030\002 \002(\005"
-    "\"\313\001\n\013effect_type\022\n\n\006attack\020\001\022\013\n\007analyze\020"
-    "\002\022\t\n\005armor\020\003\022\t\n\005crypt\020\004\022\n\n\006detect\020\005\022\013\n\007d"
-    "eceive\020\006\022\t\n\005decoy\020\007\022\013\n\007decrypt\020\010\022\014\n\010eval"
-    "uate\020\t\022\t\n\005medic\020\n\022\014\n\010relocate\020\013\022\010\n\004scan\020"
-    "\014\022\n\n\006shield\020\r\022\010\n\004slow\020\016\022\t\n\005virus\020\017\022\n\n\006we"
-    "aken\020\020", 406);
+    "2$.Hackers_Project.program_data.effect\022\014"
+    "\n\004size\030\003 \002(\005\032P\n\006effect\0229\n\006effect\030\001 \002(\0162)"
+    ".Hackers_Project.program_data.effect_typ"
+    "e\022\013\n\003val\030\002 \002(\005\"\313\001\n\013effect_type\022\n\n\006attack"
+    "\020\001\022\013\n\007analyze\020\002\022\t\n\005armor\020\003\022\t\n\005crypt\020\004\022\n\n"
+    "\006detect\020\005\022\013\n\007deceive\020\006\022\t\n\005decoy\020\007\022\013\n\007dec"
+    "rypt\020\010\022\014\n\010evaluate\020\t\022\t\n\005medic\020\n\022\014\n\010reloc"
+    "ate\020\013\022\010\n\004scan\020\014\022\n\n\006shield\020\r\022\010\n\004slow\020\016\022\t\n"
+    "\005virus\020\017\022\n\n\006weaken\020\020", 420);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "program.proto", &protobuf_RegisterTypes);
   program_data::default_instance_ = new program_data();
@@ -440,6 +441,7 @@ void program_data_effect::Swap(program_data_effect* other) {
 #ifndef _MSC_VER
 const int program_data::kNameFieldNumber;
 const int program_data::kEffectsFieldNumber;
+const int program_data::kSizeFieldNumber;
 #endif  // !_MSC_VER
 
 program_data::program_data()
@@ -459,6 +461,7 @@ program_data::program_data(const program_data& from)
 void program_data::SharedCtor() {
   _cached_size_ = 0;
   name_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+  size_ = 0;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -502,6 +505,7 @@ void program_data::Clear() {
         name_->clear();
       }
     }
+    size_ = 0;
   }
   effects_.Clear();
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
@@ -541,6 +545,22 @@ bool program_data::MergePartialFromCodedStream(
           goto handle_uninterpreted;
         }
         if (input->ExpectTag(18)) goto parse_effects;
+        if (input->ExpectTag(24)) goto parse_size;
+        break;
+      }
+
+      // required int32 size = 3;
+      case 3: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+         parse_size:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
+                 input, &size_)));
+          set_has_size();
+        } else {
+          goto handle_uninterpreted;
+        }
         if (input->ExpectAtEnd()) return true;
         break;
       }
@@ -578,6 +598,11 @@ void program_data::SerializeWithCachedSizes(
       2, this->effects(i), output);
   }
 
+  // required int32 size = 3;
+  if (has_size()) {
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(3, this->size(), output);
+  }
+
   if (!unknown_fields().empty()) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         unknown_fields(), output);
@@ -603,6 +628,11 @@ void program_data::SerializeWithCachedSizes(
         2, this->effects(i), target);
   }
 
+  // required int32 size = 3;
+  if (has_size()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(3, this->size(), target);
+  }
+
   if (!unknown_fields().empty()) {
     target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
         unknown_fields(), target);
@@ -619,6 +649,13 @@ int program_data::ByteSize() const {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::StringSize(
           this->name());
+    }
+
+    // required int32 size = 3;
+    if (has_size()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::Int32Size(
+          this->size());
     }
 
   }
@@ -660,6 +697,9 @@ void program_data::MergeFrom(const program_data& from) {
     if (from.has_name()) {
       set_name(from.name());
     }
+    if (from.has_size()) {
+      set_size(from.size());
+    }
   }
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
 }
@@ -677,7 +717,7 @@ void program_data::CopyFrom(const program_data& from) {
 }
 
 bool program_data::IsInitialized() const {
-  if ((_has_bits_[0] & 0x00000001) != 0x00000001) return false;
+  if ((_has_bits_[0] & 0x00000005) != 0x00000005) return false;
 
   for (int i = 0; i < effects_size(); i++) {
     if (!this->effects(i).IsInitialized()) return false;
@@ -689,6 +729,7 @@ void program_data::Swap(program_data* other) {
   if (other != this) {
     std::swap(name_, other->name_);
     effects_.Swap(&other->effects_);
+    std::swap(size_, other->size_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);
     std::swap(_cached_size_, other->_cached_size_);
