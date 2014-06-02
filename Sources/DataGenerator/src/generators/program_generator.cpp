@@ -15,6 +15,7 @@ namespace constants
 	const std::string program_name_tree_path(xmlattr_keyword + ".name");
 	const std::string effects_tree_path("effects");
 	const std::string size_tree_path("size");
+	const std::string range_tree_path("range");
 	const int eof_mark(-1);
 };
 
@@ -41,14 +42,41 @@ void program_generator::parse_effects_tree(const boost::property_tree::ptree &ef
 	}
 }
 
+void program_generator::parse_size(const boost::property_tree::ptree &program_, 
+								  Hackers_Project::program_data &program_data_)
+{
+	try
+	{
+		program_data_.set_size(program_.get<int>(constants::size_tree_path));
+	}
+	catch (boost::property_tree::ptree_bad_path & ex)
+	{
+		printLog(eDebug, eErrorLogLevel, str(boost::format("'%1%'") % ex.what()));
+	}
+}
+
+void program_generator::parse_range(const boost::property_tree::ptree &program_, 
+								   Hackers_Project::program_data &program_data_)
+{
+	try
+	{
+		program_data_.set_range(program_.get<int>(constants::range_tree_path));
+	}
+	catch (boost::property_tree::ptree_bad_path & ex)
+	{
+		printLog(eDebug, eErrorLogLevel, str(boost::format("'%1%'") % ex.what()));
+	}
+}
+
 Hackers_Project::program_data program_generator::load_data(const boost::property_tree::ptree & program_ )
 {
 	Hackers_Project::program_data program_data_;
 	//display(0, program_);
+	parse_size(program_, program_data_);
+	parse_range(program_, program_data_);
 	try
 	{
 		program_data_.set_name(program_.get<std::string>(constants::program_name_tree_path));
-		program_data_.set_size(program_.get<int>("size"));
 		parse_effects_tree(program_.get_child(constants::effects_tree_path), program_data_);
 	}
 	catch (boost::property_tree::ptree_bad_path & ex)

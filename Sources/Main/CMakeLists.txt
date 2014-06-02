@@ -11,14 +11,12 @@ include_directories(${CMAKE_SOURCE_DIR}/include
 PROTOBUF_GENERATE_CPP(PROTOBUF_SRCS PROTOBUF_HDRS ${CMAKE_CURRENT_SOURCE_DIR}/GameLogic/proto ${PROTO_SRC_FILES} )
 CreateProjectStructure(${CMAKE_CURRENT_SOURCE_DIR} ${PROTOBUF_SRCS} ${PROTOBUF_HDRS})
 
-#file(GLOB PROTO_OBJ_FILES ${GAME_DATA_DIR}/pb/*.pb)
-#CreateProjectStructure(${PROTO_OBJ_FILES})
 GatheringFiles(${CMAKE_CURRENT_SOURCE_DIR} "cpp;h;;c;cc")
 SET(TMP_FILES ${TMP_FILES} log4cpp.properties
    ${PROTOBUF_HDRS}
    ${PROTOBUF_SRCS} )
 
-add_executable(HackersProject ${TMP_FILES} main.cpp)
+add_executable(HackersProject ${TMP_FILES} main.cpp TODO.txt)
 add_library(HackersProject_lib ${TMP_FILES} )
 add_dependencies(HackersProject_lib HackersProject)
 

@@ -10,12 +10,15 @@ public:
 	program_generator();
 	bool load(const std::string & dir_path);
 	Hackers_Project::program_data load_data(const boost::property_tree::ptree & v );
-
-	void parse_effects_tree(const boost::property_tree::ptree &effects_,
-							Hackers_Project::program_data &program_data_);
-
 	unsigned int count();
 	void save(const std::string & dir_path);
+protected:
+	void parse_size(const boost::property_tree::ptree &program_, 
+		Hackers_Project::program_data &program_data_);
+	void parse_range(const boost::property_tree::ptree &program_, 
+		Hackers_Project::program_data &program_data_);
+	void parse_effects_tree(const boost::property_tree::ptree &effects_,
+		Hackers_Project::program_data &program_data_);
 public:
 	boost::property_tree::ptree tree;
 };

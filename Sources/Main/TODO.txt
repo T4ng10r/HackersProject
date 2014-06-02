@@ -1,5 +1,6 @@
-- niech projekt RUN_TESTS urchomiony z poziomu VS odpala wszystkie podpiete
-  testy
+﻿- niech projekt RUN_TESTS urchomiony z poziomu VS odpala wszystkie podpiete testy
 - program_warehouse - w innych magazynach/przechowalniach proto danych beda
   podobne problemy z odczytywanie wielu struktur z jednego pliku - wydzielic
   czesc wspolna
+- kontrola poprawności danych z plików XML
+-- reagowanie na błędne wpisy lub w zlych pozycjach

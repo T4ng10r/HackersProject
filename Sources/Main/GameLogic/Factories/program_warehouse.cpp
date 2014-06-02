@@ -24,8 +24,8 @@ void program_warehouse::load_program(std::ifstream &strm)
 		return;
 	pos = static_cast<long>(strm.tellg());
 	std::stringstream buffer;
-	copy(std::istreambuf_iterator<char>(strm),
-		 std::istreambuf_iterator<char>(),
+	copy_n(std::istreambuf_iterator<char>(strm),
+		 size,
 		 std::ostreambuf_iterator<char>(buffer));
 	program_.ParseFromIstream(&buffer);
 	strm.seekg(pos + size, strm.beg);

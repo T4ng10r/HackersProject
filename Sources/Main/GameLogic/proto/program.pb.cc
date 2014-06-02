@@ -38,10 +38,11 @@ void protobuf_AssignDesc_program_2eproto() {
       "program.proto");
   GOOGLE_CHECK(file != NULL);
   program_data_descriptor_ = file->message_type(0);
-  static const int program_data_offsets_[3] = {
+  static const int program_data_offsets_[4] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(program_data, name_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(program_data, effects_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(program_data, size_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(program_data, range_),
   };
   program_data_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
@@ -105,17 +106,17 @@ void protobuf_AddDesc_program_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-    "\n\rprogram.proto\022\017Hackers_Project\"\201\003\n\014pro"
+    "\n\rprogram.proto\022\017Hackers_Project\"\205\003\n\014pro"
     "gram_data\022\014\n\004name\030\001 \002(\t\0225\n\007effects\030\002 \003(\013"
     "2$.Hackers_Project.program_data.effect\022\014"
-    "\n\004size\030\003 \002(\005\032P\n\006effect\0229\n\006effect\030\001 \002(\0162)"
-    ".Hackers_Project.program_data.effect_typ"
-    "e\022\013\n\003val\030\002 \002(\005\"\313\001\n\013effect_type\022\n\n\006attack"
-    "\020\001\022\013\n\007analyze\020\002\022\t\n\005armor\020\003\022\t\n\005crypt\020\004\022\n\n"
-    "\006detect\020\005\022\013\n\007deceive\020\006\022\t\n\005decoy\020\007\022\013\n\007dec"
-    "rypt\020\010\022\014\n\010evaluate\020\t\022\t\n\005medic\020\n\022\014\n\010reloc"
-    "ate\020\013\022\010\n\004scan\020\014\022\n\n\006shield\020\r\022\010\n\004slow\020\016\022\t\n"
-    "\005virus\020\017\022\n\n\006weaken\020\020", 420);
+    "\n\004size\030\003 \002(\005\022\r\n\005range\030\004 \002(\005\032P\n\006effect\0229\n"
+    "\006effect\030\001 \002(\0162).Hackers_Project.program_"
+    "data.effect_type\022\013\n\003val\030\002 \002(\005\"\300\001\n\013effect"
+    "_type\022\n\n\006attack\020\000\022\013\n\007analyze\020\001\022\t\n\005crypt\020"
+    "\002\022\n\n\006detect\020\003\022\013\n\007deceive\020\004\022\t\n\005decoy\020\005\022\013\n"
+    "\007decrypt\020\006\022\014\n\010evaluate\020\007\022\t\n\005medic\020\010\022\014\n\010r"
+    "elocate\020\t\022\010\n\004scan\020\n\022\n\n\006shield\020\013\022\010\n\004slow\020"
+    "\014\022\t\n\005virus\020\r\022\n\n\006weaken\020\016", 424);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "program.proto", &protobuf_RegisterTypes);
   program_data::default_instance_ = new program_data();
@@ -140,6 +141,7 @@ const ::google::protobuf::EnumDescriptor* program_data_effect_type_descriptor() 
 }
 bool program_data_effect_type_IsValid(int value) {
   switch(value) {
+    case 0:
     case 1:
     case 2:
     case 3:
@@ -154,8 +156,6 @@ bool program_data_effect_type_IsValid(int value) {
     case 12:
     case 13:
     case 14:
-    case 15:
-    case 16:
       return true;
     default:
       return false;
@@ -165,7 +165,6 @@ bool program_data_effect_type_IsValid(int value) {
 #ifndef _MSC_VER
 const program_data_effect_type program_data::attack;
 const program_data_effect_type program_data::analyze;
-const program_data_effect_type program_data::armor;
 const program_data_effect_type program_data::crypt;
 const program_data_effect_type program_data::detect;
 const program_data_effect_type program_data::deceive;
@@ -204,7 +203,7 @@ program_data_effect::program_data_effect(const program_data_effect& from)
 
 void program_data_effect::SharedCtor() {
   _cached_size_ = 0;
-  effect_ = 1;
+  effect_ = 0;
   val_ = 0;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
@@ -241,7 +240,7 @@ program_data_effect* program_data_effect::New() const {
 
 void program_data_effect::Clear() {
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    effect_ = 1;
+    effect_ = 0;
     val_ = 0;
   }
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
@@ -442,6 +441,7 @@ void program_data_effect::Swap(program_data_effect* other) {
 const int program_data::kNameFieldNumber;
 const int program_data::kEffectsFieldNumber;
 const int program_data::kSizeFieldNumber;
+const int program_data::kRangeFieldNumber;
 #endif  // !_MSC_VER
 
 program_data::program_data()
@@ -462,6 +462,7 @@ void program_data::SharedCtor() {
   _cached_size_ = 0;
   name_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
   size_ = 0;
+  range_ = 0;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -506,6 +507,7 @@ void program_data::Clear() {
       }
     }
     size_ = 0;
+    range_ = 0;
   }
   effects_.Clear();
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
@@ -561,6 +563,22 @@ bool program_data::MergePartialFromCodedStream(
         } else {
           goto handle_uninterpreted;
         }
+        if (input->ExpectTag(32)) goto parse_range;
+        break;
+      }
+
+      // required int32 range = 4;
+      case 4: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+         parse_range:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
+                 input, &range_)));
+          set_has_range();
+        } else {
+          goto handle_uninterpreted;
+        }
         if (input->ExpectAtEnd()) return true;
         break;
       }
@@ -603,6 +621,11 @@ void program_data::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteInt32(3, this->size(), output);
   }
 
+  // required int32 range = 4;
+  if (has_range()) {
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(4, this->range(), output);
+  }
+
   if (!unknown_fields().empty()) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         unknown_fields(), output);
@@ -633,6 +656,11 @@ void program_data::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(3, this->size(), target);
   }
 
+  // required int32 range = 4;
+  if (has_range()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(4, this->range(), target);
+  }
+
   if (!unknown_fields().empty()) {
     target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
         unknown_fields(), target);
@@ -656,6 +684,13 @@ int program_data::ByteSize() const {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::Int32Size(
           this->size());
+    }
+
+    // required int32 range = 4;
+    if (has_range()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::Int32Size(
+          this->range());
     }
 
   }
@@ -700,6 +735,9 @@ void program_data::MergeFrom(const program_data& from) {
     if (from.has_size()) {
       set_size(from.size());
     }
+    if (from.has_range()) {
+      set_range(from.range());
+    }
   }
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
 }
@@ -717,7 +755,7 @@ void program_data::CopyFrom(const program_data& from) {
 }
 
 bool program_data::IsInitialized() const {
-  if ((_has_bits_[0] & 0x00000005) != 0x00000005) return false;
+  if ((_has_bits_[0] & 0x0000000d) != 0x0000000d) return false;
 
   for (int i = 0; i < effects_size(); i++) {
     if (!this->effects(i).IsInitialized()) return false;
@@ -730,6 +768,7 @@ void program_data::Swap(program_data* other) {
     std::swap(name_, other->name_);
     effects_.Swap(&other->effects_);
     std::swap(size_, other->size_);
+    std::swap(range_, other->range_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);
     std::swap(_cached_size_, other->_cached_size_);

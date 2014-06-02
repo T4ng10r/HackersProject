@@ -38,22 +38,21 @@ class program_data;
 class program_data_effect;
 
 enum program_data_effect_type {
-  program_data_effect_type_attack = 1,
-  program_data_effect_type_analyze = 2,
-  program_data_effect_type_armor = 3,
-  program_data_effect_type_crypt = 4,
-  program_data_effect_type_detect = 5,
-  program_data_effect_type_deceive = 6,
-  program_data_effect_type_decoy = 7,
-  program_data_effect_type_decrypt = 8,
-  program_data_effect_type_evaluate = 9,
-  program_data_effect_type_medic = 10,
-  program_data_effect_type_relocate = 11,
-  program_data_effect_type_scan = 12,
-  program_data_effect_type_shield = 13,
-  program_data_effect_type_slow = 14,
-  program_data_effect_type_virus = 15,
-  program_data_effect_type_weaken = 16
+  program_data_effect_type_attack = 0,
+  program_data_effect_type_analyze = 1,
+  program_data_effect_type_crypt = 2,
+  program_data_effect_type_detect = 3,
+  program_data_effect_type_deceive = 4,
+  program_data_effect_type_decoy = 5,
+  program_data_effect_type_decrypt = 6,
+  program_data_effect_type_evaluate = 7,
+  program_data_effect_type_medic = 8,
+  program_data_effect_type_relocate = 9,
+  program_data_effect_type_scan = 10,
+  program_data_effect_type_shield = 11,
+  program_data_effect_type_slow = 12,
+  program_data_effect_type_virus = 13,
+  program_data_effect_type_weaken = 14
 };
 bool program_data_effect_type_IsValid(int value);
 const program_data_effect_type program_data_effect_type_effect_type_MIN = program_data_effect_type_attack;
@@ -221,7 +220,6 @@ class program_data : public ::google::protobuf::Message {
   typedef program_data_effect_type effect_type;
   static const effect_type attack = program_data_effect_type_attack;
   static const effect_type analyze = program_data_effect_type_analyze;
-  static const effect_type armor = program_data_effect_type_armor;
   static const effect_type crypt = program_data_effect_type_crypt;
   static const effect_type detect = program_data_effect_type_detect;
   static const effect_type deceive = program_data_effect_type_deceive;
@@ -289,21 +287,31 @@ class program_data : public ::google::protobuf::Message {
   inline ::google::protobuf::int32 size() const;
   inline void set_size(::google::protobuf::int32 value);
 
+  // required int32 range = 4;
+  inline bool has_range() const;
+  inline void clear_range();
+  static const int kRangeFieldNumber = 4;
+  inline ::google::protobuf::int32 range() const;
+  inline void set_range(::google::protobuf::int32 value);
+
   // @@protoc_insertion_point(class_scope:Hackers_Project.program_data)
  private:
   inline void set_has_name();
   inline void clear_has_name();
   inline void set_has_size();
   inline void clear_has_size();
+  inline void set_has_range();
+  inline void clear_has_range();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
   ::std::string* name_;
   ::google::protobuf::RepeatedPtrField< ::Hackers_Project::program_data_effect > effects_;
   ::google::protobuf::int32 size_;
+  ::google::protobuf::int32 range_;
 
   mutable int _cached_size_;
-  ::google::protobuf::uint32 _has_bits_[(3 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(4 + 31) / 32];
 
   friend void  protobuf_AddDesc_program_2eproto();
   friend void protobuf_AssignDesc_program_2eproto();
@@ -330,7 +338,7 @@ inline void program_data_effect::clear_has_effect() {
   _has_bits_[0] &= ~0x00000001u;
 }
 inline void program_data_effect::clear_effect() {
-  effect_ = 1;
+  effect_ = 0;
   clear_has_effect();
 }
 inline ::Hackers_Project::program_data_effect_type program_data_effect::effect() const {
@@ -483,6 +491,28 @@ inline ::google::protobuf::int32 program_data::size() const {
 inline void program_data::set_size(::google::protobuf::int32 value) {
   set_has_size();
   size_ = value;
+}
+
+// required int32 range = 4;
+inline bool program_data::has_range() const {
+  return (_has_bits_[0] & 0x00000008u) != 0;
+}
+inline void program_data::set_has_range() {
+  _has_bits_[0] |= 0x00000008u;
+}
+inline void program_data::clear_has_range() {
+  _has_bits_[0] &= ~0x00000008u;
+}
+inline void program_data::clear_range() {
+  range_ = 0;
+  clear_has_range();
+}
+inline ::google::protobuf::int32 program_data::range() const {
+  return range_;
+}
+inline void program_data::set_range(::google::protobuf::int32 value) {
+  set_has_range();
+  range_ = value;
 }
 
 

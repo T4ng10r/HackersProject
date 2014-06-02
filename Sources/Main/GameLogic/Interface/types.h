@@ -23,21 +23,20 @@ namespace program
 enum effect_type
 {
 	program_attack_effect,
-	program_scan_effect,
 	program_analyze_effect,
+	program_crypt_effect,
 	program_detect_effect,
-	program_slow_effect,
-	program_virus_effect,
-	program_weaken_effect,
-	program_shield_effect,
 	program_deceive_effect,
 	program_decoy_effect,
+	program_decrypt_effect,
+	program_evaluate_effect,
 	program_medic_effect,
 	program_relocate_effect,
-	program_evaluate_effect,
-	program_crypt_effect,
-	program_decrypt_effect,
-	program_effect_count
+	program_scan_effect,
+	program_shield_effect,
+	program_slow_effect,
+	program_virus_effect,
+	program_weaken_effect
 };
 
 typedef std::map<effect_type, param_value_t> program_stats;

@@ -3,22 +3,21 @@ package Hackers_Project;
 message program_data {
   required string name = 1;
   enum effect_type {
-      attack  = 1;
-      analyze = 2;
-      armor = 3;
-      crypt = 4;
-      detect = 5;
-      deceive = 6;
-      decoy = 7;
-      decrypt = 8;
-      evaluate = 9;
-      medic = 10;
-      relocate = 11;
-      scan = 12;
-      shield = 13;
-      slow = 14;
-      virus = 15;
-      weaken = 16;
+      attack  = 0;
+      analyze = 1;
+      crypt = 2;
+      detect = 3;
+      deceive = 4;
+      decoy = 5;
+      decrypt = 6;
+      evaluate = 7;
+      medic = 8;
+      relocate = 9;
+      scan = 10;
+      shield = 11;
+      slow = 12;
+      virus = 13;
+      weaken = 14;
   }
   message effect {
       required effect_type effect = 1;
@@ -26,4 +25,5 @@ message program_data {
   }
   repeated effect effects = 2;
   required int32 size = 3;
+  required int32 range = 4;
 }

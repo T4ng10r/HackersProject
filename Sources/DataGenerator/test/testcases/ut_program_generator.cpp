@@ -2,6 +2,7 @@
 #include <generators/program_generator.h>
 #include <memory>
 #include <list>
+#include <algorithm>
 #include <fstream>
 #include <sstream>
 #include <boost/assign/list_of.hpp>
@@ -16,6 +17,7 @@ const std::string attack_keyword(effects_keyword + ".attack");
 const std::string decrypt_keyword(effects_keyword + ".decrypt");
 const std::string weaken_keyword(effects_keyword + ".weaken");
 const std::string size_keyword("size");
+const std::string range_keyword("range");
 const int eof_mark(-1);
 }
 
@@ -37,11 +39,11 @@ public:
 	{
 		boost::property_tree::ptree tree;
 		tree.put(constants::program_name_tree_path, "Brute");
-		//tree.add(constants::effects_keyword, "");
 		tree.add(constants::attack_keyword, 1);
 		tree.add(constants::decrypt_keyword, 3);
 		tree.add(constants::weaken_keyword, 5);
 		tree.add(constants::size_keyword, 2);
+		tree.add(constants::range_keyword, 2);
 		return tree;
 	}
 
@@ -67,9 +69,9 @@ public:
 				break;
 			pos = static_cast<long>(strm.tellg());
 			std::stringstream buffer;
-			copy(std::istreambuf_iterator<char>(strm),
-				 std::istreambuf_iterator<char>(),
-				 std::ostreambuf_iterator<char>(buffer));
+			copy_n(std::istreambuf_iterator<char>(strm),
+				size,
+				std::ostreambuf_iterator<char>(buffer));
 			program_.ParseFromIstream(&buffer);
 			strm.seekg(pos + size, strm.beg);
 			ASSERT_EQ(program_.name(), *iter) << "Error on '" << index <<"' item ";

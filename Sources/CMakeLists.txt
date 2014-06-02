@@ -10,6 +10,7 @@ include_directories(${CMAKE_SOURCE_DIR}/include
   ${gmock_SOURCE_DIR}
   ${gtest_SOURCE_DIR}/include)
 
+add_subdirectory(pugixml)
 add_subdirectory(DataGenerator)
 add_subdirectory(Main)
 add_subdirectory(UnitTest)
