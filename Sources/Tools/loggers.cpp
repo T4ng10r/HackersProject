@@ -1,5 +1,5 @@
 #include <Tools/loggers.h>
-#include <io.h>
+//#include <io.h>
 #include <boost/filesystem.hpp>
 #include <boost/format.hpp>
 #ifdef USE_LOG4QT
@@ -12,10 +12,9 @@
 #include <log4qt/patternlayout.h>
 using namespace Log4Qt;
 
-#else if USE_LOG4CPP
+#elif USE_LOG4CPP
 #include	<log4cpp/Category.hh>
 #include	<log4cpp/FileAppender.hh>
-#include	<log4cpp/Win32DebugAppender.hh>
 #include	<log4cpp/PatternLayout.hh>
 #include	<log4cpp/Category.hh>
 #include	<log4cpp/PropertyConfigurator.hh>
@@ -28,7 +27,7 @@ bool bLoggersCreated(false);
 #ifdef WIN32
 #define SEPARATOR "/"
 #else
-#define SEPARATOR "\"
+#define SEPARATOR "\\"
 #endif
 
 #define DEBUG_LOGGER		"debug"
@@ -89,7 +88,7 @@ void createLoggers(const std::string &strPluginLogName)
 		//////////////////////////////////////////////////////////////////////////
 		LogManager::logger(DEBUG_LOGGER)->addAppender(p_FileNetworkAppender);
 	}
-#else if USE_LOG4CPP
+#elif USE_LOG4CPP
 	std::string initFileName = "logs/log4cpp.properties";
 		log4cpp::PropertyConfigurator::configure(initFileName);
 #endif

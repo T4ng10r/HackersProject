@@ -1,6 +1,7 @@
 project(HackersProject)
 
 INCLUDE_DIRECTORIES(${Boost_INCLUDE_DIR})
+INCLUDE_DIRECTORIES(${HP_include_SOURCE_DIR})
 ADD_DEFINITIONS( "-DHAS_BOOST" )
 
 include_directories(${CMAKE_SOURCE_DIR}/include

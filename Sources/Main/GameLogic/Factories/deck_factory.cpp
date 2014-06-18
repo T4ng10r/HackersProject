@@ -1,4 +1,3 @@
-#pragma once
 #include <GameLogic/Factories/deck_factory.h>
 #include <map>
 

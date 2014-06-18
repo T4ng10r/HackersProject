@@ -1,4 +1,3 @@
-#pragma once
 #include <GameLogic/Factories/program_factory.h>
 #include <GameLogic/Factories/program_warehouse.h>
 #include <GameLogic/Programs/program.h>

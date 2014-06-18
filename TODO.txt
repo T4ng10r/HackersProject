@@ -1,0 +1,5 @@
+- during compilation under Linux with clang
+-- error in log4cpp threading part of library - can't find pthread
+-- proto objects aren't generated BEFORE their includes
+
+
