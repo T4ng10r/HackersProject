@@ -1,3 +1,6 @@
+#SRCS - will contain generated source files of PROTO obj
+#HDRS - will contain generated headers files of PROTO ojb
+#PROTO_OUT_DIR - directory where files should be generated
 function(PROTOBUF_GENERATE_CPP SRCS HDRS PROTO_OUT_DIR)
   if(NOT ARGN)
     message(SEND_ERROR "Error: PROTOBUF_GENERATE_CPP() called without any proto files")
@@ -30,6 +33,10 @@ function(PROTOBUF_GENERATE_CPP SRCS HDRS PROTO_OUT_DIR)
 
   set(${SRCS})
   set(${HDRS})
+	#if output dirr doesn't exist - report it
+	if (NOT EXISTS ${PROTO_OUT_DIR})
+		MESSAGE(WARNING "Output directory '" ${PROTO_OUT_DIR} "' doesn't exist")
+	endif()
   foreach(FIL ${ARGN})
     get_filename_component(ABS_FIL ${FIL} ABSOLUTE)
     get_filename_component(FIL_WE ${FIL} NAME_WE)

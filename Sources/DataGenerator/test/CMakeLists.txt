@@ -8,8 +8,8 @@ include_directories(${CMAKE_CURRENT_SOURCE_DIR}
 
 GatheringFiles(${CMAKE_CURRENT_SOURCE_DIR} "cpp;h;;c;cc;properties")
 CreateProjectStructure(${GameData_SOURCE_DIR} ${GAMEDATA_SRC})
-
-add_executable(UT_GameDataGenerator ${TMP_FILES} ${GAMEDATA_SRC} )
+set_source_files_properties(${PROTOBUF_FILES} PROPERTIES GENERATED TRUE)
+add_executable(UT_GameDataGenerator ${TMP_FILES} ${GAMEDATA_SRC} ${PROTOBUF_FILES} )
 target_link_libraries(UT_GameDataGenerator tools_lib libprotobuf ${Boost_LIBRARIES} gtest)
 add_custom_command(TARGET UT_GameDataGenerator POST_BUILD 
 	COMMAND ${CMAKE_COMMAND} -E copy ${HP_Data_SOURCE_DIR}/Data/xml/programs.xml
