@@ -18,3 +18,4 @@ add_custom_command(TARGET UT_GameDataGenerator POST_BUILD
 	COMMAND ${CMAKE_COMMAND} -E copy ${GameData_SOURCE_DIR}/log4cpp.properties
 	${UT_GameData_BINARY_DIR}/logs/log4cpp.properties
 )
+ADD_TEST(GameDataGenerator UT_GameDataGenerator)

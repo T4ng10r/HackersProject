@@ -38,6 +38,7 @@ ADD_CUSTOM_COMMAND(
 ADD_CUSTOM_COMMAND(OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/logs/log4cpp.properties
     COMMAND ${CMAKE_COMMAND} -E make_directory ${CMAKE_CURRENT_BINARY_DIR}/logs
     COMMAND ${CMAKE_COMMAND} -E copy ${HackersProject_SOURCE_DIR}/log4cpp.properties ${CMAKE_CURRENT_BINARY_DIR}/logs/log4cpp.properties )
-
 add_executable(UT_Main ${TMP_FILES} ${GAME_DATA_OUT_FILES})
 target_link_libraries(UT_Main HackersProject_lib gtest gmock tools_lib)
+ADD_TEST(Main UT_Main)
+

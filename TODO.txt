@@ -1,6 +1,7 @@
 - during compilation under Linux with clang
 xx error in log4cpp threading part of library - can't find pthread
 xxx target_link_libraries( ... pthread)
--- boost::assign::list_of() overload operator = is ambiguous 
+xx boost::assign::list_of() overload operator = is ambiguous 
+xxx use = {""} in substitute
 
 
