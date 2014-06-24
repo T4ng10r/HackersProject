@@ -17,11 +17,11 @@ public:
 	std::list<std::string> programs_names;
 	ut_program_warehouse_test()
 	{
-		programs_names = boost::assign::list_of
-			("Brute")("Codecracker")("Force field")("Hammer")
-			("Hidden Virtue")("Invisibility")("Raffles")
-			("Replikator")("Seeya")("Shield")("Stealth")
-			("Watchdog")("Watchdog v2")("Worm");
+		programs_names = {
+			"Brute", "Codecracker", "Force field", "Hammer", 
+			"Hidden Virtue", "Invisibility", "Raffles", 
+			"Replikator", "Seeya", "Shield", "Stealth", 
+			"Watchdog", "Watchdog v2", "Worm"};
 	}
 };
 

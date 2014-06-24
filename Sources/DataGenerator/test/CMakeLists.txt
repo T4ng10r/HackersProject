@@ -12,7 +12,7 @@ set_source_files_properties(${PROTOBUF_FILES} PROPERTIES GENERATED TRUE)
 add_executable(UT_GameDataGenerator ${TMP_FILES} ${GAMEDATA_SRC} ${PROTOBUF_FILES} )
 target_link_libraries(UT_GameDataGenerator tools_lib libprotobuf ${Boost_LIBRARIES} gtest)
 add_custom_command(TARGET UT_GameDataGenerator POST_BUILD 
-	COMMAND ${CMAKE_COMMAND} -E copy ${HP_Data_SOURCE_DIR}/Data/xml/programs.xml
+	COMMAND ${CMAKE_COMMAND} -E copy ${HP_Data_SOURCE_DIR}/xml/programs.xml
 	${UT_GameData_BINARY_DIR}/Data/xml/programs.xml
 	COMMAND ${CMAKE_COMMAND} -E make_directory ${UT_GameData_BINARY_DIR}/logs
 	COMMAND ${CMAKE_COMMAND} -E copy ${GameData_SOURCE_DIR}/log4cpp.properties

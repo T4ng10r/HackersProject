@@ -29,11 +29,10 @@ public:
 public:
 	ut_program_generator_test() : uut(new program_generator())
 	{
-		programs_names = boost::assign::list_of
-			("Brute")("Hammer")("Worm")("Watchdog")
-			("Codecracker")("Raffles")("Watchdog v2")
-			("Seeya")("Hidden Virtue")("Invisibility")
-			("Stealth")("Replikator")("Shield")("Force field");
+		programs_names = { "Brute","Hammer","Worm","Watchdog",
+			"Codecracker","Raffles","Watchdog v2",
+			"Seeya","Hidden Virtue","Invisibility",
+			"Stealth","Replikator","Shield","Force field"};
 	}
 	boost::property_tree::ptree prepare_ptree_program()
 	{

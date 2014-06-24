@@ -5,16 +5,16 @@ include_directories(${gmock_SOURCE_DIR}
   ${gtest_SOURCE_DIR}/include
   ${Protobuf_SOURCE_DIR}/src
   ${HackersProject_SOURCE_DIR}
-  ${HackersProject_Sources_SOURCE_DIR}
-  ${HackersProject_PROJECT_SOURCE_DIR}/include
-  ${HackersProject_SOURCE_DIR}/Sources/Main
+  #${HackersProject_Sources_SOURCE_DIR}
+  #${HP_include_SOURCE_DIR}/include
+  #${HackersProject_SOURCE_DIR}/Sources/Main
   ${CMAKE_CURRENT_SOURCE_DIR}
   ${Boost_INCLUDE_DIR})
 
 ####################
 GatheringFiles(${CMAKE_CURRENT_SOURCE_DIR} "cpp;h;;c")
 
-SET (GAME_DATA_DIR ${HackersProject_PROJECT_SOURCE_DIR}/Data)
+SET (GAME_DATA_DIR ${HP_Data_SOURCE_DIR})
 FILE(GLOB GAME_DATA_FILES ${GAME_DATA_DIR}/xml/*.xml)
 
 FOREACH(FILE ${GAME_DATA_FILES})
