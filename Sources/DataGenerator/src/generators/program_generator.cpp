@@ -133,8 +133,6 @@ void program_generator::save(const std::string & dir_path)
 		item.SerializeToString(&msg_content);
 		strm<<msg_content.size();
 		item.SerializeToOstream(&strm);
-		printLog(eDebug, eDebugLogLevel, str(boost::format("Program %1%, size %2%, pos after %3%") 
-			% item.name() % msg_content.size() % strm.tellp()));
 	}
 	strm<<constants::eof_mark;
 	printLog(eDebug, eInfoLogLevel, "Saving finished");

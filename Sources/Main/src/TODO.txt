@@ -3,4 +3,4 @@
   podobne problemy z odczytywanie wielu struktur z jednego pliku - wydzielic
   czesc wspolna
 - kontrola poprawności danych z plików XML
--- reagowanie na błędne wpisy lub w zlych pozycjach
+-- reagowanie na błędne wpisy lub w zlych pozycjach w plikach XML

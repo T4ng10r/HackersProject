@@ -2,6 +2,7 @@ project(HackersProject)
 
 INCLUDE_DIRECTORIES(${Boost_INCLUDE_DIR})
 INCLUDE_DIRECTORIES(${HP_include_SOURCE_DIR})
+INCLUDE_DIRECTORIES(${SDL2_INCLUDE_DIRS})
 ADD_DEFINITIONS( "-DHAS_BOOST" )
 
 include_directories(${CMAKE_SOURCE_DIR}/include
@@ -25,5 +26,5 @@ add_custom_command(TARGET HackersProject POST_BUILD
     COMMAND ${CMAKE_COMMAND} -E make_directory ${HackersProject_BINARY_DIR}/logs
     COMMAND ${CMAKE_COMMAND} -E copy ${CMAKE_CURRENT_SOURCE_DIR}/log4cpp.properties ${HackersProject_BINARY_DIR}/logs/log4cpp.properties )
 
-target_link_libraries(HackersProject tools_lib libprotobuf ${Boost_LIBRARIES})
+target_link_libraries(HackersProject tools_lib libprotobuf ${Boost_LIBRARIES} SDL2)
 target_link_libraries(HackersProject_lib tools_lib libprotobuf ${Boost_LIBRARIES})

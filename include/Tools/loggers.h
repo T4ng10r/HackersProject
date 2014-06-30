@@ -14,8 +14,7 @@ enum eLoggerType
 {
 	eDebug=0,
 	eGUI,
-	eSlots,
-	eNetwork
+	eSlots
 };
 void createLoggers(const std::string &strPluginLogName = std::string());
 void destroyLoggers();

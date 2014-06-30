@@ -13,7 +13,7 @@ if(NOT MSVC)
 endif()
 
 add_subdirectory(gmock)
-add_subdirectory(protobuf)
+#add_subdirectory(protobuf)
 add_subdirectory(Tools)
 
 include_directories(${HP_include_SOURCE_DIR}

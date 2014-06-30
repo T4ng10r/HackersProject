@@ -5,7 +5,12 @@ cmake_policy(SET CMP0020 NEW )
 SET(Boost_USE_MULTITHREADED ON)
 SET(Boost_USE_STATIC_LIBS ON)
 #SET(Boost_USE_STATIC_RUNTIME OFF)
-find_package(Boost REQUIRED COMPONENTS date_time filesystem system program_options) #thread system date_time chrono)
+find_package(Boost REQUIRED COMPONENTS date_time filesystem system program_options)
+
+include(FindPkgConfig)
+PKG_SEARCH_MODULE(SDL2 REQUIRED sdl2)
+
+message(STATUS "SDL2 version " ${SDL2_VERSION})
 
 set(Logger "log4cpp" CACHE STRING "Logger where to store logs from program executions")
 set(LoggersNames "None;log4cpp")
