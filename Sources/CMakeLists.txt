@@ -15,6 +15,7 @@ endif()
 add_subdirectory(gmock)
 #add_subdirectory(protobuf)
 add_subdirectory(Tools)
+add_subdirectory(SDL2)
 
 include_directories(${HP_include_SOURCE_DIR}
   ${Boost_INCLUDE_DIR})

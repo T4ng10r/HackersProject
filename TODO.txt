@@ -4,4 +4,7 @@ xxx target_link_libraries( ... pthread)
 xx boost::assign::list_of() overload operator = is ambiguous 
 xxx use = {""} in substitute
 
+- make test zwraca wyniki testów
+-- jesli jakis test padnie - dostaje tylko informacje, ze program go przetwarzajacy padl, brak szczegolow
+
 
