@@ -2,7 +2,7 @@ if(${CMAKE_SOURCE_DIR} STREQUAL ${CMAKE_BINARY_DIR})
   message(FATAL_ERROR "Prevented in-tree built. Please create a build directory outside of the SDL source code and call cmake from there")
 endif()
 
-cmake_policy(SET CMP0048 OLD)
+#cmake_policy(SET CMP0048 OLD)
 cmake_minimum_required(VERSION 2.6)
 project(SDL2 LANGUAGES C)
 include(CheckFunctionExists)
