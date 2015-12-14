@@ -1,3 +1,4 @@
 tags
 .ycm_extra_conf.pyc
 *.swp
+docs/uml/*
